@@ -8,7 +8,8 @@ public class SlipperPhysics : MonoBehaviour
     private short currBounceCount = 0;
     public float maxAliveSeconds = 3.0f;
     private float currAliveSeconds = 0;
-    public float bounceForceMagnitude = 1.0f;
+    public float bounceForceMagnitude = 10.0f;
+    private float currSpeed = 0;
     private Rigidbody rb;
 
 
@@ -18,6 +19,7 @@ public class SlipperPhysics : MonoBehaviour
     }
     private void Update()
     {
+        currSpeed = rb.velocity.magnitude;
         currAliveSeconds += Time.deltaTime;
         if (currAliveSeconds >= maxAliveSeconds) {
             // Debug.Log("Slipper reaches maximum alive time");
@@ -40,8 +42,8 @@ public class SlipperPhysics : MonoBehaviour
                 Debug.Log("Slipper missing rigidbody comp");
                 return;
             }
-            Vector3 forceDirection = -collision.contacts[0].normal;
-            rb.AddForce(forceDirection * bounceForceMagnitude, ForceMode.Impulse);
+            // Vector3 forceDirection = -collision.contacts[0].normal;
+            // rb.AddForce(forceDirection * bounceForceMagnitude, ForceMode.Impulse);
         }
     }
 }

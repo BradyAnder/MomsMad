@@ -15394,6 +15394,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mom
       objectReference: {fileID: 0}
+    - target: {fileID: 515316262451598555, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
+      propertyPath: m_TagString
+      value: Mom
+      objectReference: {fileID: 0}
     - target: {fileID: 2765202374937886200, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.82
@@ -15442,6 +15446,18 @@ PrefabInstance:
       propertyPath: throwObject
       value: 
       objectReference: {fileID: 1004310718572751228, guid: 03578a272f8b9af429035c16313a83c2, type: 3}
+    - target: {fileID: 7987637313116930916, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
+      propertyPath: WeakThrowForce
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987637313116930916, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
+      propertyPath: NormalThrowForce
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987637313116930916, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
+      propertyPath: StrongThrowForce
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2091366320315142839, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
     m_RemovedGameObjects: []

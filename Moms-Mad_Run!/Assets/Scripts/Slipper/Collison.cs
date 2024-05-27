@@ -3,11 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Collison : MonoBehaviour
+public class SlipperTrigger : MonoBehaviour
 {
+    public float minStunSpeed = 5.0f;
+    private Rigidbody rb;
+
+    private void Start()
+    {
+        rb = gameObject.GetComponent<Rigidbody>();
+    }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (rb == null)
+            return;
+        if (other.gameObject.tag == "Player" && rb.velocity.magnitude > minStunSpeed)
         {
             Debug.Log("Mom won!");
             SceneManager.LoadScene(3);

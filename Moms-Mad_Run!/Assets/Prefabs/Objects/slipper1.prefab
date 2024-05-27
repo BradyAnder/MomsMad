@@ -115,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxBounceNumber: 10
   maxAliveSeconds: 3
-  bounceForceMagnitude: 1
+  bounceForceMagnitude: 10
 --- !u!54 &-7581280678072096698
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004310718572751228}
   serializedVersion: 4
-  m_Mass: 0.1
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dcef5fad4a0e52438ec5723f93df596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minStunSpeed: 5
 --- !u!64 &3628703667977715784
 MeshCollider:
   m_ObjectHideFlags: 0

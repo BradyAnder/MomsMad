@@ -81,7 +81,7 @@ public class SlipperThrow : MonoBehaviour
 
         Debug.Log(ThrowSpeed);
 
-        newObject.GetComponent<Rigidbody>().AddForce(this.transform.forward * ThrowSpeed);
+        newObject.GetComponent<Rigidbody>().AddForce(this.transform.forward * ThrowSpeed, ForceMode.Impulse);
     }
 
 

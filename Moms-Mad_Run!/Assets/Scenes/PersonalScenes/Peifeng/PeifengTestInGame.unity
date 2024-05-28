@@ -15439,6 +15439,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7987637313116930916, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
+      propertyPath: useFrame
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987637313116930916, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: ThrowSound
       value: 
       objectReference: {fileID: 0}
@@ -15448,15 +15452,23 @@ PrefabInstance:
       objectReference: {fileID: 1004310718572751228, guid: 03578a272f8b9af429035c16313a83c2, type: 3}
     - target: {fileID: 7987637313116930916, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: WeakThrowForce
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7987637313116930916, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: NormalThrowForce
-      value: 60
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 7987637313116930916, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: StrongThrowForce
-      value: 100
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987637313116930916, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
+      propertyPath: normalChargeTime
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7987637313116930916, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
+      propertyPath: strongChargeTime
+      value: 1.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2091366320315142839, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}

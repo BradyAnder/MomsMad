@@ -33,13 +33,13 @@ public class SlipperPhysics : MonoBehaviour
             return;
         if (++currBounceCount >= maxBounceNumber)
         {
-            Debug.Log("Slipper reaches maximum bounces");
+            // Debug.Log("Slipper reaches maximum bounces");
             Destroy(gameObject);
         }
         else {
             if (rb == null)
             {
-                Debug.Log("Slipper missing rigidbody comp");
+                // Debug.Log("Slipper missing rigidbody comp");
                 return;
             }
             // Vector3 forceDirection = -collision.contacts[0].normal;

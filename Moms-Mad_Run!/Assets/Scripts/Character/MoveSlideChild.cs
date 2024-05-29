@@ -10,15 +10,14 @@ public class MoveSlideChild : MonoBehaviour
     public float slideSpeed = 20f;
     public float slideDuration = 0.5f;
     public float slideCooldown = 1f;
-    // Offset for the child's hitbox when sliding (lowered to the ground)
-    public Vector3 slideHitboxOffset = new Vector3(0f, -0.5f, 0f); 
 
     private Rigidbody child_body;
     private bool isSliding = false;
     private float slideTimer = 0f;
     private float slideCooldownTimer = 0f;
-    private Vector3 originalHitboxCenter;
-    private BoxCollider childCollider;
+    private Vector3 slideDirection;
+    private Quaternion originalRotation;
+    private CapsuleCollider childCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -27,13 +26,11 @@ public class MoveSlideChild : MonoBehaviour
         {
             child_body = Child_Object.GetComponent<Rigidbody>();
             child_body.useGravity = true;
-            
-            // Assuming the child object has a BoxCollider component for hitbox in "Face" component.
-            childCollider = Child_Object.GetComponentInChildren<BoxCollider>();
+
+            childCollider = Child_Object.GetComponent<CapsuleCollider>();
             if (childCollider != null)
             {
-                
-                originalHitboxCenter = childCollider.center;
+                originalRotation = Child_Object.transform.localRotation;
             }
         }
     }
@@ -104,12 +101,14 @@ public class MoveSlideChild : MonoBehaviour
         slideTimer = slideDuration;
         slideCooldownTimer = slideCooldown;
 
-        if (childCollider != null)
-        {
-            childCollider.center += slideHitboxOffset;
-        }
+        // Store the original direction before rotating the character
+        slideDirection = Child_Object.transform.forward;
 
-        child_body.velocity = Child_Object.transform.forward * slideSpeed;
+        // Rotate the character to look at the ceiling
+        Child_Object.transform.Rotate(-90f, 0f, 0f);
+
+        // Apply the sliding velocity in the original forward direction
+        child_body.velocity = slideDirection * slideSpeed;
     }
 
     void Slide()
@@ -124,9 +123,11 @@ public class MoveSlideChild : MonoBehaviour
     void EndSlide()
     {
         isSliding = false;
-        if (childCollider != null)
-        {
-            childCollider.center = originalHitboxCenter;
-        }
+
+        // Reset the character's rotation back to the original
+        Child_Object.transform.localRotation = originalRotation;
+
+        // Stop the sliding movement
+        child_body.velocity = Vector3.zero;
     }
 }

@@ -18,10 +18,22 @@ public class SlipperTrigger : MonoBehaviour
             return;
         if (other.gameObject.tag == "Player" && rb.velocity.magnitude > minStunSpeed)
         {
-            Debug.Log("Mom won!");
-            SceneManager.LoadScene(3);
+            StartCoroutine(StunPlayer(other.gameObject));
 
             // Add displaying a UI message, etc.
         }
+    }
+
+    // Here we are using a coroutine to stun the player for 2 seconds 
+    private IEnumerator StunPlayer(GameObject player)
+    {
+        MoveChild moveChild = player.GetComponent<MoveChild>();
+        if (moveChild != null)
+        {
+            moveChild.enabled = false;
+            yield return new WaitForSeconds(2.0f);
+            moveChild.enabled = true;
+        }
+        
     }
 }

@@ -19,7 +19,7 @@ public class SlipperTrigger : MonoBehaviour
         if (other.gameObject.tag == "Player" && rb.velocity.magnitude > minStunSpeed)
         {
             Debug.Log("Mom won!");
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene("Lose");
 
             // Add displaying a UI message, etc.
         }

@@ -66,6 +66,8 @@ public class CountDownTimer : MonoBehaviour
     IEnumerator ChangeScene()
     {
         yield return new WaitForSecondsRealtime(1f);
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         SceneManager.LoadScene("MainMenu");
     }
 }

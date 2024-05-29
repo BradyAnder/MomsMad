@@ -115,7 +115,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1486148771068009229}
   serializedVersion: 4
-  m_Mass: 10
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -147,3 +147,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brokenObject: {fileID: 6203018087420641716, guid: 2cfd5b1386f8f0445941b7b50ae0be6b, type: 3}
+  scoreManager: {fileID: 0}
+  scoreValue: 100

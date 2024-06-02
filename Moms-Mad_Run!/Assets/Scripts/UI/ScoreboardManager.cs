@@ -26,8 +26,13 @@ public class ScoreboardManager : MonoBehaviour
 
     private void Awake()
     {
+    }
+
+    private void Start()
+    {
         scoreRecorder = FindObjectOfType<ScoreRecorder>();
-        if (scoreRecorder == null) {
+        if (scoreRecorder == null)
+        {
             Debug.Log("Score Recorder not found.");
             return;
         }
@@ -35,13 +40,11 @@ public class ScoreboardManager : MonoBehaviour
         actualScores = scoreRecorder.PlayerScoresToArray();
         playerNumber = actualScores.Length;
         actualChars = new string[playerNumber];
-        for (int i = 0; i < playerNumber; i++) {
+        for (int i = 0; i < playerNumber; i++)
+        {
             actualChars[i] = playerObjects[i].name;
         }
-    }
 
-    private void Start()
-    {
         if (title == null) {
             Debug.Log("UI title not assigned");
             return;

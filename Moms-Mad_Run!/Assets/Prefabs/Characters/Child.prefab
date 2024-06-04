@@ -27,14 +27,14 @@ RectTransform:
   m_GameObject: {fileID: 1902707910312309628}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4074534115231145672}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 68}
+  m_AnchoredPosition: {x: 0, y: 45.4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2306865498060034269
@@ -204,9 +204,9 @@ GameObject:
   - component: {fileID: 3146777245486721296}
   - component: {fileID: 3171757783436207030}
   - component: {fileID: 5539013736225274631}
-  - component: {fileID: 7492544744670266597}
   - component: {fileID: 4112306350207067056}
   - component: {fileID: 6524269313190434375}
+  - component: {fileID: 4379907518947497937}
   m_Layer: 0
   m_Name: Child
   m_TagString: Player
@@ -224,7 +224,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 6.03, z: 5.37}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5192290841950135155}
@@ -331,20 +331,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &7492544744670266597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5726284132715252479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b2ff7960cc08494aaa8b7a7a68933d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Child_Object: {fileID: 5726284132715252479}
-  child_speed: 10
 --- !u!114 &4112306350207067056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,6 +360,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactRange: 2.5
+--- !u!114 &4379907518947497937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5726284132715252479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc0d0908bf72a34c8b50b7b7decfe82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Child_Object: {fileID: 5726284132715252479}
+  child_speed: 8
+  child_rotationSpeed: 15
+  slideSpeed: 14
+  slideDuration: 0.5
+  slideCooldown: 1
+  isSliding: 0
 --- !u!1 &7582216658398126589
 GameObject:
   m_ObjectHideFlags: 0

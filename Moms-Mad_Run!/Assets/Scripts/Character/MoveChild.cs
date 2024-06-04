@@ -39,6 +39,19 @@ public class MoveChild : MonoBehaviour
         child_body.velocity = new Vector3(movement_child.x * child_speed, child_body.velocity.y, movement_child.z * child_speed);
     }
 
+    public void StunChild()
+    {
+        StartCoroutine(StunChildCoroutine());
+    }
+
+    private IEnumerator StunChildCoroutine()
+    {
+        child_body.useGravity = false;
+        child_body.velocity = Vector3.zero;
+        yield return new WaitForSeconds(2.0f);
+        child_body.useGravity = true;
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();

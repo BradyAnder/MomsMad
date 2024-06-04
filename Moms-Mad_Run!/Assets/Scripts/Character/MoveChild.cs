@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using System.Collections;
 
 public class MoveChild : MonoBehaviour
 {
@@ -8,8 +8,8 @@ public class MoveChild : MonoBehaviour
     public float child_speed = 8f;
     public float child_rotationSpeed = 10f;
     private Rigidbody child_body;
+    private Vector2 moveInput;
 
-    // Start is called before the first frame update
     void Start()
     {
         if (Child_Object != null)
@@ -19,7 +19,6 @@ public class MoveChild : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (child_body != null)
@@ -30,28 +29,7 @@ public class MoveChild : MonoBehaviour
 
     void MoveChildObject()
     {
-        float child_moveHorizontal = 0f;
-        float child_moveVertical = 0f;
-
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            child_moveVertical = 1f;
-        }
-        else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            child_moveVertical = -1f;
-        }
-
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            child_moveHorizontal = -1f;
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            child_moveHorizontal = 1f;
-        }
-
-        Vector3 movement_child = new Vector3(child_moveHorizontal, 0.0f, child_moveVertical);
+        Vector3 movement_child = new Vector3(moveInput.x, 0.0f, moveInput.y);
         
         if (movement_child != Vector3.zero)
         {
@@ -73,5 +51,10 @@ public class MoveChild : MonoBehaviour
         child_body.velocity = Vector3.zero;
         yield return new WaitForSeconds(2.0f);
         child_body.useGravity = true;
+    }
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
     }
 }

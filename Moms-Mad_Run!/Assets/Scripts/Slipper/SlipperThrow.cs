@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SlipperThrow : MonoBehaviour
 {
@@ -28,10 +29,32 @@ public class SlipperThrow : MonoBehaviour
     bool buttonHeld = false;
 
     public GameObject child;
+    
 
     enum ShootType { Weak, Normal, Strong }
     ShootType shootType;
 
+    public PlayerControls playerControls;
+    private InputAction ThrowAction;
+    private Vector2 throwDirection = Vector2.zero;
+
+    private void Awake()
+    {
+        playerControls = new PlayerControls();
+        playerControls.MomMovementControl.Throw.performed += ctx => throwDirection = ctx.ReadValue<Vector2>();
+    }
+
+    private void OnEnable()
+    {
+        ThrowAction = playerControls.MomMovementControl.Throw;
+        ThrowAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        ThrowAction.Disable();
+    }
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -62,7 +85,7 @@ public class SlipperThrow : MonoBehaviour
         }
         */
         if (!useFrame) { return; }
-        if (Input.GetButtonDown("Throw"))
+        if (Input.GetButtonDown("Throw") || throwDirection != Vector2.zero)
         {
             buttonHeld = true;
         }
@@ -80,7 +103,7 @@ public class SlipperThrow : MonoBehaviour
             }
             return;
         }
-        if (Input.GetButtonUp("Throw"))
+        if (Input.GetButtonUp("Throw") || throwDirection == Vector2.zero)
         {
             buttonHeld = false;
             if (currChargeTime > strongChargeTime) { shootType = ShootType.Strong; }
@@ -96,7 +119,7 @@ public class SlipperThrow : MonoBehaviour
     private void FixedUpdate()
     {
         if (useFrame) { return; }
-        if (Input.GetButtonDown("Throw"))
+        if (Input.GetButtonDown("Throw")  || throwDirection != Vector2.zero)
         {
             buttonHeld = true;
         }
@@ -114,7 +137,7 @@ public class SlipperThrow : MonoBehaviour
             return;
         }
 
-        if (Input.GetButtonUp("Throw"))
+        if (Input.GetButtonUp("Throw") || throwDirection == Vector2.zero)
         {
             buttonHeld = false;
             if (currChargeTime > strongChargeTime) { shootType = ShootType.Strong; }

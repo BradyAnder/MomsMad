@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Move : MonoBehaviour
 {
@@ -9,6 +10,27 @@ public class Move : MonoBehaviour
     public float mom_rotationSpeed = 10f;
 
     private Rigidbody mom;
+    public PlayerControls playerControls;
+    private InputAction Movement;
+
+    Vector2 moveDirection = Vector2.zero;
+
+    private void Awake()
+    {
+        playerControls = new PlayerControls();
+        playerControls.MomMovementControl.Move.performed += ctx => moveDirection = ctx.ReadValue<Vector2>();
+    }
+
+    private void OnEnable()
+    {
+        Movement = playerControls.MomMovementControl.Move;
+        Movement.Enable();
+    }
+
+    private void OnDisable()
+    {
+        Movement.Disable();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -31,8 +53,15 @@ public class Move : MonoBehaviour
 
     void MoveMom()
     {
-        float mom_moveHorizontal = Input.GetAxis("Horizontal");
-        float mom_moveVertical = Input.GetAxis("Vertical");
+        //float mom_moveHorizontal = Input.GetAxis("Horizontal");
+        //float mom_moveVertical = Input.GetAxis("Vertical");
+ 
+        // moveDirection = Move.ReadValue<Vector2>();
+
+        // We check for input from input action wether it s wasd or joystick
+        float mom_moveHorizontal = moveDirection.x;
+        float mom_moveVertical = moveDirection.y;
+
 
         Vector3 movement_mom = new Vector3(mom_moveHorizontal, 0.0f, mom_moveVertical);
         if (movement_mom != Vector3.zero)

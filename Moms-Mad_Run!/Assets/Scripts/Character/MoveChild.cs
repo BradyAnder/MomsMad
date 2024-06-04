@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MoveChild : MonoBehaviour
 {
@@ -8,7 +9,31 @@ public class MoveChild : MonoBehaviour
     public float child_speed = 8f;
     public float child_rotationSpeed = 10f;
     private Rigidbody child_body;
+    
 
+    private Vector2 child_move = Vector2.zero;
+    public PlayerControls playerControls;
+    private InputAction Movement;
+
+    private void Awake()
+    {
+        playerControls = new PlayerControls();
+        playerControls.ChildMovementControl.Move.performed += ctx => child_move = ctx.ReadValue<Vector2>();
+    }
+
+    private void OnEnable()
+    {
+        Movement = playerControls.ChildMovementControl.Move;
+        Movement.Enable();
+    }
+
+    private void OnDisable()
+    {
+        Movement.Disable();
+    }
+
+
+  
     // Start is called before the first frame update
     void Start()
     {
@@ -28,10 +53,12 @@ public class MoveChild : MonoBehaviour
         }
     }
 
+
     void MoveChildObject()
     {
         float child_moveHorizontal = 0f;
         float child_moveVertical = 0f;
+
 
         if (Input.GetKey(KeyCode.UpArrow))
         {

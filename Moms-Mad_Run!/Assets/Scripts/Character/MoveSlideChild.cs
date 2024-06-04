@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MoveSlideChild : MonoBehaviour
 {
@@ -18,8 +17,8 @@ public class MoveSlideChild : MonoBehaviour
     private Vector3 slideDirection;
     private Quaternion originalRotation;
     private CapsuleCollider childCollider;
-
-    // Start is called before the first frame update
+    private Vector2 moveInput;
+    
     void Start()
     {
         if (Child_Object != null)
@@ -35,7 +34,6 @@ public class MoveSlideChild : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (child_body != null)
@@ -53,39 +51,13 @@ public class MoveSlideChild : MonoBehaviour
             {
                 slideCooldownTimer -= Time.deltaTime;
             }
-
-            if (Input.GetKeyDown(KeyCode.Space) && !isSliding && slideCooldownTimer <= 0)
-            {
-                StartSlide();
-            }
         }
     }
 
     void MoveChildObject()
     {
-        float child_moveHorizontal = 0f;
-        float child_moveVertical = 0f;
+        Vector3 movement_child = new Vector3(moveInput.x, 0.0f, moveInput.y);
 
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            child_moveVertical = 1f;
-        }
-        else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            child_moveVertical = -1f;
-        }
-
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            child_moveHorizontal = -1f;
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            child_moveHorizontal = 1f;
-        }
-
-        Vector3 movement_child = new Vector3(child_moveHorizontal, 0.0f, child_moveVertical);
-        
         if (movement_child != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(movement_child);
@@ -97,18 +69,21 @@ public class MoveSlideChild : MonoBehaviour
 
     void StartSlide()
     {
-        isSliding = true;
-        slideTimer = slideDuration;
-        slideCooldownTimer = slideCooldown;
+        if (!isSliding && slideCooldownTimer <= 0)
+        {
+            isSliding = true;
+            slideTimer = slideDuration;
+            slideCooldownTimer = slideCooldown;
 
-        // Store the original direction before rotating the character
-        slideDirection = Child_Object.transform.forward;
+            // Store the original direction before rotating the character
+            slideDirection = Child_Object.transform.forward;
 
-        // Rotate the character to look at the ceiling
-        Child_Object.transform.Rotate(-90f, 0f, 0f);
+            // Rotate the character to look at the ceiling
+            Child_Object.transform.Rotate(-90f, 0f, 0f);
 
-        // Apply the sliding velocity in the original forward direction
-        child_body.velocity = slideDirection * slideSpeed;
+            // Apply the sliding velocity in the original forward direction
+            child_body.velocity = slideDirection * slideSpeed;
+        }
     }
 
     void Slide()
@@ -129,5 +104,18 @@ public class MoveSlideChild : MonoBehaviour
 
         // Stop the sliding movement
         child_body.velocity = Vector3.zero;
+    }
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
+    }
+
+    public void OnSlide(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            StartSlide();
+        }
     }
 }

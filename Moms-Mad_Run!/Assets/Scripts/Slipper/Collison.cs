@@ -27,7 +27,11 @@ public class SlipperTrigger : MonoBehaviour
     // Here we are using a coroutine to stun the player for 2 seconds 
     private IEnumerator StunPlayer(GameObject player)
     {
-        MoveChild moveChild = player.GetComponent<MoveChild>();
+
+        
+        MoveSlideChild moveChild = player.GetComponent<MoveSlideChild>();
+
+        Debug.Log(moveChild);
         if (moveChild != null)
         {
             moveChild.enabled = false;

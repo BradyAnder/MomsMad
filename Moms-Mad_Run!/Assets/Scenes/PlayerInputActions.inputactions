@@ -1,0 +1,62 @@
+{
+    "name": "PlayerInputActions",
+    "maps": [
+        {
+            "name": "Mother",
+            "id": "e1347c44-93f3-445d-8855-66e5084d09a3",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "07be00d9-a191-4756-a757-de1447bc30d8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2f4ff0b5-6008-4565-879c-5d49419f99a8",
+                    "path": "<DualShockGamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Child",
+            "id": "da0a96b3-86e7-4828-bdd8-abd4919766df",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "3fd3ed54-f651-47f1-9ff1-79a94b816483",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "cd276fb7-72ba-4cf6-8753-e24b84ce48d5",
+                    "path": "<DualShockGamepad>/rightStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

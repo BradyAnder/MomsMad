@@ -13,7 +13,6 @@ public class BreakableObject : MonoBehaviour
     private void Start()
     {
         GameObject childObject = GameObject.Find("Child");
-        moveScript = childObject.GetComponent<MoveSlideChild>();
         GameObject scoreManagerObject = GameObject.Find("ScoreManager");
         scoreManager = scoreManagerObject.GetComponent<ScoreManager>();
     }
@@ -28,9 +27,14 @@ public class BreakableObject : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player" && moveScript.isSliding == true)
+        if (collision != null)
         {
-            BreakObject();
+
+            moveScript = collision.gameObject.GetComponent<MoveSlideChild>();
+            if (collision.gameObject.tag == "Player" && moveScript.isSliding == true)
+            {
+                BreakObject();
+            }
         }
     }
 }

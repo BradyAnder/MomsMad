@@ -18,15 +18,15 @@ public class PlayerManager : MonoBehaviour
         Transform momTransform = playerInput.transform.Find("Mom");
         Transform childTransform = playerInput.transform.Find("Child");
 
-        if (momTransform != null && playerInput.playerIndex == 0)
+        if (playerInput.name == "Child" && playerInput.playerIndex == 0 )
         {
-            SetupMom(momTransform.GetComponent<PlayerInput>());
+            playerInput.gameObject.SetActive(false);
+        }
+        else if(playerInput.name == "Mom" && playerInput.playerIndex > 0)
+        {
+            playerInput.gameObject.SetActive(false);
         }
 
-        if (childTransform != null && playerInput.playerIndex == 1)
-        {
-            SetupChild(childTransform.GetComponent<PlayerInput>());
-        }
     }
 
     void SetupMom(PlayerInput momInput)
@@ -39,5 +39,10 @@ public class PlayerManager : MonoBehaviour
     {
         // Setup specific to child
         childInput.SwitchCurrentActionMap("ChildActions");
+    }
+
+    public void PlayerJoined()
+    {
+
     }
 }

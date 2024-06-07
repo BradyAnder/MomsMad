@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SlipperThrow : MonoBehaviour
 {
-
-    //Values for throw charging
-    [SerializeField]int framesSinceCharging = 0;
+    // Values for throw charging
+    [SerializeField] int framesSinceCharging = 0;
     public int StrongChargeFrames;
     public int NormalChargeFrames;
     public float StrongThrowForce = 30;
@@ -32,45 +31,18 @@ public class SlipperThrow : MonoBehaviour
     enum ShootType { Weak, Normal, Strong }
     ShootType shootType;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        /*
-        if (!useFrame) { return; }
-        if (Input.GetButtonDown("Throw"))
+        if (!useFrame)
         {
-            buttonHeld = true;
+            return;
         }
-        if (Input.GetButtonUp("Throw"))
-        {
-            buttonHeld = false;
-            if (framesSinceCharging > StrongChargeFrames) { shootType = ShootType.Strong; }
-            else if (framesSinceCharging > NormalChargeFrames) { shootType = ShootType.Normal; }
-            else { shootType = ShootType.Weak; }
-            Throw(shootType);
-            framesSinceCharging = 0;
-        }
-        if(buttonHeld)
-        {
-            framesSinceCharging++;
-        }
-        */
-        if (!useFrame) { return; }
-        if (Input.GetButtonDown("Throw"))
-        {
-            buttonHeld = true;
-        }
+
         if (buttonHeld)
         {
-            Debug.Log(currChargeTime);
             currChargeTime += Time.deltaTime;
         }
+
         if (!isReadyThrow)
         {
             currReloadTime += Time.deltaTime;
@@ -80,30 +52,20 @@ public class SlipperThrow : MonoBehaviour
             }
             return;
         }
-        if (Input.GetButtonUp("Throw"))
-        {
-            buttonHeld = false;
-            if (currChargeTime > strongChargeTime) { shootType = ShootType.Strong; }
-            else if (currChargeTime > normalChargeTime) { shootType = ShootType.Normal; }
-            else { shootType = ShootType.Weak; }
-            Throw(shootType);
-            currChargeTime = 0;
-            isReadyThrow = false;
-            currReloadTime = 0;
-        }
     }
 
     private void FixedUpdate()
     {
-        if (useFrame) { return; }
-        if (Input.GetButtonDown("Throw"))
+        if (useFrame)
         {
-            buttonHeld = true;
+            return;
         }
+
         if (buttonHeld)
         {
             currChargeTime += Time.fixedDeltaTime;
         }
+
         if (!isReadyThrow)
         {
             currReloadTime += Time.fixedDeltaTime;
@@ -113,18 +75,6 @@ public class SlipperThrow : MonoBehaviour
             }
             return;
         }
-
-        if (Input.GetButtonUp("Throw"))
-        {
-            buttonHeld = false;
-            if (currChargeTime > strongChargeTime) { shootType = ShootType.Strong; }
-            else if (currChargeTime > normalChargeTime) { shootType = ShootType.Normal; }
-            else { shootType = ShootType.Weak; }
-            Throw(shootType);
-            currChargeTime = 0;
-            isReadyThrow = false;
-            currReloadTime = 0;
-        }
     }
 
     void Throw(ShootType strength)
@@ -132,14 +82,15 @@ public class SlipperThrow : MonoBehaviour
         float ThrowSpeed = 0;
 
         GameObject newObject = Instantiate(throwObject, throwOriginPoint.transform.position, Quaternion.identity);
-        switch (strength) {
-            case (ShootType.Weak):
+        switch (strength)
+        {
+            case ShootType.Weak:
                 ThrowSpeed = WeakThrowForce;
                 break;
-            case (ShootType.Normal):
+            case ShootType.Normal:
                 ThrowSpeed = NormalThrowForce;
                 break;
-            case (ShootType.Strong):
+            case ShootType.Strong:
                 ThrowSpeed = StrongThrowForce;
                 break;
             default:
@@ -151,5 +102,22 @@ public class SlipperThrow : MonoBehaviour
         newObject.GetComponent<Rigidbody>().AddForce(this.transform.forward * ThrowSpeed, ForceMode.Impulse);
     }
 
-
+    public void OnThrow(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            buttonHeld = true;
+        }
+        else if (context.canceled)
+        {
+            buttonHeld = false;
+            if (currChargeTime > strongChargeTime) { shootType = ShootType.Strong; }
+            else if (currChargeTime > normalChargeTime) { shootType = ShootType.Normal; }
+            else { shootType = ShootType.Weak; }
+            Throw(shootType);
+            currChargeTime = 0;
+            isReadyThrow = false;
+            currReloadTime = 0;
+        }
+    }
 }

@@ -31,6 +31,26 @@ public class SlipperThrow : MonoBehaviour
     enum ShootType { Weak, Normal, Strong }
     ShootType shootType;
 
+    private VisualIndicator visualIndicator;
+
+    private void updateVisualIndicator()
+    {
+        float throwForce = WeakThrowForce;
+        if (currChargeTime > strongChargeTime) {
+            throwForce = strongChargeTime;
+        }
+        else if (currChargeTime > normalChargeTime) {
+            throwForce = normalChargeTime;
+        }
+        Vector3 throwVelocity = this.transform.forward * throwForce;
+        visualIndicator.showTrajectory(throwOriginPoint.transform.position, throwVelocity, currChargeTime);
+    }
+
+    private void Awake()
+    {
+        visualIndicator = throwOriginPoint.GetComponent<VisualIndicator>();
+    }
+
     void Update()
     {
         if (!useFrame)
@@ -41,6 +61,7 @@ public class SlipperThrow : MonoBehaviour
         if (buttonHeld)
         {
             currChargeTime += Time.deltaTime;
+            updateVisualIndicator();
         }
 
         if (!isReadyThrow)
@@ -64,6 +85,7 @@ public class SlipperThrow : MonoBehaviour
         if (buttonHeld)
         {
             currChargeTime += Time.fixedDeltaTime;
+            updateVisualIndicator();
         }
 
         if (!isReadyThrow)
@@ -118,6 +140,7 @@ public class SlipperThrow : MonoBehaviour
             currChargeTime = 0;
             isReadyThrow = false;
             currReloadTime = 0;
+            visualIndicator.resetTrajectory();
         }
     }
 }

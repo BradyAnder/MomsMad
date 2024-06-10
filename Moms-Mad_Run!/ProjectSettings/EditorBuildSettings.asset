@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lose.unity
     guid: 248a680f7d015ef438eae6794338fb19
+  - enabled: 1
+    path: Assets/Scenes/MultipleRounds.unity
+    guid: 6de99f8ce467041d7bf5c3c7d33213f9
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 1c02b21865371604681dbf87f7703745, type: 2}

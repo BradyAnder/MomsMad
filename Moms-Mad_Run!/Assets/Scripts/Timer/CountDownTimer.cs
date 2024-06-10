@@ -68,6 +68,7 @@ public class CountDownTimer : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
-        SceneManager.LoadScene("MainMenu");
+        
+        RoundManager.HandleRound();
     }
 }

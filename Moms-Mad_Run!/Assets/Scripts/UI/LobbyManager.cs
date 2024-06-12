@@ -68,7 +68,7 @@ public class LobbyManager : MonoBehaviour
             Debug.Log("Gamepad " + (players.Count + 1) + " disconnected.");
         }
     }
-
+    bool loadScene = true;
     void Update()
     {
         foreach (Player player in players)
@@ -85,7 +85,11 @@ public class LobbyManager : MonoBehaviour
         if (allReady)
         {
             Debug.Log("All players are ready. Starting the game...");
-            //SceneManager.LoadScene("MultipleRounds");
+            if (loadScene == true)
+            {
+                SceneManager.LoadScene("MultipleRounds");
+                loadScene = false;
+            }
         }
     }
 

@@ -10,7 +10,7 @@ public class RoundManager : MonoBehaviour
     // round starts from 1
     public static int round = 1;
     // TODO: change this to the actual number of players i.e. numPlayer = PlayerInputManager.instance.playerCount;
-    public static int numPlayer = 3; 
+    public static int numPlayer = 4; 
     
     public static TextMeshProUGUI roundText;
     

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class LobbyManager : MonoBehaviour
 {
@@ -84,7 +85,7 @@ public class LobbyManager : MonoBehaviour
         if (allReady)
         {
             Debug.Log("All players are ready. Starting the game...");
-            // SceneManager.LoadScene("GameScene");
+            SceneManager.LoadScene("TechDemo");
         }
     }
 

@@ -13,7 +13,6 @@ public class SlipperThrow : MonoBehaviour
     public float NormalThrowForce = 22;
     public float WeakThrowForce = 15;
 
-    public bool useFrame = false;
     public float strongChargeTime = 1.6f;
     public float normalChargeTime = 0.8f;
     private float currChargeTime = 0;
@@ -33,11 +32,6 @@ public class SlipperThrow : MonoBehaviour
 
     void Update()
     {
-        if (!useFrame)
-        {
-            return;
-        }
-
         if (buttonHeld)
         {
             currChargeTime += Time.deltaTime;
@@ -46,29 +40,6 @@ public class SlipperThrow : MonoBehaviour
         if (!isReadyThrow)
         {
             currReloadTime += Time.deltaTime;
-            if (currReloadTime >= reloadTime)
-            {
-                isReadyThrow = true;
-            }
-            return;
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (useFrame)
-        {
-            return;
-        }
-
-        if (buttonHeld)
-        {
-            currChargeTime += Time.fixedDeltaTime;
-        }
-
-        if (!isReadyThrow)
-        {
-            currReloadTime += Time.fixedDeltaTime;
             if (currReloadTime >= reloadTime)
             {
                 isReadyThrow = true;
@@ -111,6 +82,7 @@ public class SlipperThrow : MonoBehaviour
         else if (context.canceled)
         {
             buttonHeld = false;
+            if (!isReadyThrow) { return; }
             if (currChargeTime > strongChargeTime) { shootType = ShootType.Strong; }
             else if (currChargeTime > normalChargeTime) { shootType = ShootType.Normal; }
             else { shootType = ShootType.Weak; }

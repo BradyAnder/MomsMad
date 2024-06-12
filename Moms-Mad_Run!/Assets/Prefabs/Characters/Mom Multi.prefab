@@ -188,7 +188,6 @@ MonoBehaviour:
   StrongThrowForce: 30
   NormalThrowForce: 20
   WeakThrowForce: 10
-  useFrame: 1
   strongChargeTime: 1.2
   normalChargeTime: 0.8
   reloadTime: 0.8
@@ -356,6 +355,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 192dc238-0213-47de-b749-197f6c25a4f9
     m_ActionName: Child/slide[/XInputControllerWindows/buttonNorth,/DualSenseGamepadHID/buttonNorth,/Keyboard/rightCtrl]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7fec2f42-03d1-4127-b7a2-8b7fdf749e4f
+    m_ActionName: Child/Join
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: controller
   m_DefaultActionMap: Mom
@@ -386,7 +389,7 @@ Transform:
   m_GameObject: {fileID: 4446554565346325467}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.15, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

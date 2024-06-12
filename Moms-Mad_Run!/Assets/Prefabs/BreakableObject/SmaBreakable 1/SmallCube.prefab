@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: dc24ce4014e117c4e984ef9baaf34f6b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dc24ce4014e117c4e984ef9baaf34f6b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dc24ce4014e117c4e984ef9baaf34f6b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dc24ce4014e117c4e984ef9baaf34f6b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -60,9 +60,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: dc24ce4014e117c4e984ef9baaf34f6b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cd6e5cf7eba735342bd365c6c21a7874, type: 2}
     - target: {fileID: 919132149155446097, guid: dc24ce4014e117c4e984ef9baaf34f6b, type: 3}
       propertyPath: m_Name
-      value: Cube
+      value: SmallCube
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -143,6 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf2bfdc32613ea458812fb29a4a9df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brokenObject: {fileID: 11385802971144318, guid: 564acb5fa02aa0e42bb3907af0ec749a, type: 3}
+  brokenObject: {fileID: 11385802971144318, guid: e8f1c6c6f4d81e048a9065fc390b2a2c, type: 3}
   scoreManager: {fileID: 0}
-  scoreValue: 100
+  scoreValue: 50

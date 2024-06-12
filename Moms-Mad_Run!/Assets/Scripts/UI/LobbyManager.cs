@@ -87,7 +87,7 @@ public class LobbyManager : MonoBehaviour
             Debug.Log("All players are ready. Starting the game...");
             if (loadScene == true)
             {
-                SceneManager.LoadScene("MultipleRounds");
+                SceneManager.LoadScene("FirstLevel");
                 loadScene = false;
             }
         }

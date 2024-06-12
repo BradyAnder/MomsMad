@@ -32,14 +32,14 @@ public class RoundManager : MonoBehaviour
         if (round < numPlayer)
         {
             round++;
-            SceneManager.LoadScene("MultipleRounds");
+            SceneManager.LoadScene("FirstLevel");
             // We need this. Otherwise, all the scripts are disabled
             Time.timeScale = 1;
             roundText.text = "Round " + round;
         }
         else
         {
-            SceneManager.LoadScene("Lose");
+            SceneManager.LoadScene("MainMenu");
             // We need this. Otherwise, all the scripts are disabled
             Time.timeScale = 1;
         }

@@ -85,7 +85,7 @@ public class LobbyManager : MonoBehaviour
         if (allReady)
         {
             Debug.Log("All players are ready. Starting the game...");
-            SceneManager.LoadScene("TechDemo");
+            //SceneManager.LoadScene("MultipleRounds");
         }
     }
 

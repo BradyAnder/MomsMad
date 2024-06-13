@@ -27,6 +27,7 @@ public class MoveChild : MonoBehaviour
         }
     }
 
+
     void MoveChildObject()
     {
         Vector3 movement_child = new Vector3(moveInput.x, 0.0f, moveInput.y);

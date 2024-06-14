@@ -25,23 +25,28 @@ public class ScoreRecorder : MonoBehaviour
         playerObjects = new ArrayList();
         playerScores = new ArrayList();
 
-        //////////////////////
-        /* DEBUG DUMMY DATA */
-        GameObject dummyObj1 = new GameObject();
-        dummyObj1.name = "dummy 1";
-        GameObject dummyObj2 = new GameObject();
-        dummyObj2.name = "dummy 2";
-        GameObject dummyObj3 = new GameObject();
-        dummyObj3.name = "dummy 3";
-        AddScore(dummyObj1, 500);
-        AddScore(dummyObj2, 200);
-        AddScore(dummyObj2, 400);
-        AddScore(dummyObj3, 700);
-        foreach (object obj in playerObjects) {
-            Debug.Log(((GameObject)obj).name);
-        }
-        foreach (object obj in playerScores) {
-            Debug.Log((int)obj);
+        if (isDebugMode)
+        {
+            //////////////////////
+            /* DEBUG DUMMY DATA */
+            GameObject dummyObj1 = new GameObject();
+            dummyObj1.name = "dummy 1";
+            GameObject dummyObj2 = new GameObject();
+            dummyObj2.name = "dummy 2";
+            GameObject dummyObj3 = new GameObject();
+            dummyObj3.name = "dummy 3";
+            AddScore(dummyObj1, 500);
+            AddScore(dummyObj2, 200);
+            AddScore(dummyObj2, 400);
+            AddScore(dummyObj3, 700);
+            foreach (object obj in playerObjects)
+            {
+                Debug.Log(((GameObject)obj).name);
+            }
+            foreach (object obj in playerScores)
+            {
+                Debug.Log((int)obj);
+            }
         }
         //////////////////////
     }
@@ -76,7 +81,6 @@ public class ScoreRecorder : MonoBehaviour
         for (int i = 0; i < playerNumber; i++) {
             arr[i] = (GameObject)playerObjects[i];
         }
-        Debug.Log(arr.ToString());
         return arr;
     }
 
@@ -86,7 +90,6 @@ public class ScoreRecorder : MonoBehaviour
         {
             arr[i] = (int)playerScores[i];
         }
-        Debug.Log(arr.ToString());
         return arr;
     }
 

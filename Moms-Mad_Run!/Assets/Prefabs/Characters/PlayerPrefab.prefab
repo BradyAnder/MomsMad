@@ -25,12 +25,12 @@ Transform:
   m_GameObject: {fileID: 7983105575721990469}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.54, y: 0.15, z: -4.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1369000845848168858}
   - {fileID: 6594318783396627375}
+  - {fileID: 1369000845848168858}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8820926206564274405
@@ -47,15 +47,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7536090777396435327, guid: bfc192ba4a92e234896feca8436c4024, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.411203
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7536090777396435327, guid: bfc192ba4a92e234896feca8436c4024, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.49
+      value: 0.52
       objectReference: {fileID: 0}
     - target: {fileID: 7536090777396435327, guid: bfc192ba4a92e234896feca8436c4024, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.304737
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7536090777396435327, guid: bfc192ba4a92e234896feca8436c4024, type: 3}
       propertyPath: m_LocalRotation.w
@@ -168,6 +168,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 192dc238-0213-47de-b749-197f6c25a4f9
     m_ActionName: Child/slide[/XInputControllerWindows/buttonNorth,/DualSenseGamepadHID/buttonNorth,/Keyboard/rightCtrl]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7fec2f42-03d1-4127-b7a2-8b7fdf749e4f
+    m_ActionName: Child/Join[/XInputControllerWindows/start]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: controller
   m_DefaultActionMap: Child
@@ -196,21 +200,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mom
       objectReference: {fileID: 0}
+    - target: {fileID: 515316262451598555, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
+      propertyPath: m_TagString
+      value: Mom
+      objectReference: {fileID: 0}
     - target: {fileID: 2091366320315142839, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2765202374937886200, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.202421
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2765202374937886200, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 0.78
       objectReference: {fileID: 0}
     - target: {fileID: 2765202374937886200, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.685097
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2765202374937886200, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -393,6 +401,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 192dc238-0213-47de-b749-197f6c25a4f9
     m_ActionName: Child/slide[/XInputControllerWindows/buttonNorth,/DualSenseGamepadHID/buttonNorth,/Keyboard/rightCtrl]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7fec2f42-03d1-4127-b7a2-8b7fdf749e4f
+    m_ActionName: Child/Join[/XInputControllerWindows/start]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: controller
   m_DefaultActionMap: Mom

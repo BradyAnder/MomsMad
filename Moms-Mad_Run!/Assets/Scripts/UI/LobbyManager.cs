@@ -7,7 +7,10 @@ public class LobbyManager : MonoBehaviour
 {
     public static LobbyManager Instance { get; private set; }
 
+    public GameObject playerPrefab;
+
     private List<Player> players = new List<Player>();
+    private List<GameObject> playerObjs = new List<GameObject>();
     private bool allReady = false;
 
     void Awake()
@@ -29,7 +32,9 @@ public class LobbyManager : MonoBehaviour
         {
             AddPlayer(gamepad);
         }
-
+        Debug.Log(players[1].device);
+        Debug.Log(players[2].device);
+        Debug.Log(players[3].device);
         InputSystem.onDeviceChange += OnDeviceChange;
     }
 
@@ -84,7 +89,7 @@ public class LobbyManager : MonoBehaviour
         //Check if all controllers ready
         if (allReady)
         {
-            Debug.Log("All players are ready. Starting the game...");
+            //Debug.Log("All players are ready. Starting the game...");
             if (loadScene == true)
             {
                 SceneManager.LoadScene("FirstLevel");
@@ -107,5 +112,7 @@ public class LobbyManager : MonoBehaviour
     {
         public Gamepad device;
         public bool isReady;
+        public string colour;
     }
+    
 }

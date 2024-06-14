@@ -26,6 +26,7 @@ public class SlipperThrow : MonoBehaviour
     bool buttonHeld = false;
 
     public GameObject child;
+    
 
     enum ShootType { Weak, Normal, Strong }
     ShootType shootType;

@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: slipper1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 73dac4efb5f0be343a79dcc07be35154, type: 3}
+      propertyPath: m_TagString
+      value: Throwable
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -13,12 +13,12 @@ public class SlipperPhysics : MonoBehaviour
     private Rigidbody rb;
     public Vector3 initAngularV = new Vector3(540, 0, 0);
 
-
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         rb.angularVelocity = initAngularV;
     }
+
     private void Update()
     {
         currVelocity = rb.velocity;
@@ -31,7 +31,7 @@ public class SlipperPhysics : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.Equals("Mom"))
+        if (collision.gameObject.tag.Equals("Mom") || collision.gameObject.tag.Equals("Throwable"))
             return;
         if (++currBounceCount >= maxBounceNumber)
         {

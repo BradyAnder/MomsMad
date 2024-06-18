@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    private ScoreManager scoreManager;
     // Start is called before the first frame update
     void Start()
     {
-
+        scoreManager = ScoreManager.Instance;
     }
 
     // Update is called once per frame
@@ -23,6 +24,10 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Lobby");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        if (scoreManager != null) {
+            scoreManager.ResetScore();
+        }
 
     }
 

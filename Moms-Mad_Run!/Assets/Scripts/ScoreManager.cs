@@ -39,6 +39,10 @@ public class ScoreManager : MonoBehaviour
     {
         return score;
     }
+    public void ResetScore()
+    {
+        score = 0;
+    }
 
 }
 

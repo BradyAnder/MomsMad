@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Mom: {fileID: 2909209484663231787}
-  mom_speed: 7
+  mom_speed: 9
   mom_rotationSpeed: 10
 --- !u!114 &62898212254939909
 MonoBehaviour:
@@ -182,15 +182,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89d207d720d6f654e83f87789341c854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  framesSinceCharging: 0
-  StrongChargeFrames: 0
-  NormalChargeFrames: 0
   StrongThrowForce: 30
   NormalThrowForce: 20
   WeakThrowForce: 10
   strongChargeTime: 1.2
   normalChargeTime: 0.8
   reloadTime: 0.8
+  PowerUpTime: 5
   throwObject: {fileID: 1004310718572751228, guid: 03578a272f8b9af429035c16313a83c2, type: 3}
   throwOriginPoint: {fileID: 4446554565346325467}
   child: {fileID: 0}

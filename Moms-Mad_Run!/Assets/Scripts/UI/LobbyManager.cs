@@ -32,9 +32,9 @@ public class LobbyManager : MonoBehaviour
         {
             AddPlayer(gamepad);
         }
-        Debug.Log(players[1].device);
-        Debug.Log(players[2].device);
-        Debug.Log(players[3].device);
+        // Debug.Log(players[1].device);
+        // Debug.Log(players[2].device);
+        // Debug.Log(players[3].device);
         InputSystem.onDeviceChange += OnDeviceChange;
     }
 

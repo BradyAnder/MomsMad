@@ -10,13 +10,14 @@ public class RoundManager : MonoBehaviour
     // round starts from 1
     public static int round = 1;
     // TODO: change this to the actual number of players i.e. numPlayer = PlayerInputManager.instance.playerCount;
-    public static int numPlayer = 4; 
+    public static int numPlayer = 4;
     
     public static TextMeshProUGUI roundText;
     
     // Start is called before the first frame update
     void Start()
     {
+        numPlayer = PlayerInputManager.instance.playerCount;
         roundText = GameObject.Find("RoundInfo").GetComponent<TextMeshProUGUI>();
         roundText.text = "Round " + round;
     }
@@ -40,6 +41,7 @@ public class RoundManager : MonoBehaviour
         else
         {
             SceneManager.LoadScene("MainMenu");
+            // SceneManager.LoadScene("Scoreboard");
             // We need this. Otherwise, all the scripts are disabled
             Time.timeScale = 1;
         }

@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using static LobbyManager;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -16,17 +15,16 @@ public class PlayerManager : MonoBehaviour
     public GameObject MomSpawnPoint;
 
     private List<PlayerInput> playerInputs = new List<PlayerInput>();
-    private List<int> momOrder = new List<int>();
     private int currentRound = 0;
 
-    private List<Player> playerInfo = new List<Player>();
+    private List<LobbyManager.Player> playerInfo = new List<LobbyManager.Player>();
 
     void Start()
     {
         // Initialize the players
         DetectPlayers();
-        // Set up the player roles for each round
-        DetermineMomOrder();
+        // Initialize the scores for each player
+        // InitializeScores();
         // Spawn the players for the first round
         StartRound();
     }
@@ -34,102 +32,86 @@ public class PlayerManager : MonoBehaviour
     private void DetectPlayers()
     {
         playerInfo = LobbyManager.Instance.GetPlayers();
-
     }
 
-    private void DetermineMomOrder()
-    {
-        // Create a list of player indices and shuffle it to determine the mom order
-        List<int> playerIndices = new List<int>();
-        for (int i = 0; i < playerInfo.Count; i++)
-        {
-            playerIndices.Add(i);
-        }
-
-        while (playerIndices.Count > 0)
-        {
-            int randomIndex = Random.Range(0, playerIndices.Count);
-            momOrder.Add(playerIndices[randomIndex]);
-            playerIndices.RemoveAt(randomIndex);
-        }
-    }
+    // TODO
+    // private void InitializeScores()
+    // {
+    //     ScoreRecorder scoreRecorder = FindObjectOfType<ScoreRecorder>();
+    //     foreach (LobbyManager.Player player in playerInfo)
+    //     {
+    //         scoreRecorder.AddScore(player.device.gameObject, 0); // Initialize each player's score to 0
+    //     }
+    // }
 
     void StartRound()
     {
         // Check for end of game
-        if (currentRound >= playerInfo.Count)
+        if (RoundManager.round - 1 >= playerInfo.Count)
         {
             // End of game
             Debug.Log("All rounds completed!");
             return;
         }
 
-        // Get the mom player index for this round
-        int momPlayerIndex = momOrder[currentRound];
+        // Reset the available spawn points to the entire list
+        availableSpawnPoints = new List<GameObject>(childSpawnPoints);
 
-        //Reset the available spawn points to the entire list
-        availableSpawnPoints =childSpawnPoints;
-
-        //Crude index to track number of child players spawned for changing colours
+        // Crude index to track number of child players spawned for changing colours
         int colourIndex = 0;
 
         for (int i = 0; i < playerInfo.Count; i++)
         {
-            if (i == momPlayerIndex)
+            if (i == RoundManager.round - 1)
             {
-
                 Debug.Log("Spawned Mom");
-               SpawnMom(playerInfo[i]);
+                SpawnMom(playerInfo[i]);
             }
             else
             {
-
                 Debug.Log("Spawned Child");
                 SpawnChild(playerInfo[i], availableSpawnPoints, colourIndex);
-
                 colourIndex++;
             }
         }
-        colourIndex = 0;
 
         currentRound++;
     }
 
-    void SpawnMom(Player player)
+    void SpawnMom(LobbyManager.Player player)
     {
-        //Instantiate a new player and recognize it's Mom and Child objects
+        // Instantiate a new player and recognize it's Mom and Child objects
         GameObject newObj = Instantiate(playerPrefab, MomSpawnPoint.transform.position, Quaternion.identity);
         GameObject momObj = newObj.GetComponentInChildren<MoveMom>().gameObject;
         GameObject childObj = newObj.GetComponentInChildren<MoveSlideChild>().gameObject;
 
-        //Turn off the child object
+        // Turn off the child object
         childObj.SetActive(false);
 
-        //Set the correct device to this player
+        // Set the correct device to this player
         PlayerInput currentPlayer = momObj.GetComponent<PlayerInput>();
         currentPlayer.SwitchCurrentControlScheme("controller", player.device);
- 
     }
 
-    void SpawnChild(Player player, List<GameObject> spawnPoints, int ColourValue)
+    void SpawnChild(LobbyManager.Player player, List<GameObject> spawnPoints, int colourIndex)
     {
         // Choose a random spawn point for the child
         int randomIndex = Random.Range(0, spawnPoints.Count);
         GameObject spawnPoint = spawnPoints[randomIndex];
-        availableSpawnPoints.Remove(spawnPoint);
+        spawnPoints.RemoveAt(randomIndex); // Remove the chosen spawn point from the list
 
-        //Instantiate a new player and recognize it's Mom and Child objects
+        // Instantiate a new player and recognize it's Mom and Child objects
         GameObject newObj = Instantiate(playerPrefab, spawnPoint.transform.position, Quaternion.identity);
         GameObject momObj = newObj.GetComponentInChildren<MoveMom>().gameObject;
         GameObject childObj = newObj.GetComponentInChildren<MoveSlideChild>().gameObject;
 
-        //Turn the mom object off
+        // Turn the mom object off
         momObj.SetActive(false);
 
-        //Change the childs colour based on which child it is
-        childObj.GetComponent<MeshRenderer>().material = childColourMats[ColourValue];
+        // Change the child's colour based on which child it is
+        childObj.GetComponent<MeshRenderer>().material = childColourMats[colourIndex];
 
-        //Set the correct device to this player
+        // Set the correct device to this player
         PlayerInput currentPlayer = childObj.GetComponent<PlayerInput>();
         currentPlayer.SwitchCurrentControlScheme("controller", player.device);
     }
@@ -141,11 +123,6 @@ public class PlayerManager : MonoBehaviour
         {
             // We spawn a new child 
             StartRound();
-
-
-
         }
     }
-
-
 }

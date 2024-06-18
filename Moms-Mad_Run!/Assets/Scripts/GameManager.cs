@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public void PlayGame()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Lobby");
+        SceneManager.LoadScene("Lobby2");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 

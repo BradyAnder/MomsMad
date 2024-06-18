@@ -92,7 +92,7 @@ public class LobbyManager : MonoBehaviour
             //Debug.Log("All players are ready. Starting the game...");
             if (loadScene == true)
             {
-                SceneManager.LoadScene("FirstLevel");
+                SceneManager.LoadScene("Prototype 2");
                 loadScene = false;
             }
         }

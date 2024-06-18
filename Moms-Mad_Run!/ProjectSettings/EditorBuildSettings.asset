@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: aaa9f51dc8ac8ec4a8389e586bb52035
   - enabled: 1
-    path: Assets/Scenes/Lobby.unity
-    guid: b04a723111ac54a85be40e81ae1fb192
+    path: Assets/Scenes/Levels/Lobby2.unity
+    guid: 91f7c57649434dd4e8c546ac81d90a80
   - enabled: 1
-    path: Assets/Scenes/FirstLevel/FirstLevel.unity
-    guid: dad968355b5bf774a8ba328eab8f6671
+    path: Assets/Scenes/Levels/Prototype 2.unity
+    guid: 4648aa90b2f1b0948b8daedbf383040f
   - enabled: 1
     path: Assets/Scenes/Scoreboard.unity
     guid: 29653a0877302ec4e88f7730f774f67d

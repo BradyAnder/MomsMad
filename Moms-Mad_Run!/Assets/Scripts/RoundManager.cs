@@ -33,7 +33,7 @@ public class RoundManager : MonoBehaviour
         if (round < numPlayer)
         {
             round++;
-            SceneManager.LoadScene("FirstLevel");
+            SceneManager.LoadScene("Prototype 2");
             // We need this. Otherwise, all the scripts are disabled
             Time.timeScale = 1;
             roundText.text = "Round " + round;

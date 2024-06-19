@@ -44,7 +44,7 @@ public class PlayerManager : MonoBehaviour
     //     }
     // }
 
-    void StartRound()
+    public void StartRound()
     {
         // Check for end of game
         if (RoundManager.round - 1 >= playerInfo.Count)

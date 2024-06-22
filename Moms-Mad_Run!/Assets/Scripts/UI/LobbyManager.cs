@@ -81,7 +81,7 @@ public class LobbyManager : MonoBehaviour
             if (player.device.buttonSouth.wasPressedThisFrame)
             {
                 player.isReady = !player.isReady;
-                Debug.Log("Gamepad " + (players.IndexOf(player) + 1) + " is " + (player.isReady ? "ready" : "not ready") + ".");
+                // Debug.Log("Gamepad " + (players.IndexOf(player) + 1) + " is " + (player.isReady ? "ready" : "not ready") + ".");
             }
         }
 

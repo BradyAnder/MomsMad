@@ -19,7 +19,6 @@ public class SlipperTrigger : MonoBehaviour
         if (other.gameObject.tag == "Player" && rb.velocity.magnitude > minStunSpeed)
         {
             StartCoroutine(StunPlayer(other.gameObject));
-
             // Add displaying a UI message, etc.
         }
     }
@@ -31,13 +30,14 @@ public class SlipperTrigger : MonoBehaviour
         
         MoveSlideChild moveChild = player.GetComponent<MoveSlideChild>();
 
-        Debug.Log(moveChild);
+        // Debug.Log(moveChild);
         if (moveChild != null)
         {
             moveChild.enabled = false;
-            yield return new WaitForSeconds(2.0f);
+            Debug.Log("onhit" + moveChild.enabled);
+            yield return new WaitForSeconds(0.8f);
             moveChild.enabled = true;
+            Debug.Log("resume" + moveChild.enabled);
         }
-        
     }
 }

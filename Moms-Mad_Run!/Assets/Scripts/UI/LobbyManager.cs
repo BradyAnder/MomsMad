@@ -12,6 +12,7 @@ public class LobbyManager : MonoBehaviour
     private List<Player> players = new List<Player>();
     private List<GameObject> playerObjs = new List<GameObject>();
     private bool allReady = false;
+    private bool loadScene = true;
 
     void Awake()
     {
@@ -32,9 +33,6 @@ public class LobbyManager : MonoBehaviour
         {
             AddPlayer(gamepad);
         }
-        // Debug.Log(players[1].device);
-        // Debug.Log(players[2].device);
-        // Debug.Log(players[3].device);
         InputSystem.onDeviceChange += OnDeviceChange;
     }
 
@@ -73,7 +71,7 @@ public class LobbyManager : MonoBehaviour
             Debug.Log("Gamepad " + (players.Count + 1) + " disconnected.");
         }
     }
-    bool loadScene = true;
+
     void Update()
     {
         foreach (Player player in players)
@@ -81,20 +79,26 @@ public class LobbyManager : MonoBehaviour
             if (player.device.buttonSouth.wasPressedThisFrame)
             {
                 player.isReady = !player.isReady;
-                // Debug.Log("Gamepad " + (players.IndexOf(player) + 1) + " is " + (player.isReady ? "ready" : "not ready") + ".");
             }
         }
 
         allReady = players.Count > 0 && players.TrueForAll(p => p.isReady);
-        //Check if all controllers ready
         if (allReady)
         {
-            //Debug.Log("All players are ready. Starting the game...");
-            if (loadScene == true)
+            if (loadScene)
             {
                 SceneManager.LoadScene("Prototype 2");
                 loadScene = false;
             }
+        }
+    }
+
+    public void ResetLobby()
+    {
+        loadScene = true;
+        foreach (Player player in players)
+        {
+            player.isReady = false;
         }
     }
 
@@ -114,5 +118,4 @@ public class LobbyManager : MonoBehaviour
         public bool isReady;
         public string colour;
     }
-    
 }

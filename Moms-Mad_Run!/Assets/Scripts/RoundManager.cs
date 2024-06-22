@@ -9,7 +9,7 @@ public class RoundManager : MonoBehaviour
 {
     // round starts from 1
     public static int round = 1;
-    
+
     public static TextMeshProUGUI roundText;
 
     private void Awake()
@@ -28,7 +28,7 @@ public class RoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public static void HandleRound()
@@ -50,6 +50,8 @@ public class RoundManager : MonoBehaviour
             SceneManager.LoadScene("MainMenu");
             // We need this. Otherwise, all the scripts are disabled
             Time.timeScale = 1;
+            LobbyManager.Instance.ResetLobby(); // reset LobbyManager
+            round = 1;
         }
     }
 }

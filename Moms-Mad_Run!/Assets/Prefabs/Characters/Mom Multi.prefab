@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 9208853707118773165}
   - component: {fileID: 7045827107013462400}
   - component: {fileID: 8815452947521762483}
-  - component: {fileID: 62898212254939909}
   - component: {fileID: 8237409496272231262}
   - component: {fileID: 8481655597305370419}
   - component: {fileID: 252037867595212416}
@@ -157,19 +156,6 @@ MonoBehaviour:
   Mom: {fileID: 2909209484663231787}
   mom_speed: 8
   mom_rotationSpeed: 10
---- !u!114 &62898212254939909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2909209484663231787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be37a048b0736554a99f223f2375da7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  child: {fileID: 0}
 --- !u!114 &8237409496272231262
 MonoBehaviour:
   m_ObjectHideFlags: 0

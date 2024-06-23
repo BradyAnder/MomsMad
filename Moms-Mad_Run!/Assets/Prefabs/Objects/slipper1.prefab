@@ -83,7 +83,7 @@ PrefabInstance:
       addedObject: {fileID: 7124276926466756344}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 73dac4efb5f0be343a79dcc07be35154, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 179078270711553569}
+      addedObject: {fileID: 7513179224910199621}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 73dac4efb5f0be343a79dcc07be35154, type: 3}
       insertIndex: -1
       addedObject: {fileID: 872175834703046727}
@@ -157,7 +157,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0074269, y: 0.01178025, z: 0.001819634}
   m_Center: {x: -0.00000034868717, y: -0.00015725553, z: 0.000611393}
---- !u!114 &179078270711553569
+--- !u!114 &7513179224910199621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,10 +166,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1004310718572751228}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dcef5fad4a0e52438ec5723f93df596, type: 3}
+  m_Script: {fileID: 11500000, guid: 92fd1f53465fd5941a7cdec003f2817d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minStunSpeed: 1.5
+  stun: {fileID: 0}
+  stunTime: 5
 --- !u!65 &872175834703046727
 BoxCollider:
   m_ObjectHideFlags: 0

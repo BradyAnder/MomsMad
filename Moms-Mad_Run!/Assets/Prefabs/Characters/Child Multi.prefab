@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 2667053453970174151}
   - component: {fileID: 2843635105717557221}
   - component: {fileID: 4948218884933812801}
+  - component: {fileID: 8349765269563614658}
   m_Layer: 0
   m_Name: Child Multi
   m_TagString: Player
@@ -350,6 +351,22 @@ MonoBehaviour:
   m_DefaultActionMap: Child
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &8349765269563614658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3152454709809583124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b39a470c413c04497255f6f48be630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}
+  canBeStunned: 0
+  stunEffect: {fileID: 7034642860742731867, guid: 8453304b2bbe5c34e9dc273060941b2c, type: 3}
+  stunResistance: 3
 --- !u!1 &4813672355187024593
 GameObject:
   m_ObjectHideFlags: 0

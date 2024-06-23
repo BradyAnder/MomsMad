@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Mom: {fileID: 2909209484663231787}
-  mom_speed: 9
+  mom_speed: 8
   mom_rotationSpeed: 10
 --- !u!114 &62898212254939909
 MonoBehaviour:

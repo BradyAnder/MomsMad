@@ -35,7 +35,7 @@ public class SlipperTrigger : MonoBehaviour
         {
             moveChild.enabled = false;
             Debug.Log("onhit" + moveChild.enabled);
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(1.5f);
             moveChild.enabled = true;
             Debug.Log("resume" + moveChild.enabled);
         }

@@ -258,11 +258,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Child_Object: {fileID: 3152454709809583124}
-  child_speed: 8
+  child_speed: 7
   child_rotationSpeed: 15
   slideSpeed: 14
   slideDuration: 0.5
-  slideCooldown: 1
+  slideCooldown: 1.5
   isSliding: 0
 --- !u!114 &4948218884933812801
 MonoBehaviour:

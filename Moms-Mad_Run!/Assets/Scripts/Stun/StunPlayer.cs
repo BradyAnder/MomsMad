@@ -11,7 +11,7 @@ public class StunPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        stun  = GameObject.FindGameObjectWithTag("Player").GetComponent<GetStunned>();
     }
 
     // Update is called once per frame

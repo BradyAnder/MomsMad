@@ -22,13 +22,21 @@ public class GetStunned : MonoBehaviour
     {
         playerInput.enabled = false;
         canBeStunned = false;
-        Instantiate(stunEffect, transform.position, transform.rotation);
+        Instantiate(stunEffect, this.transform);
     }
 
     public void UnstunPlayer()
     {
         playerInput.enabled = true;
         StartCoroutine(StunCooldown());
+        for (var i = transform.childCount - 1; i >= 0; i--)
+        {
+            var child = transform.GetChild(i);
+            if (child.CompareTag("Effect"))
+            {
+                Object.Destroy(child.gameObject);
+            }
+        }
     }
 
     private IEnumerator StunCooldown()

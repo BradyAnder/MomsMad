@@ -260,8 +260,8 @@ MonoBehaviour:
   Child_Object: {fileID: 3152454709809583124}
   child_speed: 7
   child_rotationSpeed: 15
-  slideSpeed: 14
-  slideDuration: 0.5
+  slideSpeed: 10
+  slideDuration: 0.3
   slideCooldown: 1.5
   isSliding: 0
 --- !u!114 &4948218884933812801

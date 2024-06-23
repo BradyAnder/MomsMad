@@ -4,36 +4,53 @@ using UnityEngine;
 
 public class StunPlayer : MonoBehaviour
 {
-
-    public GetStunned stun;
     public float stunTime;
+    private List<GetStunned> otherPlayersStunScripts;
 
-    // Start is called before the first frame update
     void Start()
     {
-        stun  = GameObject.FindGameObjectWithTag("Player").GetComponent<GetStunned>();
-    }
+        otherPlayersStunScripts = new List<GetStunned>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject playerObject in playerObjects)
+        {
+            if (playerObject != this.gameObject)
+            {
+                GetStunned stunComponent = playerObject.GetComponent<GetStunned>();
+                if (stunComponent != null)
+                {
+                    otherPlayersStunScripts.Add(stunComponent);
+                }
+            }
+        }
+
+        if (otherPlayersStunScripts.Count == 0)
+        {
+            Debug.LogWarning("No other players with GetStunned found in the scene.");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player" && stun.canBeStunned == true)
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("Stun");
-            StartCoroutine(Stun());
+            GetStunned collidedStun = other.GetComponent<GetStunned>();
+            if (collidedStun != null && collidedStun.canBeStunned)
+            {
+                Debug.Log("Stun");
+                StartCoroutine(Stun(collidedStun));
+            }
         }
     }
 
-    private IEnumerator Stun()
+    private IEnumerator Stun(GetStunned stunScript)
     {
-        stun.StunPlayer();
-        yield return new WaitForSecondsRealtime(stunTime);
-        stun.UnstunPlayer();
-        Debug.Log("Stun Finished");
+        if (stunScript != null)
+        {
+            stunScript.StunPlayer();
+            yield return new WaitForSecondsRealtime(stunTime);
+            stunScript.UnstunPlayer();
+        }
     }
 }

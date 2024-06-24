@@ -205,8 +205,16 @@ PrefabInstance:
       value: Mom
       objectReference: {fileID: 0}
     - target: {fileID: 515316262451598555, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 515316262451598555, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: m_TagString
       value: Mom
+      objectReference: {fileID: 0}
+    - target: {fileID: 549779940088592381, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2091366320315142839, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: m_PlayOnAwake
@@ -256,6 +264,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cf8c648c9dbdaf6499a22bd75c101b54, type: 2}
+    - target: {fileID: 6884906480382920611, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7987637313116930916, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: child
       value: 

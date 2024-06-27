@@ -6,7 +6,7 @@ public class ScoreRecorder : MonoBehaviour
 {
     private ArrayList playerObjects;
     private ArrayList playerScores;
-    private static ScoreRecorder instance;
+    public static ScoreRecorder instance;
     private int playerNumber = 0;
     public bool isDebugMode = false;
 

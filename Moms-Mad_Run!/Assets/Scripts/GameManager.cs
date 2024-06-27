@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        ScoreRecorder.Instance.ResetAll();
+
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
         Cursor.lockState = CursorLockMode.Confined;

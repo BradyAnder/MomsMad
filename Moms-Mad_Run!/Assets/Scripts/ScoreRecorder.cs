@@ -27,26 +27,7 @@ public class ScoreRecorder : MonoBehaviour
 
         if (isDebugMode)
         {
-            //////////////////////
-            /* DEBUG DUMMY DATA */
-            GameObject dummyObj1 = new GameObject();
-            dummyObj1.name = "dummy 1";
-            GameObject dummyObj2 = new GameObject();
-            dummyObj2.name = "dummy 2";
-            GameObject dummyObj3 = new GameObject();
-            dummyObj3.name = "dummy 3";
-            AddScore(dummyObj1, 500);
-            AddScore(dummyObj2, 200);
-            AddScore(dummyObj2, 400);
-            AddScore(dummyObj3, 700);
-            foreach (object obj in playerObjects)
-            {
-                Debug.Log(((GameObject)obj).name);
-            }
-            foreach (object obj in playerScores)
-            {
-                Debug.Log((int)obj);
-            }
+
         }
         //////////////////////
     }
@@ -61,9 +42,9 @@ public class ScoreRecorder : MonoBehaviour
     /// Scripts handling scoring events in the game scene should invoke this function so that the score can be reflected in the scoreboard scene.
     /// Importantly, the scoreboard components, including this one, does not know how many players there are. Only if a score is ever added for a player, would these components learn about the existence of that player. Therefore, it may be ideal to call this function to add 0 score for every players at the beginning so that they are sure to be displayed in the scoreboard.
     /// </summary>
-    /// <param name="playerObj"> The GameObject reference of the player to add score to. </param>
+    /// <param name="playerObj"> The Player object reference of the player to add score to. </param>
     /// <param name="amount"> The amount of score to add (negative for deduction). </param>
-    public void AddScore(GameObject playerObj, int amount) {
+    public void AddScore(LobbyManager.Player playerObj, int amount) {
         int index = playerObjects.IndexOf(playerObj);
         if (index < 0)
         {
@@ -76,10 +57,10 @@ public class ScoreRecorder : MonoBehaviour
         }
     }
 
-    public GameObject[] PlayerObjectsToArray() {
-        GameObject[] arr = new GameObject[playerNumber];
+    public string[] PlayerObjectsToArray() {
+        string[] arr = new string[playerNumber];
         for (int i = 0; i < playerNumber; i++) {
-            arr[i] = (GameObject)playerObjects[i];
+            arr[i] = ((LobbyManager.Player)playerObjects[i]).name;
         }
         return arr;
     }

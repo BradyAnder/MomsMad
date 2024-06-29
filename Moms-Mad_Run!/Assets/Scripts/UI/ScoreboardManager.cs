@@ -36,14 +36,10 @@ public class ScoreboardManager : MonoBehaviour
             Debug.Log("Score Recorder not found.");
             return;
         }
-        GameObject[] playerObjects = scoreRecorder.PlayerObjectsToArray();
+        string[] playerObjects = scoreRecorder.PlayerObjectsToArray();
         actualScores = scoreRecorder.PlayerScoresToArray();
         playerNumber = actualScores.Length;
-        actualChars = new string[playerNumber];
-        for (int i = 0; i < playerNumber; i++)
-        {
-            actualChars[i] = playerObjects[i].name;
-        }
+        actualChars = playerObjects;
 
         if (title == null) {
             Debug.Log("UI title not assigned");

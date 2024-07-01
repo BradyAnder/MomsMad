@@ -1099,6 +1099,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Child Multi
       objectReference: {fileID: 0}
+    - target: {fileID: 3221562406601144925, guid: fb6928aa9cb6d884c9a65a2f1a592446, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 7565283668745136632, guid: fb6928aa9cb6d884c9a65a2f1a592446, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.8743267

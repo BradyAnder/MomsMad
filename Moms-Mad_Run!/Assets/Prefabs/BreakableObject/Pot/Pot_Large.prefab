@@ -149,5 +149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brokenObject: {fileID: 1676173099700753346, guid: 3e832ecaa6666be44921b59eccf1412b, type: 3}
+  ScoreTextPopUp: {fileID: 4345266729488934642, guid: 271ea2c88d13cf645a7a6789318be597, type: 3}
   scoreManager: {fileID: 0}
   scoreValue: 50

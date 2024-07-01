@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BreakableObject : MonoBehaviour
 {
     public GameObject brokenObject;
+    public GameObject ScoreTextPopUp;
     private MoveSlideChild moveScript;
     public ScoreManager scoreManager;
+
 
     public int scoreValue;
 
@@ -33,8 +36,19 @@ public class BreakableObject : MonoBehaviour
             moveScript = collision.gameObject.GetComponent<MoveSlideChild>();
             if (collision.gameObject.tag == "Player" && moveScript.isSliding == true)
             {
+               if(ScoreTextPopUp)
+                {
+                    ShowScoreText();
+                }
                 BreakObject();
             }
         }
+    }
+
+    void ShowScoreText()
+    {
+       GameObject scorePopUP = Instantiate(ScoreTextPopUp, transform.position, Quaternion.identity);
+       TMP_Text scoreText = scorePopUP.GetComponentInChildren<TMP_Text>();
+       scoreText.text = scoreValue.ToString();
     }
 }

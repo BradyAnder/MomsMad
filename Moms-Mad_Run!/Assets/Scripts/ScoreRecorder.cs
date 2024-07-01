@@ -27,7 +27,14 @@ public class ScoreRecorder : MonoBehaviour
 
         if (isDebugMode)
         {
-
+            LobbyManager.Player p1 = new LobbyManager.Player();
+            LobbyManager.Player p2 = new LobbyManager.Player();
+            LobbyManager.Player p3 = new LobbyManager.Player();
+            AddScore(p1, 100);
+            AddScore(p2, 200);
+            AddScore(p3, 300);
+            AddScore(p2, 200);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Scoreboard");
         }
         //////////////////////
     }

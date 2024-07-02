@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public void PlayGame()
     {
         Time.timeScale = 1f;
+        LobbyManager.Instance.ResetLobby();
         SceneManager.LoadScene("Lobby2");
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
+        LobbyManager.Instance.SetLoadSceneFalse();
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
     }

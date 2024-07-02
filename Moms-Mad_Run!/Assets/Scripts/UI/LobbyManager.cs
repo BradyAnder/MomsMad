@@ -15,6 +15,7 @@ public class LobbyManager : MonoBehaviour
     private bool loadScene = true;
     private string[] defaultPlayerNames = {"P1", "P2", "P3", "P4", "P5", "P6"};
     private short i = 0;
+    private ScoreRecorder scoreRecorder;
 
     void Awake()
     {
@@ -90,6 +91,8 @@ public class LobbyManager : MonoBehaviour
         {
             if (loadScene)
             {
+                scoreRecorder = FindObjectOfType<ScoreRecorder>();
+                scoreRecorder.ResetAll();
                 SceneManager.LoadScene("Prototype 2");
                 loadScene = false;
             }

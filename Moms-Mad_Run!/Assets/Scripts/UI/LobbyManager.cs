@@ -12,7 +12,7 @@ public class LobbyManager : MonoBehaviour
     private List<Player> players = new List<Player>();
     private List<GameObject> playerObjs = new List<GameObject>();
     private bool allReady = false;
-    private bool loadScene = true;
+    private bool loadScene = false;
     private string[] defaultPlayerNames = {"P1", "P2", "P3", "P4", "P5", "P6"};
     private short i = 0;
     private ScoreRecorder scoreRecorder;
@@ -106,6 +106,9 @@ public class LobbyManager : MonoBehaviour
         {
             player.isReady = false;
         }
+    }
+    public void SetLoadSceneFalse(){
+        loadScene = false;
     }
 
     public List<Player> GetPlayers()

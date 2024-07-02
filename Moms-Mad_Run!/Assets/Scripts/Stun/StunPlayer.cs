@@ -36,21 +36,13 @@ public class StunPlayer : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GetStunned collidedStun = other.GetComponent<GetStunned>();
-            if (collidedStun != null && collidedStun.canBeStunned)
+            if (collidedStun != null && collidedStun.canBeStunned == true)
             {
+                collidedStun.canBeStunned = false;
                 Debug.Log("Stun");
-                StartCoroutine(Stun(collidedStun));
+                collidedStun.StunTest();
+                Destroy(gameObject);
             }
-        }
-    }
-
-    private IEnumerator Stun(GetStunned stunScript)
-    {
-        if (stunScript != null)
-        {
-            stunScript.StunPlayer();
-            yield return new WaitForSecondsRealtime(stunTime);
-            stunScript.UnstunPlayer();
         }
     }
 }

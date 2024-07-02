@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxBounceNumber: 10
-  maxAliveSeconds: 3
+  maxAliveSeconds: 6
   bounce: 0.5
   initAngularV: {x: 540, y: 0, z: 0}
 --- !u!54 &-7581280678072096698
@@ -133,9 +133,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!65 &7124276926466756344
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -155,7 +155,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0074269, y: 0.01178025, z: 0.001819634}
+  m_Size: {x: 0.006, y: 0.01178025, z: 0.001819634}
   m_Center: {x: -0.00000034868717, y: -0.00015725553, z: 0.000611393}
 --- !u!114 &7513179224910199621
 MonoBehaviour:
@@ -169,8 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92fd1f53465fd5941a7cdec003f2817d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stun: {fileID: 0}
-  stunTime: 5
+  stunTime: 3
+  minStunSpeed: 3
 --- !u!65 &872175834703046727
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -190,5 +190,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0044269, y: 0.01078025, z: 0.001919634}
+  m_Size: {x: 0.0045, y: 0.01078025, z: 0.001919634}
   m_Center: {x: -0.00000034868717, y: -0.00015725553, z: 0.000611393}

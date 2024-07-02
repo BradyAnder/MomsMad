@@ -60,16 +60,13 @@ public class ScoreRecorder : MonoBehaviour
             playerObjects.Add(playerObj);
             playerScores.Add(amount);
             playerNumber++;
+            index = playerObjects.IndexOf(playerObj);
         }
         else {
             playerScores[index] = (int)playerScores[index] + amount;
         }
-        if (inGameScoreboard == null) {
-            Debug.Log("ScoreRecorder: in-game scoreboard not set.");
-            return;
-        }
+        if (inGameScoreboard == null) { return; }
         inGameScoreboard.updateScore(playerObj.name, (int)playerScores[index]);
-
     }
 
     public string[] PlayerObjectsToArray() {

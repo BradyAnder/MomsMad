@@ -78,7 +78,6 @@ public class ScoreboardManager : MonoBehaviour
         if (totalChildScore >= momVeryMadScore) { tempScoreText.text = momVeryMadText; }
 
         scoreRecorder.ResetAll(); // Reset the score recorder for next round.
-        scoreRecorder.inGameScoreboard.resetScore();
         return;
     }
 

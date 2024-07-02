@@ -67,6 +67,7 @@ public class ScoreRecorder : MonoBehaviour
         if (inGameScoreboard == null) {
             inGameScoreboard = FindObjectOfType<InGameScoreboard>();
             inGameScoreboard.playerNames = PlayerObjectsToArray();
+            inGameScoreboard.enabled = true;
         }
         inGameScoreboard.updateScore(playerObj.name, (int)playerScores[index]);
 

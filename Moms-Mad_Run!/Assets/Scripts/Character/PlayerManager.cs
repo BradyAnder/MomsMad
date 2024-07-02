@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject playerPrefab;
     public List<GameObject> childSpawnPoints = new List<GameObject>();
     List<GameObject> availableSpawnPoints = new List<GameObject>();
-
+    private InGameScoreboard inGameScoreboard;
     public Material[] childColourMats;
 
     // The mom spawnPoint
@@ -18,13 +18,23 @@ public class PlayerManager : MonoBehaviour
     private int currentRound = 0;
 
     private List<LobbyManager.Player> playerInfo = new List<LobbyManager.Player>();
+    private ScoreRecorder scoreRecorder;
 
     void Start()
     {
+        inGameScoreboard = FindObjectOfType<InGameScoreboard>();
+        if (inGameScoreboard == null) { Debug.Log("PlayerManager: in-game scoreboard component not found."); }
         // Initialize the players
         DetectPlayers();
+        int len = playerInfo.Count;
+        string[] playerNames = new string[len];
+        for (int i= 0; i < len; i++)
+        {
+            playerNames[i] = playerInfo[i].name;
+        }
+        inGameScoreboard.playerNames = playerNames;
         // Initialize the scores for each player
-        // InitializeScores();
+        InitializeScores();
         // Spawn the players for the first round
         StartRound();
     }
@@ -35,14 +45,24 @@ public class PlayerManager : MonoBehaviour
     }
 
     // TODO
-    // private void InitializeScores()
-    // {
-    //     ScoreRecorder scoreRecorder = FindObjectOfType<ScoreRecorder>();
-    //     foreach (LobbyManager.Player player in playerInfo)
-    //     {
-    //         scoreRecorder.AddScore(player.device.gameObject, 0); // Initialize each player's score to 0
-    //     }
-    // }
+    private void InitializeScores()
+    {
+        scoreRecorder = FindObjectOfType<ScoreRecorder>();
+        scoreRecorder.inGameScoreboard = this.inGameScoreboard;
+        inGameScoreboard.enabled = true;
+        foreach (LobbyManager.Player player in playerInfo)
+        {
+            scoreRecorder.AddScore(player, 0); // Initialize each player's score to 0
+        }
+    }
+
+    public void AddScore(GameObject playerObj, int amount) {
+        foreach (LobbyManager.Player player in playerInfo) {
+            if (player.currentObj.Equals(playerObj)) {
+                scoreRecorder.AddScore(player, amount);
+            }
+        }
+    }
 
     void StartRound()
     {
@@ -91,6 +111,7 @@ public class PlayerManager : MonoBehaviour
         // Set the correct device to this player
         PlayerInput currentPlayer = momObj.GetComponent<PlayerInput>();
         currentPlayer.SwitchCurrentControlScheme("controller", player.device);
+        player.currentObj = momObj;
     }
 
     void SpawnChild(LobbyManager.Player player, List<GameObject> spawnPoints, int colourIndex)
@@ -114,6 +135,7 @@ public class PlayerManager : MonoBehaviour
         // Set the correct device to this player
         PlayerInput currentPlayer = childObj.GetComponent<PlayerInput>();
         currentPlayer.SwitchCurrentControlScheme("controller", player.device);
+        player.currentObj = childObj;
     }
 
     void Update()

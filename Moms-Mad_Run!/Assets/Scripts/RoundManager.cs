@@ -38,7 +38,7 @@ public class RoundManager : MonoBehaviour
         else
         {
             Debug.Log("All rounds completed. Loading MainMenu.");
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("Scoreboard");
             Time.timeScale = 1;
             LobbyManager.Instance.ResetLobby();
             ResetRound();

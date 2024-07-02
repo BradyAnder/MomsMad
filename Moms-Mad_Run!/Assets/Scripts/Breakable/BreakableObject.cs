@@ -9,6 +9,7 @@ public class BreakableObject : MonoBehaviour
     public GameObject ScoreTextPopUp;
     private MoveSlideChild moveScript;
     public ScoreManager scoreManager;
+    private PlayerManager playerManager;
 
 
     public int scoreValue;
@@ -18,6 +19,8 @@ public class BreakableObject : MonoBehaviour
         GameObject childObject = GameObject.Find("Child");
         GameObject scoreManagerObject = GameObject.Find("ScoreManager");
         scoreManager = scoreManagerObject.GetComponent<ScoreManager>();
+        playerManager = FindObjectOfType<PlayerManager>();
+        if (playerManager == null) { Debug.Log("BreakableScoring->Start: playerManager not found."); return; }
     }
 
 
@@ -32,10 +35,12 @@ public class BreakableObject : MonoBehaviour
     {
         if (collision != null)
         {
-
             moveScript = collision.gameObject.GetComponent<MoveSlideChild>();
             if (collision.gameObject.tag == "Player" && moveScript.isSliding == true)
             {
+                Instantiate(brokenObject, transform.position, transform.rotation);
+                playerManager.AddScore(collision.gameObject, scoreValue);
+                Destroy(gameObject);
                if(ScoreTextPopUp)
                 {
                     ShowScoreText();

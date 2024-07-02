@@ -112,6 +112,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5726284132715252479, guid: bfc192ba4a92e234896feca8436c4024, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7007836667830783457}
+    - targetCorrespondingSourceObject: {fileID: 5726284132715252479, guid: bfc192ba4a92e234896feca8436c4024, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2663057568985995349}
   m_SourcePrefab: {fileID: 100100000, guid: bfc192ba4a92e234896feca8436c4024, type: 3}
 --- !u!4 &1369000845848168858 stripped
 Transform:
@@ -197,6 +200,22 @@ MonoBehaviour:
   m_DefaultActionMap: Child
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &2663057568985995349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3827462313733020186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1b39a470c413c04497255f6f48be630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}
+  canBeStunned: 0
+  stunEffect: {fileID: 7034642860742731867, guid: 8453304b2bbe5c34e9dc273060941b2c, type: 3}
+  stunResistance: 3
 --- !u!114 &5089831776216352564 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4379907518947497937, guid: bfc192ba4a92e234896feca8436c4024, type: 3}
@@ -302,15 +321,15 @@ PrefabInstance:
       objectReference: {fileID: 1004310718572751228, guid: 03578a272f8b9af429035c16313a83c2, type: 3}
     - target: {fileID: 7987637313116930916, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: WeakThrowForce
-      value: 10
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7987637313116930916, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: NormalThrowForce
-      value: 20
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7987637313116930916, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: StrongThrowForce
-      value: 30
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7987637313116930916, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: normalChargeTime

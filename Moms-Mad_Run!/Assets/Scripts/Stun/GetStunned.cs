@@ -18,10 +18,14 @@ public class GetStunned : MonoBehaviour
         canBeStunned = true;
     }
 
+    public void StunTest()
+    {
+        StartCoroutine(Stun());
+    }
+
     public void StunPlayer()
     {
         playerInput.enabled = false;
-        canBeStunned = false;
         Instantiate(stunEffect, this.transform);
     }
 
@@ -43,5 +47,16 @@ public class GetStunned : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(stunResistance);
         canBeStunned = true;
+    }
+
+    public IEnumerator Stun()
+    { 
+            StunPlayer();
+            Debug.Log("Wating");
+            yield return new WaitForSecondsRealtime(6);
+            Debug.Log("more waiting");
+            UnstunPlayer();
+            Debug.Log("Unstun");
+        
     }
 }

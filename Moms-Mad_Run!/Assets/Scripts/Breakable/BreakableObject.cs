@@ -23,14 +23,6 @@ public class BreakableObject : MonoBehaviour
         if (playerManager == null) { Debug.Log("BreakableScoring->Start: playerManager not found."); return; }
     }
 
-
-    void BreakObject()
-    {
-        Instantiate(brokenObject, transform.position, transform.rotation);
-        scoreManager.AddScore(scoreValue);
-        Destroy(gameObject);
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision != null)
@@ -41,11 +33,11 @@ public class BreakableObject : MonoBehaviour
                 Instantiate(brokenObject, transform.position, transform.rotation);
                 playerManager.AddScore(collision.gameObject, scoreValue);
                 Destroy(gameObject);
+
                if(ScoreTextPopUp)
                 {
                     ShowScoreText();
                 }
-                BreakObject();
             }
         }
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ScoreRecorder : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class ScoreRecorder : MonoBehaviour
     private static ScoreRecorder instance;
     private int playerNumber = 0;
     public bool isDebugMode = false;
+    private InGameScoreboard inGameScoreboard;
 
     private void Awake()
     {
@@ -62,6 +64,12 @@ public class ScoreRecorder : MonoBehaviour
         else {
             playerScores[index] = (int)playerScores[index] + amount;
         }
+        if (inGameScoreboard == null) {
+            inGameScoreboard = FindObjectOfType<InGameScoreboard>();
+            inGameScoreboard.playerNames = PlayerObjectsToArray();
+        }
+        inGameScoreboard.updateScore(playerObj.name, (int)playerScores[index]);
+
     }
 
     public string[] PlayerObjectsToArray() {

@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject playerPrefab;
     public List<GameObject> childSpawnPoints = new List<GameObject>();
     List<GameObject> availableSpawnPoints = new List<GameObject>();
-
+    private InGameScoreboard inGameScoreboard;
     public Material[] childColourMats;
 
     // The mom spawnPoint
@@ -22,8 +22,17 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
+        inGameScoreboard = FindObjectOfType<InGameScoreboard>();
+        if (inGameScoreboard == null) { Debug.Log("PlayerManager: in-game scoreboard component not found."); }
         // Initialize the players
         DetectPlayers();
+        int len = playerInfo.Count;
+        string[] playerNames = new string[len];
+        for (int i= 0; i < len; i++)
+        {
+            playerNames[i] = playerInfo[i].name;
+        }
+        inGameScoreboard.playerNames = playerNames;
         // Initialize the scores for each player
         InitializeScores();
         // Spawn the players for the first round
@@ -39,6 +48,8 @@ public class PlayerManager : MonoBehaviour
     private void InitializeScores()
     {
         scoreRecorder = FindObjectOfType<ScoreRecorder>();
+        scoreRecorder.inGameScoreboard = this.inGameScoreboard;
+        inGameScoreboard.enabled = true;
         foreach (LobbyManager.Player player in playerInfo)
         {
             scoreRecorder.AddScore(player, 0); // Initialize each player's score to 0

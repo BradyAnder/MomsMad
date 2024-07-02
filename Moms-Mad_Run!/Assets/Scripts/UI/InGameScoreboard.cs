@@ -7,6 +7,20 @@ public class InGameScoreboard : MonoBehaviour
 {
     public string[] playerNames;
     public TextMeshProUGUI[] scoreboardRows;
+    private InGameScoreboard instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void OnEnable()
     {
@@ -20,5 +34,12 @@ public class InGameScoreboard : MonoBehaviour
     public void updateScore(string playerName, int score) {
         int index = playerName.IndexOf(playerName);
         scoreboardRows[index].text = playerName + ": " + score.ToString();
+    }
+
+    public void resetScore()
+    {
+        foreach (TextMeshProUGUI text in scoreboardRows) {
+            text.text = "";
+        }
     }
 }

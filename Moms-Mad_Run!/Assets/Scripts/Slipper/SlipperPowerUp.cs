@@ -14,6 +14,8 @@ public class SlipperPowerUp : MonoBehaviour
         SlipperThrow slipperThrow = other.GetComponent<SlipperThrow>();
         if (slipperThrow == null) { Debug.Log("SlipperPowerUp->OnTriggerEnter:Mom missing slipper throw component."); return; }
         slipperThrow.GetPowerUp(powerUpMode);
+        PowerupSpawner spawner = FindObjectOfType<PowerupSpawner>();
+        spawner.isPowerupInField = false;
         Destroy(gameObject);
     }
 }

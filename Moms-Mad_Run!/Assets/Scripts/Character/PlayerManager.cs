@@ -71,6 +71,7 @@ public class PlayerManager : MonoBehaviour
         {
             // End of game
             Debug.Log("All rounds completed!");
+            inGameScoreboard.resetScore();
             return;
         }
 

@@ -36,6 +36,15 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
     }
 
+    public void GoToOptions()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Options");
+        LobbyManager.Instance.SetLoadSceneFalse();
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+    }
+
     public void QuitGame()
     {
         Application.Quit();

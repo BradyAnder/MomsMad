@@ -2261,9 +2261,17 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2091366320315142839, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091366320315142839, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2091366320315142839, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -8373124558125406885, guid: f2f3ae3ae3312684ea8049b6d78b6e3d, type: 2}
     - target: {fileID: 2765202374937886200, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

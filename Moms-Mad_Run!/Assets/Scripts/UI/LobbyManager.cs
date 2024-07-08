@@ -97,7 +97,7 @@ public class LobbyManager : MonoBehaviour
                 scoreRecorder = FindObjectOfType<ScoreRecorder>();
                 scoreRecorder.ResetAll();
 
-                randomLevel = Random.Range(1, 3); //Random Level Generator
+                randomLevel = Random.Range(1, 4); //Random Level Generator
                 Debug.Log(randomLevel);
                 if (randomLevel == 1)
                 {

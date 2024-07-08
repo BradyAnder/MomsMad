@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7895605544445904744}
   - component: {fileID: 3179532268650049083}
   - component: {fileID: 6572336084093245969}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: FanShapeSlipperPowerUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7211448773848044386, guid: e5ef83e0bec8e2043935a4ff8bd5de64, type: 3}
+  - {fileID: 2100000, guid: b448e484bc3380344bf17780ace0e04d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

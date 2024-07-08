@@ -17,6 +17,9 @@ public class LobbyManager : MonoBehaviour
     private short i = 0;
     private ScoreRecorder scoreRecorder;
 
+    //Random Play Level
+    public int randomLevel;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -93,7 +96,26 @@ public class LobbyManager : MonoBehaviour
             {
                 scoreRecorder = FindObjectOfType<ScoreRecorder>();
                 scoreRecorder.ResetAll();
-                SceneManager.LoadScene("Prototype 2");
+
+                randomLevel = Random.Range(1, 3); //Random Level Generator
+                Debug.Log(randomLevel);
+                if (randomLevel == 1)
+                {
+                    SceneManager.LoadScene("Prototype 1");
+                }
+                else if (randomLevel == 2)
+                {
+                    SceneManager.LoadScene("Prototype 2");
+                }
+                else if (randomLevel == 3)
+                {
+                    SceneManager.LoadScene("Prototype 3");
+                }
+                else
+                {
+                    Debug.LogError("Randomizer Broke.");
+                }
+
                 loadScene = false;
             }
         }

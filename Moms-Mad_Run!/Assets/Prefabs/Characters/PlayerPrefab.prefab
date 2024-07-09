@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5030373874506409510}
   - component: {fileID: 2902411725725952068}
   - component: {fileID: 139771841823238833}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Head (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 701861801461421981}
   - component: {fileID: 4753818210071675908}
   - component: {fileID: 5755463855524831099}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Eye (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +510,7 @@ GameObject:
   - component: {fileID: 8471875417298415393}
   - component: {fileID: 5031725031524454855}
   - component: {fileID: 2534436639231087953}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1091,7 +1091,7 @@ GameObject:
   - component: {fileID: 5957059480699597317}
   - component: {fileID: 4523872521152137860}
   - component: {fileID: 7428721060534267982}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1625,7 +1625,7 @@ GameObject:
   - component: {fileID: 6441582574772804507}
   - component: {fileID: 1573493378615765933}
   - component: {fileID: 5876936241053203190}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Head (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1791,7 +1791,7 @@ GameObject:
   - component: {fileID: 1443157419065569532}
   - component: {fileID: 2743164192951481031}
   - component: {fileID: 2043424766454327320}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1874,7 +1874,7 @@ GameObject:
   - component: {fileID: 2162614690916075288}
   - component: {fileID: 4550483058351077731}
   - component: {fileID: 7944971112122998582}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1960,7 +1960,7 @@ GameObject:
   - component: {fileID: 2432675760022617715}
   - component: {fileID: 2940731273948568059}
   - component: {fileID: 7362326694881422799}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Arm (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2047,6 +2047,10 @@ PrefabInstance:
     - target: {fileID: 4058367854325530070, guid: bfc192ba4a92e234896feca8436c4024, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4058367854325530070, guid: bfc192ba4a92e234896feca8436c4024, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5466676684380721992, guid: bfc192ba4a92e234896feca8436c4024, type: 3}
       propertyPath: m_Materials.Array.data[0]

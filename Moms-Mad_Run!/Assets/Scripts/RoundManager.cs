@@ -11,6 +11,10 @@ public class RoundManager : MonoBehaviour
 
     public static TextMeshProUGUI roundText;
 
+    //Hold the current level scene
+    Scene currentLevel;
+    private static string currentLevelName = "Null";
+
     private void Awake()
     {
         // Initialize roundText in Awake
@@ -21,6 +25,11 @@ public class RoundManager : MonoBehaviour
     {
         roundText.text = "Round " + round;
         Debug.Log("Start: Round Manager started. Round: " + round);
+
+        //Get the current scene name
+        currentLevel = SceneManager.GetActiveScene();
+        currentLevelName = currentLevel.name;
+        Debug.Log("Loaded Level: " + currentLevel.name);
     }
 
     public static void HandleRound()
@@ -32,7 +41,9 @@ public class RoundManager : MonoBehaviour
         {
             round++;
             Debug.Log("Loading next round. New Round: " + round);
-            SceneManager.LoadScene("Prototype 2");
+
+            //Reload the same level between rounds
+            SceneManager.LoadScene(currentLevelName);
             Time.timeScale = 1;
         }
         else

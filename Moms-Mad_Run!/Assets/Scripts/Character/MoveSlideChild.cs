@@ -4,21 +4,24 @@ using UnityEngine.InputSystem;
 public class MoveSlideChild : MonoBehaviour
 {
     public GameObject Child_Object;
-    public float child_speed = 8f;
+    public float maxSpeed = 8f;
+    public float acceleration = 20f; // 增加加速度
+    public float deceleration = 20f; // 增加减速度
     public float child_rotationSpeed = 10f;
     public float slideSpeed = 20f;
     public float slideDuration = 0.5f;
     public float slideCooldown = 1f;
 
     private Rigidbody child_body;
-    public bool isSliding = false;
+    public bool isSliding = false;  // 修改为 public
     private float slideTimer = 0f;
     private float slideCooldownTimer = 0f;
     private Vector3 slideDirection;
     private Quaternion originalRotation;
     private CapsuleCollider childCollider;
     private Vector2 moveInput;
-    
+    private Vector3 currentVelocity = Vector3.zero;
+
     void Start()
     {
         if (Child_Object != null)
@@ -56,15 +59,24 @@ public class MoveSlideChild : MonoBehaviour
 
     void MoveChildObject()
     {
-        Vector3 movement_child = new Vector3(moveInput.x, 0.0f, moveInput.y);
+        Vector3 targetVelocity = new Vector3(moveInput.x, 0.0f, moveInput.y) * maxSpeed;
 
-        if (movement_child != Vector3.zero)
+        if (targetVelocity != Vector3.zero)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(movement_child);
+            Quaternion targetRotation = Quaternion.LookRotation(targetVelocity);
             child_body.rotation = Quaternion.Lerp(child_body.rotation, targetRotation, child_rotationSpeed * Time.deltaTime);
         }
 
-        child_body.velocity = new Vector3(movement_child.x * child_speed, child_body.velocity.y, movement_child.z * child_speed);
+        if (targetVelocity.magnitude > currentVelocity.magnitude)
+        {
+            currentVelocity = Vector3.MoveTowards(currentVelocity, targetVelocity, acceleration * Time.deltaTime);
+        }
+        else
+        {
+            currentVelocity = Vector3.MoveTowards(currentVelocity, targetVelocity, deceleration * Time.deltaTime);
+        }
+
+        child_body.velocity = new Vector3(currentVelocity.x, child_body.velocity.y, currentVelocity.z);
     }
 
     void StartSlide()
@@ -75,13 +87,10 @@ public class MoveSlideChild : MonoBehaviour
             slideTimer = slideDuration;
             slideCooldownTimer = slideCooldown;
 
-            // Store the original direction before rotating the character
             slideDirection = Child_Object.transform.forward;
 
-            // Rotate the character to look at the ceiling
             Child_Object.transform.Rotate(-90f, 0f, 0f);
 
-            // Apply the sliding velocity in the original forward direction
             child_body.velocity = slideDirection * slideSpeed;
         }
     }
@@ -99,10 +108,8 @@ public class MoveSlideChild : MonoBehaviour
     {
         isSliding = false;
 
-        // Reset the character's rotation back to the original
         Child_Object.transform.localRotation = originalRotation;
 
-        // Stop the sliding movement
         child_body.velocity = Vector3.zero;
     }
 

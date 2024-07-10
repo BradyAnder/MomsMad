@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class RoundManager : MonoBehaviour
 {
     public static int round = 1;
-    public static TextMeshProUGUI roundText;
+    public TextMeshProUGUI roundText;
     public static RoundManager Instance;
 
     // Hold the current level scene
@@ -28,21 +28,38 @@ public class RoundManager : MonoBehaviour
         }
 
         // Initialize roundText in Awake
-        roundText = GameObject.Find("RoundInfo")?.GetComponent<TextMeshProUGUI>();
+        InitializeRoundText();
     }
 
     void Start()
     {
-        if (roundText != null)
-        {
-            roundText.text = "Round " + round;
-            Debug.Log("Start: Round Manager started. Round: " + round);
-        }
+        InitializeRoundText();
 
         // Get the current scene name
         Scene currentLevel = SceneManager.GetActiveScene();
         currentLevelName = currentLevel.name;
         Debug.Log("Loaded Level: " + currentLevel.name);
+
+        // Update the round text
+        UpdateRoundText();
+    }
+
+    private void InitializeRoundText()
+    {
+        roundText = GameObject.Find("RoundInfo")?.GetComponent<TextMeshProUGUI>();
+    }
+
+    private void UpdateRoundText()
+    {
+        if (roundText != null)
+        {
+            roundText.text = "Round " + round;
+            Debug.Log("Round text updated: " + roundText.text);
+        }
+        else
+        {
+            Debug.LogError("RoundInfo TextMeshProUGUI not found.");
+        }
     }
 
     public static void HandleRound()
@@ -84,11 +101,19 @@ public class RoundManager : MonoBehaviour
         {
             Time.timeScale = 1;
             SceneManager.LoadScene(currentLevelName);
+            SceneManager.sceneLoaded += OnSceneLoaded;
             Debug.Log("Scene loaded: " + currentLevelName);
         }
         else
         {
             Debug.LogError("Current level name is not set.");
         }
+    }
+
+    private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        Instance.InitializeRoundText();
+        Instance.UpdateRoundText();
     }
 }

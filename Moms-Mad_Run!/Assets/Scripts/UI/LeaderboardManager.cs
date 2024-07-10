@@ -108,7 +108,7 @@ public class LeaderBoardManager : MonoBehaviour
 
         // Wait for 5 seconds and then return to the game
         Debug.Log("Starting coroutine to wait for 5 seconds");
-        StartCoroutine(ReturnToGameAfterDelay(5));
+        StartCoroutine(ReturnToGameAfterDelay(3));
     }
 
     private IEnumerator ReturnToGameAfterDelay(float delay)

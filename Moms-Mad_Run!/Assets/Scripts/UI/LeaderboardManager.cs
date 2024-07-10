@@ -29,7 +29,7 @@ public class LeaderBoardManager : MonoBehaviour
             Debug.LogError("RoundManager instance not found.");
             return;
         }
-        
+
         round_num = RoundManager.Instance.getRound();
         Debug.Log("Round number: " + round_num);
 
@@ -107,14 +107,22 @@ public class LeaderBoardManager : MonoBehaviour
         tempScoreText.text = "Leaderboard for Round: " + round_num;
 
         // Wait for 5 seconds and then return to the game
+        Debug.Log("Starting coroutine to wait for 5 seconds");
         StartCoroutine(ReturnToGameAfterDelay(5));
     }
 
     private IEnumerator ReturnToGameAfterDelay(float delay)
     {
         Debug.Log("Waiting for " + delay + " seconds before returning to game.");
+        float previousTimeScale = Time.timeScale;
+        Time.timeScale = 1f; // Ensure time scale is 1 during wait
+
+        Debug.Log("Current time scale set to: " + Time.timeScale);
         yield return new WaitForSeconds(delay);
-        Debug.Log("Returning to game.");
+
+        Debug.Log("Finished waiting. Returning to game.");
+        Time.timeScale = previousTimeScale; // Restore previous time scale
+        Debug.Log("Time scale restored to: " + Time.timeScale);
         RoundManager.ReturnToGame();
     }
 }

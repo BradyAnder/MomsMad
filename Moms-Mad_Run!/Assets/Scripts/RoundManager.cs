@@ -82,6 +82,7 @@ public class RoundManager : MonoBehaviour
         Debug.Log("Current level name: " + currentLevelName);
         if (!string.IsNullOrEmpty(currentLevelName))
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene(currentLevelName);
             Debug.Log("Scene loaded: " + currentLevelName);
         }

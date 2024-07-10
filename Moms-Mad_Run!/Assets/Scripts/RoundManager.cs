@@ -4,13 +4,16 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class RoundManager : MonoBehaviour
 {
     // round starts from 1
     public static int round = 1;
-    
+    // We wil need coutdownManager to start the countdown script 
+    public CountdownManager countdownManager;
     public static TextMeshProUGUI roundText;
+
 
     private void Awake()
     {
@@ -21,6 +24,8 @@ public class RoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Start countdown coroutine
+        countdownManager.StartCoroutine(countdownManager.CountdownToStart());
         roundText.text = "Round " + round;
         Debug.Log("Start: Round Manager started. Round: " + round);
     }
@@ -43,6 +48,8 @@ public class RoundManager : MonoBehaviour
             SceneManager.LoadScene("Prototype 2");
             // We need this. Otherwise, all the scripts are disabled
             Time.timeScale = 1;
+
+
         }
         else
         {
@@ -51,5 +58,5 @@ public class RoundManager : MonoBehaviour
             // We need this. Otherwise, all the scripts are disabled
             Time.timeScale = 1;
         }
-    }
+    }                                                                                                                  
 }

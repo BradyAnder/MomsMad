@@ -184,9 +184,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 0.58679235, b: 0.58679235, a: 0.78431374}
-    m_PressedColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
-    m_SelectedColor: {r: 0.58431375, g: 0.078431375, b: 0.078431375, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.60188675, b: 0.60188675, a: 0.78431374}
+    m_PressedColor: {r: 1, g: 0.27735847, b: 0.27735847, a: 1}
+    m_SelectedColor: {r: 0.6679245, g: 0.225582, b: 0.225582, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -658,8 +658,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: MOM'S MAD, RUN!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5fa9baa1f73916a4ebf448d51aef1c3f, type: 2}
+  m_sharedMaterial: {fileID: 6338679729784643136, guid: 5fa9baa1f73916a4ebf448d51aef1c3f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1411,9 +1411,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 0.58679235, b: 0.58679235, a: 0.78431374}
-    m_PressedColor: {r: 0.5686275, g: 0.5686275, b: 0.5686275, a: 1}
-    m_SelectedColor: {r: 0.5849056, g: 0.08001069, b: 0.08001069, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.60188675, b: 0.60188675, a: 0.78431374}
+    m_PressedColor: {r: 1, g: 0.27735847, b: 0.27735847, a: 1}
+    m_SelectedColor: {r: 0.6679245, g: 0.225582, b: 0.225582, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1895,8 +1895,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5fa9baa1f73916a4ebf448d51aef1c3f, type: 2}
+  m_sharedMaterial: {fileID: 6338679729784643136, guid: 5fa9baa1f73916a4ebf448d51aef1c3f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2130,8 +2130,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Play
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5fa9baa1f73916a4ebf448d51aef1c3f, type: 2}
+  m_sharedMaterial: {fileID: 6338679729784643136, guid: 5fa9baa1f73916a4ebf448d51aef1c3f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2266,9 +2266,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 0.58679235, b: 0.58679235, a: 0.78431374}
-    m_PressedColor: {r: 0.5686275, g: 0.5686275, b: 0.5686275, a: 1}
-    m_SelectedColor: {r: 0.5849056, g: 0.08001069, b: 0.08001069, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.60188675, b: 0.60188675, a: 0.78431374}
+    m_PressedColor: {r: 1, g: 0.27735847, b: 0.27735847, a: 1}
+    m_SelectedColor: {r: 0.6679245, g: 0.225582, b: 0.225582, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2533,8 +2533,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5fa9baa1f73916a4ebf448d51aef1c3f, type: 2}
+  m_sharedMaterial: {fileID: 6338679729784643136, guid: 5fa9baa1f73916a4ebf448d51aef1c3f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

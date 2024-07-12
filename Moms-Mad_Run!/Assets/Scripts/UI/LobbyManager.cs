@@ -17,6 +17,9 @@ public class LobbyManager : MonoBehaviour
     private short i = 0;
     private ScoreRecorder scoreRecorder;
 
+    // Hold the current level scene
+    private static string currentLevelName = "Null";
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -32,11 +35,21 @@ public class LobbyManager : MonoBehaviour
 
     void Start()
     {
+        SceneNameUpdate();
+
         foreach (var gamepad in Gamepad.all)
         {
             AddPlayer(gamepad);
         }
         InputSystem.onDeviceChange += OnDeviceChange;
+    }
+
+    void SceneNameUpdate() //Update the scene name
+    {
+        // Get the current scene name
+        Scene currentLevel = SceneManager.GetActiveScene();
+        currentLevelName = currentLevel.name;
+        //Debug.Log("Loaded Level: " + currentLevel.name);
     }
 
     private void OnDeviceChange(InputDevice device, InputDeviceChange change)
@@ -78,11 +91,18 @@ public class LobbyManager : MonoBehaviour
 
     void Update()
     {
-        foreach (Player player in players)
+        if (currentLevelName != "Lobby2")
         {
-            if (player.device.buttonSouth.wasPressedThisFrame)
+            SceneNameUpdate();
+        }
+        if (currentLevelName == "Lobby2") //Avoid ready up on main menu
+        {
+            foreach (Player player in players)
             {
-                player.isReady = !player.isReady;
+                if (player.device.buttonSouth.wasPressedThisFrame)
+                {
+                    player.isReady = !player.isReady;
+                }
             }
         }
 
@@ -95,6 +115,7 @@ public class LobbyManager : MonoBehaviour
                 scoreRecorder.ResetAll();
                 SceneManager.LoadScene("Level Select");
                 loadScene = false;
+                SceneNameUpdate();
             }
         }
     }

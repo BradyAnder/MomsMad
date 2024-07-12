@@ -99,7 +99,7 @@ public class LobbyManager : MonoBehaviour
         {
             foreach (Player player in players)
             {
-                if (player.device.buttonSouth.wasPressedThisFrame)
+                if (player.device.buttonWest.wasPressedThisFrame)
                 {
                     player.isReady = !player.isReady;
                 }

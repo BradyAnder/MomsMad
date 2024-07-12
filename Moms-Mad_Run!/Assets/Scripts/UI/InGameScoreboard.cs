@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class InGameScoreboard : MonoBehaviour
 {
     public string[] playerNames;
     public TextMeshProUGUI[] scoreboardRows;
     private InGameScoreboard instance;
+
+    private static string currentLevelName = "Null"; // Hold the current level scene
 
     private void Awake()
     {
@@ -17,6 +20,15 @@ public class InGameScoreboard : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void Update()
+    {
+        SceneNameUpdate();
+        if (currentLevelName == "MainMenu") //Destroys self if on main menu
         {
             Destroy(gameObject);
         }
@@ -41,5 +53,13 @@ public class InGameScoreboard : MonoBehaviour
         foreach (TextMeshProUGUI text in scoreboardRows) {
             text.text = "";
         }
+    }
+
+    void SceneNameUpdate() //Update the scene name
+    {
+        // Get the current scene name
+        Scene currentLevel = SceneManager.GetActiveScene();
+        currentLevelName = currentLevel.name;
+        //Debug.Log("Loaded Level: " + currentLevel.name);
     }
 }

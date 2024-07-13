@@ -10,6 +10,7 @@ public class PlayerManager : MonoBehaviour
     List<GameObject> availableSpawnPoints = new List<GameObject>();
     private InGameScoreboard inGameScoreboard;
     public Material[] childColourMats;
+    public GameObject playerNumberIndicator;
 
     // The mom spawnPoint
     public GameObject MomSpawnPoint;
@@ -42,6 +43,9 @@ public class PlayerManager : MonoBehaviour
     private void DetectPlayers()
     {
         playerInfo = LobbyManager.Instance.GetPlayers();
+        for (int i = 0; i < playerInfo.Count; i++) {
+            playerInfo[i].playerNumber = i + 1;
+        }
     }
 
     // TODO
@@ -54,6 +58,14 @@ public class PlayerManager : MonoBehaviour
         {
             scoreRecorder.AddScore(player, 0); // Initialize each player's score to 0
         }
+    }
+
+    void AddPlayerNumberIndicator(GameObject playerObj, int playerNumber)
+    {
+        /* GameObject numIndicator = Instantiate(playerNumberIndicator, playerObj.transform);
+        numIndicator.transform.localPosition = Vector3.up * 2;
+        TextMeshPro temp = numIndicator.GetComponent<TextMeshPro>();
+        temp.text = playerNumber.ToString(); */
     }
 
     public void AddScore(GameObject playerObj, int amount) {
@@ -113,6 +125,7 @@ public class PlayerManager : MonoBehaviour
         PlayerInput currentPlayer = momObj.GetComponent<PlayerInput>();
         currentPlayer.SwitchCurrentControlScheme("controller", player.device);
         player.currentObj = momObj;
+        AddPlayerNumberIndicator(momObj, player.playerNumber);
     }
 
     void SpawnChild(LobbyManager.Player player, List<GameObject> spawnPoints, int colourIndex)
@@ -137,6 +150,7 @@ public class PlayerManager : MonoBehaviour
         PlayerInput currentPlayer = childObj.GetComponent<PlayerInput>();
         currentPlayer.SwitchCurrentControlScheme("controller", player.device);
         player.currentObj = childObj;
+        AddPlayerNumberIndicator(childObj, player.playerNumber);
     }
 
     void Update()

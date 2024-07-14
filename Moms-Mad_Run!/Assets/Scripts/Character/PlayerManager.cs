@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -62,10 +63,10 @@ public class PlayerManager : MonoBehaviour
 
     void AddPlayerNumberIndicator(GameObject playerObj, int playerNumber)
     {
-        /* GameObject numIndicator = Instantiate(playerNumberIndicator, playerObj.transform);
+        GameObject numIndicator = Instantiate(playerNumberIndicator, playerObj.transform);
         numIndicator.transform.localPosition = Vector3.up * 2;
         TextMeshPro temp = numIndicator.GetComponent<TextMeshPro>();
-        temp.text = playerNumber.ToString(); */
+        temp.text = playerNumber.ToString();
     }
 
     public void AddScore(GameObject playerObj, int amount) {

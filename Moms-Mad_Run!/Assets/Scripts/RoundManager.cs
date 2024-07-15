@@ -37,7 +37,10 @@ public class RoundManager : MonoBehaviour
 
         // Get the current scene name
         Scene currentLevel = SceneManager.GetActiveScene();
-        currentLevelName = currentLevel.name;
+        if (currentLevel.name != "Leaderboard")
+        {
+            currentLevelName = currentLevel.name;
+        }
         Debug.Log("Loaded Level: " + currentLevel.name);
 
         // Update the round text

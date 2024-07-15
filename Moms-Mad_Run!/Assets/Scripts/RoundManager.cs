@@ -43,6 +43,12 @@ public class RoundManager : MonoBehaviour
         }
         Debug.Log("Loaded Level: " + currentLevel.name);
 
+        //Reset Rounds on Main
+        if (currentLevel.name == "MainMenu")
+        {
+            ResetRound();
+        }
+
         // Update the round text
         UpdateRoundText();
     }

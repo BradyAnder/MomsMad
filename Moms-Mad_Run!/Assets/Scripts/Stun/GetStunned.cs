@@ -9,9 +9,10 @@ public class GetStunned : MonoBehaviour
     public bool canBeStunned;
     public GameObject stunEffect;
     public float stunResistance;
-    public Material mat;
-    public float originalOpacity;
-    public bool doFade = false;
+    //public Material mat;
+    public GameObject shield;
+    //public float originalOpacity;
+    //public bool doFade = false;
 
 
     // Start is called before the first frame update
@@ -20,22 +21,10 @@ public class GetStunned : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         playerInput.enabled = true;
         canBeStunned = true;
-        mat = GetComponent<Renderer>().material;
-        originalOpacity = mat.color.a;
+        //mat = GetComponent<Renderer>().material;
+        //originalOpacity = mat.color.a;
 
 
-    }
-
-    private void Update()
-    {
-        if(doFade)
-        {
-            FadeNow();
-        }
-        else
-        {
-            ResetFade();
-        }
     }
 
     public void StunTest()
@@ -52,7 +41,6 @@ public class GetStunned : MonoBehaviour
     public void UnstunPlayer()
     {
         playerInput.enabled = true;
-        StartCoroutine(StunCooldown());
         for (var i = transform.childCount - 1; i >= 0; i--)
         {
             var child = transform.GetChild(i);
@@ -61,12 +49,23 @@ public class GetStunned : MonoBehaviour
                 Object.Destroy(child.gameObject);
             }
         }
+        StartCoroutine(StunCooldown());
+
     }
 
     private IEnumerator StunCooldown()
     {
+        Instantiate(shield, this.transform);
         yield return new WaitForSecondsRealtime(stunResistance);
         canBeStunned = true;
+        for (var i = transform.childCount - 1; i >= 0; i--)
+        {
+            var child = transform.GetChild(i);
+            if (child.CompareTag("Effect"))
+            {
+                Object.Destroy(child.gameObject);
+            }
+        }
     }
 
     public IEnumerator Stun()
@@ -80,7 +79,7 @@ public class GetStunned : MonoBehaviour
         
     }
 
-    void FadeNow()
+    /*void FadeNow()
     {
         Color currentColor = mat.color;
         Color smoothColor = new Color(currentColor.r, currentColor.g, currentColor.b, Mathf.Lerp(currentColor.a, .2f, 2 * Time.deltaTime));
@@ -92,5 +91,5 @@ public class GetStunned : MonoBehaviour
         Color currentColor = mat.color;
         Color smoothColor = new Color(currentColor.r, currentColor.g, currentColor.b, Mathf.Lerp(currentColor.a, originalOpacity, 2 * Time.deltaTime));
         mat.color = currentColor;
-    }
+    }*/
 }

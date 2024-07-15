@@ -2229,6 +2229,8 @@ MonoBehaviour:
   canBeStunned: 0
   stunEffect: {fileID: 7034642860742731867, guid: 8453304b2bbe5c34e9dc273060941b2c, type: 3}
   stunResistance: 3
+  mat: {fileID: 0}
+  shield: {fileID: 6260047885793137694, guid: 2a8cf8e1d86756d4d91a228858a6bbca, type: 3}
 --- !u!114 &5089831776216352564 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4379907518947497937, guid: bfc192ba4a92e234896feca8436c4024, type: 3}

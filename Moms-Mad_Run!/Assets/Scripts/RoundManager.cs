@@ -47,6 +47,7 @@ public class RoundManager : MonoBehaviour
         if (currentLevel.name == "MainMenu")
         {
             ResetRound();
+            Destroy(gameObject);
         }
 
         // Update the round text

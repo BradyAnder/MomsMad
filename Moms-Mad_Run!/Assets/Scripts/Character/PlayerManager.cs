@@ -49,7 +49,6 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    // TODO
     private void InitializeScores()
     {
         scoreRecorder = FindObjectOfType<ScoreRecorder>();
@@ -66,7 +65,7 @@ public class PlayerManager : MonoBehaviour
         GameObject numIndicator = Instantiate(playerNumberIndicator, playerObj.transform);
         numIndicator.transform.localPosition = Vector3.up * 2;
         TextMeshPro temp = numIndicator.GetComponent<TextMeshPro>();
-        temp.text = playerNumber.ToString();
+        temp.text = "Player " + playerNumber.ToString();
     }
 
     public void AddScore(GameObject playerObj, int amount) {
@@ -161,6 +160,20 @@ public class PlayerManager : MonoBehaviour
         {
             // We spawn a new child 
             StartRound();
+        }
+
+        // Ensure all player number indicators face the camera
+        FaceIndicatorsToCamera();
+    }
+
+    void FaceIndicatorsToCamera()
+    {
+        Camera mainCamera = Camera.main;
+        TextMeshPro[] indicators = FindObjectsOfType<TextMeshPro>();
+        foreach (TextMeshPro indicator in indicators)
+        {
+            indicator.transform.LookAt(indicator.transform.position + mainCamera.transform.rotation * Vector3.forward,
+                                       mainCamera.transform.rotation * Vector3.up);
         }
     }
 }

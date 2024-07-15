@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.07924773, g: 0.07924773, b: 0.07924773, a: 1}
+  m_IndirectSpecularColor: {r: 0.07924773, g: 0.0665322, b: 0.042922754, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -599,7 +599,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 0}
-  randomLevel: 0
 --- !u!1001 &36762698
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27231,6 +27230,10 @@ PrefabInstance:
       propertyPath: MomSpawnPoint
       value: 
       objectReference: {fileID: 1553116209}
+    - target: {fileID: 5741638909702683215, guid: d3083e365e7bb64459ea7ef94d7036a9, type: 3}
+      propertyPath: playerNumberIndicator
+      value: 
+      objectReference: {fileID: 2759897339505856393, guid: 0616669d5da8c884f9381e4c2910b5e7, type: 3}
     - target: {fileID: 5741638909702683215, guid: d3083e365e7bb64459ea7ef94d7036a9, type: 3}
       propertyPath: childSpawnPoints.Array.size
       value: 4

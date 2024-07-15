@@ -8,28 +8,58 @@ using UnityEngine.SceneManagement;
 public class RoundManager : MonoBehaviour
 {
     public static int round = 1;
+    public TextMeshProUGUI roundText;
+    public static RoundManager Instance;
 
-    public static TextMeshProUGUI roundText;
-
-    //Hold the current level scene
-    Scene currentLevel;
+    // Hold the current level scene
     private static string currentLevelName = "Null";
 
     private void Awake()
     {
+        // Ensure singleton instance
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         // Initialize roundText in Awake
-        roundText = GameObject.Find("RoundInfo").GetComponent<TextMeshProUGUI>();
+        InitializeRoundText();
     }
 
     void Start()
     {
-        roundText.text = "Round " + round;
-        Debug.Log("Start: Round Manager started. Round: " + round);
+        InitializeRoundText();
 
-        //Get the current scene name
-        currentLevel = SceneManager.GetActiveScene();
+        // Get the current scene name
+        Scene currentLevel = SceneManager.GetActiveScene();
         currentLevelName = currentLevel.name;
         Debug.Log("Loaded Level: " + currentLevel.name);
+
+        // Update the round text
+        UpdateRoundText();
+    }
+
+    private void InitializeRoundText()
+    {
+        roundText = GameObject.Find("RoundInfo")?.GetComponent<TextMeshProUGUI>();
+    }
+
+    private void UpdateRoundText()
+    {
+        if (roundText != null)
+        {
+            roundText.text = "Round " + round;
+            Debug.Log("Round text updated: " + roundText.text);
+        }
+        else
+        {
+            Debug.LogError("RoundInfo TextMeshProUGUI not found.");
+        }
     }
 
     public static void HandleRound()
@@ -40,15 +70,12 @@ public class RoundManager : MonoBehaviour
         if (round < numPlayer)
         {
             round++;
-            Debug.Log("Loading next round. New Round: " + round);
-
-            //Reload the same level between rounds
-            SceneManager.LoadScene(currentLevelName);
-            Time.timeScale = 1;
+            Debug.Log("Loading leaderboard. Round: " + round);
+            SceneManager.LoadScene("Leaderboard");
         }
         else
         {
-            Debug.Log("All rounds completed. Loading MainMenu.");
+            Debug.Log("All rounds completed. Loading Scoreboard.");
             SceneManager.LoadScene("Scoreboard");
             Time.timeScale = 1;
             LobbyManager.Instance.ResetLobby();
@@ -59,5 +86,34 @@ public class RoundManager : MonoBehaviour
     public static void ResetRound()
     {
         round = 1;
+    }
+
+    public int getRound()
+    {
+        return round;
+    }
+
+    public static void ReturnToGame()
+    {
+        Debug.Log("Returning to game. Current Round: " + round);
+        Debug.Log("Current level name: " + currentLevelName);
+        if (!string.IsNullOrEmpty(currentLevelName))
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene(currentLevelName);
+            SceneManager.sceneLoaded += OnSceneLoaded;
+            Debug.Log("Scene loaded: " + currentLevelName);
+        }
+        else
+        {
+            Debug.LogError("Current level name is not set.");
+        }
+    }
+
+    private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        Instance.InitializeRoundText();
+        Instance.UpdateRoundText();
     }
 }

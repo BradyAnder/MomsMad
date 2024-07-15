@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PlayerManager : MonoBehaviour
     List<GameObject> availableSpawnPoints = new List<GameObject>();
     private InGameScoreboard inGameScoreboard;
     public Material[] childColourMats;
+    public GameObject playerNumberIndicator;
 
     // The mom spawnPoint
     public GameObject MomSpawnPoint;
@@ -42,9 +44,11 @@ public class PlayerManager : MonoBehaviour
     private void DetectPlayers()
     {
         playerInfo = LobbyManager.Instance.GetPlayers();
+        for (int i = 0; i < playerInfo.Count; i++) {
+            playerInfo[i].playerNumber = i + 1;
+        }
     }
 
-    // TODO
     private void InitializeScores()
     {
         scoreRecorder = FindObjectOfType<ScoreRecorder>();
@@ -54,6 +58,14 @@ public class PlayerManager : MonoBehaviour
         {
             scoreRecorder.AddScore(player, 0); // Initialize each player's score to 0
         }
+    }
+
+    void AddPlayerNumberIndicator(GameObject playerObj, int playerNumber)
+    {
+        GameObject numIndicator = Instantiate(playerNumberIndicator, playerObj.transform);
+        numIndicator.transform.localPosition = Vector3.up * 2;
+        TextMeshPro temp = numIndicator.GetComponent<TextMeshPro>();
+        temp.text = "Player " + playerNumber.ToString();
     }
 
     public void AddScore(GameObject playerObj, int amount) {
@@ -113,6 +125,7 @@ public class PlayerManager : MonoBehaviour
         PlayerInput currentPlayer = momObj.GetComponent<PlayerInput>();
         currentPlayer.SwitchCurrentControlScheme("controller", player.device);
         player.currentObj = momObj;
+        AddPlayerNumberIndicator(momObj, player.playerNumber);
     }
 
     void SpawnChild(LobbyManager.Player player, List<GameObject> spawnPoints, int colourIndex)
@@ -137,6 +150,7 @@ public class PlayerManager : MonoBehaviour
         PlayerInput currentPlayer = childObj.GetComponent<PlayerInput>();
         currentPlayer.SwitchCurrentControlScheme("controller", player.device);
         player.currentObj = childObj;
+        AddPlayerNumberIndicator(childObj, player.playerNumber);
     }
 
     void Update()
@@ -146,6 +160,20 @@ public class PlayerManager : MonoBehaviour
         {
             // We spawn a new child 
             StartRound();
+        }
+
+        // Ensure all player number indicators face the camera
+        FaceIndicatorsToCamera();
+    }
+
+    void FaceIndicatorsToCamera()
+    {
+        Camera mainCamera = Camera.main;
+        TextMeshPro[] indicators = FindObjectsOfType<TextMeshPro>();
+        foreach (TextMeshPro indicator in indicators)
+        {
+            indicator.transform.LookAt(indicator.transform.position + mainCamera.transform.rotation * Vector3.forward,
+                                       mainCamera.transform.rotation * Vector3.up);
         }
     }
 }

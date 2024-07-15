@@ -13,7 +13,7 @@ public class MoveSlideChild : MonoBehaviour
     private Rigidbody child_body;
     public bool isSliding = false;
     private float slideTimer = 0f;
-    private float slideCooldownTimer = 0f;
+    public float slideCooldownTimer = 0f;
     private Vector3 slideDirection;
     private Quaternion originalRotation;
     private CapsuleCollider childCollider;

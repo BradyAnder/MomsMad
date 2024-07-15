@@ -5,22 +5,21 @@ using UnityEngine.InputSystem;
 
 public class GetStunned : MonoBehaviour
 {
-    public PlayerInput playerInput;
+    //public PlayerInput playerInput;
+    public MoveSlideChild moveSlideChild;
     public bool canBeStunned;
     public GameObject stunEffect;
     public float stunResistance;
-    //public Material mat;
     public GameObject shield;
-    //public float originalOpacity;
-    //public bool doFade = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
-        playerInput.enabled = true;
+        //playerInput = GetComponent<PlayerInput>();
         canBeStunned = true;
+        moveSlideChild = GetComponent<MoveSlideChild>();
+        moveSlideChild.enabled = true;
         //mat = GetComponent<Renderer>().material;
         //originalOpacity = mat.color.a;
 
@@ -34,13 +33,16 @@ public class GetStunned : MonoBehaviour
 
     public void StunPlayer()
     {
-        playerInput.enabled = false;
+        moveSlideChild.slideCooldownTimer += 6;
+        moveSlideChild.enabled = false;
+        Debug.Log("SLIDE");
         Instantiate(stunEffect, this.transform);
     }
 
     public void UnstunPlayer()
     {
-        playerInput.enabled = true;
+        moveSlideChild.enabled = true;
+        moveSlideChild.slideCooldownTimer = 0;
         for (var i = transform.childCount - 1; i >= 0; i--)
         {
             var child = transform.GetChild(i);

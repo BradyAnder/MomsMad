@@ -149,5 +149,6 @@ public class LobbyManager : MonoBehaviour
         public string colour;
         public string name;
         public GameObject currentObj;
+        public int playerNumber;
     }
 }

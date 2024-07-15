@@ -9,6 +9,10 @@ public class GetStunned : MonoBehaviour
     public bool canBeStunned;
     public GameObject stunEffect;
     public float stunResistance;
+    public Material mat;
+    public float originalOpacity;
+    public bool doFade = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +20,22 @@ public class GetStunned : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         playerInput.enabled = true;
         canBeStunned = true;
+        mat = GetComponent<Renderer>().material;
+        originalOpacity = mat.color.a;
+
+
+    }
+
+    private void Update()
+    {
+        if(doFade)
+        {
+            FadeNow();
+        }
+        else
+        {
+            ResetFade();
+        }
     }
 
     public void StunTest()
@@ -58,5 +78,19 @@ public class GetStunned : MonoBehaviour
             UnstunPlayer();
             Debug.Log("Unstun");
         
+    }
+
+    void FadeNow()
+    {
+        Color currentColor = mat.color;
+        Color smoothColor = new Color(currentColor.r, currentColor.g, currentColor.b, Mathf.Lerp(currentColor.a, .2f, 2 * Time.deltaTime));
+        mat.color = smoothColor;
+    }
+
+    void ResetFade()
+    {
+        Color currentColor = mat.color;
+        Color smoothColor = new Color(currentColor.r, currentColor.g, currentColor.b, Mathf.Lerp(currentColor.a, originalOpacity, 2 * Time.deltaTime));
+        mat.color = currentColor;
     }
 }

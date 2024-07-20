@@ -15,7 +15,6 @@ public class BreakableObject : MonoBehaviour
     public Material[] materials;
     public bool isBreakable = false;
 
-
     public int scoreValue;
 
     private void Start()
@@ -86,11 +85,11 @@ public class BreakableObject : MonoBehaviour
         {
             if (enable)
             {
-                materials[1] = outline; // Enable outline
+                materials[1] = outline;
             }
             else
             {
-                materials[1] = null; // Disable outline
+                materials[1] = null;
             }
             renderer.materials = materials;
         }

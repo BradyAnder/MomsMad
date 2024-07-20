@@ -59,7 +59,7 @@ public class BreakableRounds : MonoBehaviour
     {
         foreach (GameObject obj in round)
         {
-            if (obj != null && obj.activeSelf)
+            if (obj != null)
             {
                 return false;
             }
@@ -71,15 +71,9 @@ public class BreakableRounds : MonoBehaviour
     {
         foreach (GameObject obj in round)
         {
-            if (obj != null)
-            {
-                obj.SetActive(true);
-                BreakableObject breakable = obj.GetComponent<BreakableObject>();
-                if (breakable != null)
-                {
-                    breakable.isBreakable = true;
-                }
-            }
+            BreakableObject breakable = obj.GetComponent<BreakableObject>();
+            breakable.isBreakable = true;
+            
         }   
     }
 }

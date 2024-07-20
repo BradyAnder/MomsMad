@@ -19,14 +19,17 @@ public class BreakableObject : MonoBehaviour
 
     private void Start()
     {
-
         Renderer renderer = GetComponent<Renderer>();
-        if(renderer != null)
+        materials = renderer.materials;
+        if (materials.Length > 1)
         {
-            materials = renderer.materials;
-            outline = materials.Length > 1 ? materials[1] : null;
+            outline = materials[materials.Length-1];
         }
-        GameObject childObject = GameObject.Find("Child");
+        else
+        {
+            outline = null;
+        }
+
         GameObject scoreManagerObject = GameObject.Find("ScoreManager");
         scoreManager = scoreManagerObject.GetComponent<ScoreManager>();
         playerManager = FindObjectOfType<PlayerManager>();
@@ -81,17 +84,15 @@ public class BreakableObject : MonoBehaviour
     public void ToggleOutline (bool enable)
     {
         Renderer renderer = GetComponent<Renderer>();
-        if (renderer != null && outline != null)
+        if (enable)
         {
-            if (enable)
-            {
-                materials[1] = outline;
-            }
-            else
-            {
-                materials[1] = null;
-            }
-            renderer.materials = materials;
+            materials[materials.Length - 1] = outline;
         }
+        else
+        {
+            materials[materials.Length - 1] = null;
+        }
+        renderer.materials = materials;
+        
     }
 }

@@ -53,9 +53,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 82762ab3990b6524e87fd3aaa976b7ad, type: 2}
     - target: {fileID: -7511558181221131132, guid: f042f08521bc5dc41980b58034edcb7c, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f042f08521bc5dc41980b58034edcb7c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 82762ab3990b6524e87fd3aaa976b7ad, type: 2}
+    - target: {fileID: -7511558181221131132, guid: f042f08521bc5dc41980b58034edcb7c, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 516fb744cfa1d3848815a34ff2120adf, type: 2}
     - target: {fileID: -7234685343394203450, guid: f042f08521bc5dc41980b58034edcb7c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -155,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf2bfdc32613ea458812fb29a4a9df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brokenObject: {fileID: 0}
+  brokenObject: {fileID: 3791838954140970718, guid: 91dff34cdf3e55143accbc2f622f7917, type: 3}
   ScoreTextPopUp: {fileID: 4345266729488934642, guid: 271ea2c88d13cf645a7a6789318be597, type: 3}
   scoreManager: {fileID: 0}
   outline: {fileID: 0}

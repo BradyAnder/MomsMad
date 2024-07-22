@@ -74,10 +74,12 @@ public class BreakableObject : MonoBehaviour
         if (isBreakable == true)
         {
             ToggleOutline(true);
+            LayerBreakable(true);
         }
         else
         {
             ToggleOutline(false);
+            LayerBreakable(false);
         }
     }
 
@@ -94,5 +96,17 @@ public class BreakableObject : MonoBehaviour
         }
         renderer.materials = materials;
         
+    }
+
+    public void LayerBreakable (bool enable) //Adds breakable objects to be seen through walls
+    {
+        if (enable)
+        {
+            gameObject.layer = 7;
+        }
+        else
+        {
+            gameObject.layer = 0;
+        }
     }
 }

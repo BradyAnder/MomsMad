@@ -703,7 +703,7 @@ MonoBehaviour:
   - Child3
   - Child4
   - Child5
-  defaultScores: 000000000000000000000000000000000000000000000000
+  defaultScores: 320000006400000000000000000000000000000000000000
 --- !u!4 &895194259
 Transform:
   m_ObjectHideFlags: 0

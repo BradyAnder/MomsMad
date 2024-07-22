@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -14,8 +15,7 @@ public class LeaderBoardManager : MonoBehaviour
     private TextMeshProUGUI tempScoreText;
     private int totalChildScore = 0;
     private ScoreRecorder scoreRecorder;
-    private string[] actualChars;
-    private int[] actualScores;
+    private List<PlayerData> playerDataList;
 
     private void Awake()
     {
@@ -30,7 +30,7 @@ public class LeaderBoardManager : MonoBehaviour
             return;
         }
 
-        round_num = RoundManager.Instance.getRound();
+        round_num = RoundManager.Instance.getRound() - 1;
         Debug.Log("Round number: " + round_num);
 
         scoreRecorder = FindObjectOfType<ScoreRecorder>();
@@ -41,27 +41,38 @@ public class LeaderBoardManager : MonoBehaviour
         }
 
         string[] playerObjects = scoreRecorder.PlayerObjectsToArray();
-        actualScores = scoreRecorder.PlayerScoresToArray();
+        int[] playerScores = scoreRecorder.PlayerScoresToArray();
 
-        if (playerObjects == null || actualScores == null)
+        if (playerObjects == null || playerScores == null)
         {
             Debug.LogError("Player objects or scores not found in ScoreRecorder.");
             return;
         }
 
         Debug.Log("Player objects length: " + playerObjects.Length);
-        Debug.Log("Player scores length: " + actualScores.Length);
+        Debug.Log("Player scores length: " + playerScores.Length);
 
         int playerNumber = playerObjects.Length;
 
-        if (actualScores.Length < playerNumber)
+        if (playerScores.Length < playerNumber)
         {
             Debug.LogError("Player scores are not initialized properly.");
             useDefault = true;
+            playerDataList = new List<PlayerData>();
+            for (int i = 0; i < defaultChars.Length; i++)
+            {
+                playerDataList.Add(new PlayerData { Name = defaultChars[i], Score = defaultScores[i] });
+            }
         }
         else
         {
-            actualChars = playerObjects;
+            playerDataList = new List<PlayerData>();
+            for (int i = 0; i < playerObjects.Length; i++)
+            {
+                playerDataList.Add(new PlayerData { Name = playerObjects[i], Score = playerScores[i] });
+            }
+
+            playerDataList.Sort((x, y) => y.Score.CompareTo(x.Score));
         }
 
         if (title == null)
@@ -75,6 +86,8 @@ public class LeaderBoardManager : MonoBehaviour
             Debug.LogError("UI text rows not assigned or insufficient rows.");
             return;
         }
+
+        int highestScore = playerDataList[0].Score;
 
         for (short i = 0; i < playerNumber; i++)
         {
@@ -91,10 +104,16 @@ public class LeaderBoardManager : MonoBehaviour
                 continue;
             }
 
-            int tempScore = useDefault ? defaultScores[i] : actualScores[i];
+            int tempScore = playerDataList[i].Score;
             if (i > 0) { totalChildScore += tempScore; }
 
-            tempScoreText.text = (useDefault ? defaultChars[i] : actualChars[i]) + ": " + tempScore;
+            string displayText = playerDataList[i].Name + ": " + tempScore;
+            if (tempScore == highestScore)
+            {
+                displayText = displayText + "👑"; // Adding a crown emoji for the highest score
+            }
+
+            tempScoreText.text = displayText;
         }
 
         tempScoreText = title.GetComponent<TextMeshProUGUI>();
@@ -124,5 +143,11 @@ public class LeaderBoardManager : MonoBehaviour
         Time.timeScale = previousTimeScale; // Restore previous time scale
         Debug.Log("Time scale restored to: " + Time.timeScale);
         RoundManager.ReturnToGame();
+    }
+
+    private class PlayerData
+    {
+        public string Name { get; set; }
+        public int Score { get; set; }
     }
 }

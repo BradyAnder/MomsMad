@@ -217,4 +217,4 @@ MonoBehaviour:
   outline: {fileID: 0}
   materials: []
   isBreakable: 0
-  scoreValue: 0
+  scoreValue: 100

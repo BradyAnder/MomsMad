@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class SlipperThrow : MonoBehaviour
 {
+    public MeshRenderer arrowDisplay;
     // Values for throw charging
     public float StrongThrowForce = 30;
     public float NormalThrowForce = 22;
@@ -17,7 +18,7 @@ public class SlipperThrow : MonoBehaviour
     private float currReloadTime = 0;
     private bool isReadyThrow = true;
 
-    public float PowerUpTime = 5.0f;
+    public float powerUpTime = 5.0f;
     private float currPowerUpTime = 0;
     private bool isPowerUp = false;
     private PowerUpMode powerUpMode;
@@ -49,6 +50,10 @@ public class SlipperThrow : MonoBehaviour
     {
         if (buttonHeld)
         {
+            if (!arrowDisplay.enabled)
+            {
+                arrowDisplay.enabled = true;
+            }
             if (isPowerUp && powerUpMode.Equals(PowerUpMode.SMG))
             {
                 if (isSMGReady)
@@ -56,10 +61,12 @@ public class SlipperThrow : MonoBehaviour
                     Throw(ShootType.Normal);
                     isSMGReady = false;
                 }
-                else {
+                else
+                {
                     currSMGTime += Time.deltaTime;
                 }
-                if (currSMGTime >= reloadSMGTime) {
+                if (currSMGTime >= reloadSMGTime)
+                {
                     currSMGTime = 0;
                     isSMGReady = true;
                 }
@@ -69,6 +76,10 @@ public class SlipperThrow : MonoBehaviour
             {
                 currChargeTime += Time.deltaTime;
             }
+        }
+        else if (arrowDisplay.enabled)
+        {
+            arrowDisplay.enabled = false;
         }
         if (!isReadyThrow)
         {
@@ -80,9 +91,7 @@ public class SlipperThrow : MonoBehaviour
         }
         if (isPowerUp) {
             currPowerUpTime += Time.deltaTime;
-            Debug.Log(currPowerUpTime);
-            if (currPowerUpTime >= PowerUpTime) {
-                Debug.Log("Powerup Ends");
+            if (currPowerUpTime >= powerUpTime) {
                 currPowerUpTime = 0;
                 isPowerUp = false;
             }
@@ -118,7 +127,7 @@ public class SlipperThrow : MonoBehaviour
                 GameObject newObject = Instantiate(throwObject, throwOriginPoint.transform.position, Quaternion.identity);
                 Physics.IgnoreCollision(newObject.GetComponent<Collider>(), GetComponent<Collider>());
                 SlipperPhysics slipperPhysics = newObject.GetComponent<SlipperPhysics>();
-                slipperPhysics.bounce = 0.8f;
+                slipperPhysics.bounce = 1.0f;
                 newObject.GetComponent<Rigidbody>().AddForce(this.transform.forward * NormalThrowForce, ForceMode.Impulse);
                 return;
             case (PowerUpMode.FanShape):

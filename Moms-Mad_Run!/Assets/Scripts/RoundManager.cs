@@ -43,15 +43,26 @@ public class RoundManager : MonoBehaviour
         }
         Debug.Log("Loaded Level: " + currentLevel.name);
 
+        // Update the round text
+        UpdateRoundText();
+    }
+
+    void Update()
+    {
+        // Get the current scene name
+        Scene currentLevel = SceneManager.GetActiveScene();
+        if (currentLevel.name != "Leaderboard")
+        {
+            currentLevelName = currentLevel.name;
+        }
+
         //Reset Rounds on Main
         if (currentLevel.name == "MainMenu")
         {
             ResetRound();
             Destroy(gameObject);
+            Debug.Log("Destroyed RoundManager");
         }
-
-        // Update the round text
-        UpdateRoundText();
     }
 
     private void InitializeRoundText()

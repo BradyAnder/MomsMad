@@ -36,6 +36,10 @@ public class InGameScoreboard : MonoBehaviour
 
     private void OnEnable()
     {
+        Debug.Log("InGameScoreboard Debug");
+        foreach (string i in playerNames) {
+            Debug.Log(i);
+        }
         if (playerNames == null) { Debug.Log("InGameScoreboard: player names not defined."); return; }
         if (scoreboardRows == null) { Debug.Log("InGameScoreboard: text component not specified."); return; }
         for (int i = playerNames.Length - 1; i < scoreboardRows.Length; i++) {
@@ -44,7 +48,7 @@ public class InGameScoreboard : MonoBehaviour
     }
 
     public void updateScore(string playerName, int score) {
-        int index = playerName.IndexOf(playerName);
+        int index = System.Array.IndexOf(playerNames, playerName);
         scoreboardRows[index].text = playerName + ": " + score.ToString();
     }
 

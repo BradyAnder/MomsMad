@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MAT_outline
+  m_Name: Test
   m_Shader: {fileID: -6465566751694194690, guid: dbb6be1ae2c26f74683a9b2dd6390501, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -100,7 +100,7 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _Outline_Thickness: 0.08
+    - _Outline_Thickness: 0
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0

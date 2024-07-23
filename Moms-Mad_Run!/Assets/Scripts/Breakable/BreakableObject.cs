@@ -12,6 +12,7 @@ public class BreakableObject : MonoBehaviour
     private PlayerManager playerManager;
 
     public Material outline;
+    public Material baseMat;
     public Material[] materials;
     public bool isBreakable = false;
 
@@ -23,11 +24,12 @@ public class BreakableObject : MonoBehaviour
         materials = renderer.materials;
         if (materials.Length > 1)
         {
-            outline = materials[materials.Length-1];
+            outline = materials[1];
+            baseMat = materials[0]; 
         }
         else
         {
-            outline = null;
+            outline = baseMat;
         }
 
         GameObject scoreManagerObject = GameObject.Find("ScoreManager");
@@ -88,11 +90,11 @@ public class BreakableObject : MonoBehaviour
         Renderer renderer = GetComponent<Renderer>();
         if (enable)
         {
-            materials[materials.Length - 1] = outline;
+            materials[1] = outline;
         }
         else
         {
-            materials[materials.Length - 1] = null;
+            materials[1] = baseMat;
         }
         renderer.materials = materials;
         

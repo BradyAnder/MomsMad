@@ -13,8 +13,6 @@ public class LobbyManager : MonoBehaviour
     private List<GameObject> playerObjs = new List<GameObject>();
     private bool allReady = false;
     private bool loadScene = false;
-    private string[] defaultPlayerNames = {"P1", "P2", "P3", "P4", "P5", "P6"};
-    private short i = 0;
     private ScoreRecorder scoreRecorder;
 
     // Hold the current level scene
@@ -72,8 +70,7 @@ public class LobbyManager : MonoBehaviour
     {
         if (!players.Exists(p => p.device == gamepad))
         {
-            Player newPlayer = new Player { device = gamepad, isReady = false, name = defaultPlayerNames[i] };
-            i++;
+            Player newPlayer = new Player { device = gamepad, isReady = false};
             players.Add(newPlayer);
             Debug.Log("Gamepad " + (players.Count) + " connected.");
         }
@@ -147,7 +144,6 @@ public class LobbyManager : MonoBehaviour
         public Gamepad device;
         public bool isReady;
         public string colour;
-        public string name;
         public GameObject currentObj;
         public int playerNumber;
     }

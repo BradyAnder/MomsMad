@@ -47,9 +47,9 @@ public class InGameScoreboard : MonoBehaviour
         }
     }
 
-    public void updateScore(string playerName, int score) {
-        int index = System.Array.IndexOf(playerNames, playerName);
-        scoreboardRows[index].text = playerName + ": " + score.ToString();
+    public void updateScore(int playerNumber, int score)
+    {
+        scoreboardRows[playerNumber + 1].text = "Player " + playerNumber + ": " + score.ToString();
     }
 
     public void resetScore()

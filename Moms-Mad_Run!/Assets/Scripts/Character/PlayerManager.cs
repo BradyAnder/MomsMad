@@ -32,7 +32,7 @@ public class PlayerManager : MonoBehaviour
         string[] playerNames = new string[len];
         for (int i= 0; i < len; i++)
         {
-            playerNames[i] = playerInfo[i].name;
+            playerNames[i] = "Player" +  playerInfo[i].playerNumber.ToString();
         }
         inGameScoreboard.playerNames = playerNames;
         // Initialize the scores for each player

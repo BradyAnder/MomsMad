@@ -66,13 +66,13 @@ public class ScoreRecorder : MonoBehaviour
             playerScores[index] = (int)playerScores[index] + amount;
         }
         if (inGameScoreboard == null) { return; }
-        inGameScoreboard.updateScore(playerObj.name, (int)playerScores[index]);
+        inGameScoreboard.updateScore(playerObj.playerNumber, (int)playerScores[index]);
     }
 
     public string[] PlayerObjectsToArray() {
         string[] arr = new string[playerNumber];
         for (int i = 0; i < playerNumber; i++) {
-            arr[i] = ((LobbyManager.Player)playerObjects[i]).name;
+            arr[i] = "Player " + ((LobbyManager.Player)playerObjects[i]).playerNumber.ToString();
         }
         return arr;
     }

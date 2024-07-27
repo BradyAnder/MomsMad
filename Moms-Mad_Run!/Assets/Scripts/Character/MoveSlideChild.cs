@@ -9,6 +9,7 @@ public class MoveSlideChild : MonoBehaviour
     public float slideSpeed = 20f;
     public float slideDuration = 0.5f;
     public float slideCooldown = 1f;
+    public float rotationSpeed = 100f;
 
     private Rigidbody child_body;
     public bool isSliding = false;
@@ -86,14 +87,54 @@ public class MoveSlideChild : MonoBehaviour
         }
     }
 
-    void Slide()
+void Slide()
+{
+    if (!isSliding && slideCooldownTimer <= 0)
+    {
+        // Start the slide
+        isSliding = true;
+        slideTimer = slideDuration;
+        slideCooldownTimer = slideCooldown;
+
+        // Store the original direction before rotating the character
+        slideDirection = Child_Object.transform.forward;
+
+        // Rotate the character to look at the ceiling
+        Child_Object.transform.Rotate(-90f, 0f, 0f);
+
+        // Apply the sliding velocity in the original forward direction
+        child_body.velocity = slideDirection * slideSpeed;
+    }
+
+    if (isSliding)
     {
         slideTimer -= Time.deltaTime;
+
         if (slideTimer <= 0)
         {
-            EndSlide();
+            // End the slide
+            isSliding = false;
+            child_body.velocity = Vector3.zero;
+
+            // Reset the rotation of the character to its original state
+            Child_Object.transform.Rotate(90f, 0f, 0f);
         }
+        else
+        {
+            // Handle rotation input while sliding
+            float rotateHorizontal = Input.GetAxis("Horizontal");
+            float rotateVertical = Input.GetAxis("Vertical");
+
+            // Rotate the child object based on the input to face the direction of the user input
+            Vector3 rotation = new Vector3(rotateVertical, rotateHorizontal, 0.0f);
+            Child_Object.transform.Rotate(rotation * rotationSpeed * Time.deltaTime);
+
+            // Move the child in the direction that the user is inputing while sliding to allow for some control
+            Vector3 movement = new Vector3(moveInput.x, 0.0f, moveInput.y);
+            child_body.velocity = movement * slideSpeed;
+        }           
     }
+}
 
     void EndSlide()
     {

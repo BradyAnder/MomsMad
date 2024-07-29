@@ -45,6 +45,15 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
     }
 
+    public void GoToCredits()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Credits");
+        LobbyManager.Instance.SetLoadSceneFalse();
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+    }
+
     public void QuitGame()
     {
         Application.Quit();

@@ -12,7 +12,9 @@ public class CountDownTimer : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI countDownText;
     [SerializeField] TextMeshProUGUI timesUpText;
-    
+    [SerializeField] TextMeshProUGUI urgentText;
+        
+    [SerializeField] AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,7 @@ public class CountDownTimer : MonoBehaviour
         countDownText.color = Color.white;
         countDownText.fontSize = 50;
         timesUpText.gameObject.SetActive(false);
+        urgentText.gameObject.SetActive(false);
         countDownText.gameObject.SetActive(true);
     }
 
@@ -38,6 +41,24 @@ public class CountDownTimer : MonoBehaviour
             currentTime -= 1 * Time.deltaTime;
             int seconds = Mathf.FloorToInt(currentTime % 60);
             countDownText.text = seconds.ToString();
+            
+            if (seconds == 30)
+            {
+                audioSource.pitch = 1.1f;
+                urgentText.text = "30 seconds left!";
+                urgentText.gameObject.SetActive(true);
+            }  else if (seconds == 28)
+            {
+                urgentText.gameObject.SetActive(false);
+            } else if (seconds == 10)
+            {
+                audioSource.pitch = 1.2f;
+                urgentText.text = "10 seconds left!";
+                urgentText.gameObject.SetActive(true);
+            } else if (seconds == 8)
+            {
+                urgentText.gameObject.SetActive(false);
+            }
         }
         else
         {

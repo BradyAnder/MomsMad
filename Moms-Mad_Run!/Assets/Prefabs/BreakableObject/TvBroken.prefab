@@ -586,9 +586,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1 &8307039291021939934 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2548678995288470894, guid: 3b9944db6a2df804d9908f4776c89543, type: 3}

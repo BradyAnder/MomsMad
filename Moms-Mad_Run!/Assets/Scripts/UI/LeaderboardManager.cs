@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class LeaderBoardManager : MonoBehaviour
 {
     public GameObject title;
@@ -30,10 +30,11 @@ public class LeaderBoardManager : MonoBehaviour
             return;
         }
 
-        round_num = RoundManager.Instance.getRound() - 1;
-        Debug.Log("Round number: " + round_num);
+        // round_num = RoundManager.Instance.getRound() - 1;
 
         scoreRecorder = FindObjectOfType<ScoreRecorder>();
+        round_num = scoreRecorder.currRound;
+        Debug.Log("Round number: " + round_num);
         if (scoreRecorder == null)
         {
             Debug.LogError("Score Recorder not found.");
@@ -126,7 +127,7 @@ public class LeaderBoardManager : MonoBehaviour
         tempScoreText.text = "Leaderboard for Round: " + round_num;
 
         // Wait for 5 seconds and then return to the game
-        Debug.Log("Starting coroutine to wait for 5 seconds");
+        // Debug.Log("Starting coroutine to wait for 5 seconds");
         StartCoroutine(ReturnToGameAfterDelay(3));
     }
 
@@ -142,7 +143,9 @@ public class LeaderBoardManager : MonoBehaviour
         Debug.Log("Finished waiting. Returning to game.");
         Time.timeScale = previousTimeScale; // Restore previous time scale
         Debug.Log("Time scale restored to: " + Time.timeScale);
-        RoundManager.ReturnToGame();
+        scoreRecorder.currRound++;
+        SceneManager.LoadScene(scoreRecorder.levelSelected);
+        // RoundManager.ReturnToGame();
     }
 
     private class PlayerData

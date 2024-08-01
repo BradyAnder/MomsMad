@@ -12,6 +12,10 @@ public class ScoreRecorder : MonoBehaviour
     public bool isDebugMode = false;
     public InGameScoreboard inGameScoreboard;
 
+    public int maxRound;
+    public int currRound;
+    public string levelSelected;
+
     private void Awake()
     {
         if (instance == null)
@@ -26,6 +30,9 @@ public class ScoreRecorder : MonoBehaviour
 
         playerObjects = new ArrayList();
         playerScores = new ArrayList();
+        maxRound = 0;
+        currRound = 0;
+        levelSelected = "";
 
         if (isDebugMode)
         {
@@ -90,5 +97,8 @@ public class ScoreRecorder : MonoBehaviour
         playerObjects.Clear();
         playerScores.Clear();
         playerNumber = 0;
+        maxRound = 0;
+        currRound = 0;
+        levelSelected = "";
     }
 }

@@ -110,6 +110,8 @@ public class LobbyManager : MonoBehaviour
             {
                 scoreRecorder = FindObjectOfType<ScoreRecorder>();
                 scoreRecorder.ResetAll();
+                scoreRecorder.maxRound = players.Count;
+                scoreRecorder.currRound = 1;
                 SceneManager.LoadScene("Level Select");
                 loadScene = false;
                 SceneNameUpdate();

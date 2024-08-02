@@ -16,6 +16,7 @@ public class LeaderBoardManager : MonoBehaviour
     private int totalChildScore = 0;
     private ScoreRecorder scoreRecorder;
     private List<PlayerData> playerDataList;
+    private Dictionary<string, Color> playerColors;
 
     private void Awake()
     {
@@ -75,6 +76,12 @@ public class LeaderBoardManager : MonoBehaviour
             playerDataList.Sort((x, y) => y.Score.CompareTo(x.Score));
         }
 
+        PlayerManager playerManager = FindObjectOfType<PlayerManager>();
+        if (playerManager != null)
+        {
+            playerColors = playerManager.GetPlayerColors();
+        }
+
         if (title == null)
         {
             Debug.LogError("UI title not assigned");
@@ -114,6 +121,11 @@ public class LeaderBoardManager : MonoBehaviour
             }
 
             tempScoreText.text = displayText;
+
+            if (playerColors != null && playerColors.TryGetValue(playerDataList[i].Name, out Color playerColor))
+            {
+                tempScoreText.color = playerColor;
+            }
         }
 
         tempScoreText = title.GetComponent<TextMeshProUGUI>();

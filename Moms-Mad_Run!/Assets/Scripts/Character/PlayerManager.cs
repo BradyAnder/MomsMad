@@ -54,9 +54,18 @@ public class PlayerManager : MonoBehaviour
         scoreRecorder = FindObjectOfType<ScoreRecorder>();
         scoreRecorder.inGameScoreboard = this.inGameScoreboard;
         inGameScoreboard.enabled = true;
+        Dictionary<string, Color> playerColors = new Dictionary<string, Color>();
         foreach (LobbyManager.Player player in playerInfo)
         {
             scoreRecorder.AddScore(player, 0); // Initialize each player's score to 0
+            if (ColorUtility.TryParseHtmlString(player.colour, out Color color))
+            {
+                playerColors.Add("Player" + player.playerNumber, color); // Add player color
+            }
+            else
+            {
+                Debug.LogWarning($"Invalid color string for Player {player.playerNumber}: {player.colour}");
+            }
         }
     }
 
@@ -146,6 +155,8 @@ public class PlayerManager : MonoBehaviour
         // Change the child's colour based on which child it is
         childObj.GetComponent<MeshRenderer>().material = childColourMats[colourIndex];
 
+        player.colour = "#" + ColorUtility.ToHtmlStringRGB(childColourMats[colourIndex].color);
+
         // Set the correct device to this player
         PlayerInput currentPlayer = childObj.GetComponent<PlayerInput>();
         currentPlayer.SwitchCurrentControlScheme("controller", player.device);
@@ -175,5 +186,17 @@ public class PlayerManager : MonoBehaviour
             indicator.transform.LookAt(indicator.transform.position + mainCamera.transform.rotation * Vector3.forward,
                                        mainCamera.transform.rotation * Vector3.up);
         }
+    }
+    public Dictionary<string, Color> GetPlayerColors()
+    {
+        Dictionary<string, Color> playerColors = new Dictionary<string, Color>();
+        foreach (LobbyManager.Player player in playerInfo)
+        {
+            if (ColorUtility.TryParseHtmlString(player.colour, out Color color))
+            {
+                playerColors.Add("Player" + player.playerNumber, color);
+            }
+        }
+        return playerColors;
     }
 }

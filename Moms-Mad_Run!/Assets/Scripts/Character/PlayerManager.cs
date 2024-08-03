@@ -13,7 +13,6 @@ public class PlayerManager : MonoBehaviour
     public Material[] childColourMats;
     public GameObject playerNumberIndicator;
 
-    // The mom spawnPoint
     public GameObject MomSpawnPoint;
 
     private List<PlayerInput> playerInputs = new List<PlayerInput>();
@@ -26,18 +25,17 @@ public class PlayerManager : MonoBehaviour
     {
         inGameScoreboard = FindObjectOfType<InGameScoreboard>();
         if (inGameScoreboard == null) { Debug.Log("PlayerManager: in-game scoreboard component not found."); }
-        // Initialize the players
+
         DetectPlayers();
         int len = playerInfo.Count;
         string[] playerNames = new string[len];
-        for (int i= 0; i < len; i++)
+        for (int i = 0; i < len; i++)
         {
             playerNames[i] = "Player" +  playerInfo[i].playerNumber.ToString();
         }
         inGameScoreboard.playerNames = playerNames;
-        // Initialize the scores for each player
+
         InitializeScores();
-        // Spawn the players for the first round
         StartRound();
     }
 
@@ -67,14 +65,7 @@ public class PlayerManager : MonoBehaviour
                 Debug.LogWarning($"Invalid color string for Player {player.playerNumber}: {player.colour}");
             }
         }
-    }
-
-    void AddPlayerNumberIndicator(GameObject playerObj, int playerNumber)
-    {
-        GameObject numIndicator = Instantiate(playerNumberIndicator, playerObj.transform);
-        numIndicator.transform.localPosition = Vector3.up * 2;
-        TextMeshPro temp = numIndicator.GetComponent<TextMeshPro>();
-        temp.text = "Player " + playerNumber.ToString();
+        Debug.Log("Player colors initialized: " + playerColors.Count);
     }
 
     public void AddScore(GameObject playerObj, int amount) {
@@ -87,19 +78,14 @@ public class PlayerManager : MonoBehaviour
 
     void StartRound()
     {
-        // Check for end of game
         if (RoundManager.round - 1 >= playerInfo.Count)
         {
-            // End of game
             Debug.Log("All rounds completed!");
             inGameScoreboard.resetScore();
             return;
         }
 
-        // Reset the available spawn points to the entire list
         availableSpawnPoints = new List<GameObject>(childSpawnPoints);
-
-        // Crude index to track number of child players spawned for changing colours
         int colourIndex = 0;
 
         for (int i = 0; i < playerInfo.Count; i++)
@@ -122,15 +108,12 @@ public class PlayerManager : MonoBehaviour
 
     void SpawnMom(LobbyManager.Player player)
     {
-        // Instantiate a new player and recognize it's Mom and Child objects
         GameObject newObj = Instantiate(playerPrefab, MomSpawnPoint.transform.position, Quaternion.identity);
         GameObject momObj = newObj.GetComponentInChildren<MoveMom>().gameObject;
         GameObject childObj = newObj.GetComponentInChildren<MoveSlideChild>().gameObject;
 
-        // Turn off the child object
         childObj.SetActive(false);
 
-        // Set the correct device to this player
         PlayerInput currentPlayer = momObj.GetComponent<PlayerInput>();
         currentPlayer.SwitchCurrentControlScheme("controller", player.device);
         player.currentObj = momObj;
@@ -139,25 +122,19 @@ public class PlayerManager : MonoBehaviour
 
     void SpawnChild(LobbyManager.Player player, List<GameObject> spawnPoints, int colourIndex)
     {
-        // Choose a random spawn point for the child
         int randomIndex = Random.Range(0, spawnPoints.Count);
         GameObject spawnPoint = spawnPoints[randomIndex];
-        spawnPoints.RemoveAt(randomIndex); // Remove the chosen spawn point from the list
+        spawnPoints.RemoveAt(randomIndex);
 
-        // Instantiate a new player and recognize it's Mom and Child objects
         GameObject newObj = Instantiate(playerPrefab, spawnPoint.transform.position, Quaternion.identity);
         GameObject momObj = newObj.GetComponentInChildren<MoveMom>().gameObject;
         GameObject childObj = newObj.GetComponentInChildren<MoveSlideChild>().gameObject;
 
-        // Turn the mom object off
         momObj.SetActive(false);
 
-        // Change the child's colour based on which child it is
         childObj.GetComponent<MeshRenderer>().material = childColourMats[colourIndex];
-
         player.colour = "#" + ColorUtility.ToHtmlStringRGB(childColourMats[colourIndex].color);
 
-        // Set the correct device to this player
         PlayerInput currentPlayer = childObj.GetComponent<PlayerInput>();
         currentPlayer.SwitchCurrentControlScheme("controller", player.device);
         player.currentObj = childObj;
@@ -166,14 +143,11 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        // For testing: press the space key to start the next round
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            // We spawn a new child 
             StartRound();
         }
 
-        // Ensure all player number indicators face the camera
         FaceIndicatorsToCamera();
     }
 
@@ -187,6 +161,7 @@ public class PlayerManager : MonoBehaviour
                                        mainCamera.transform.rotation * Vector3.up);
         }
     }
+
     public Dictionary<string, Color> GetPlayerColors()
     {
         Dictionary<string, Color> playerColors = new Dictionary<string, Color>();
@@ -197,6 +172,7 @@ public class PlayerManager : MonoBehaviour
                 playerColors.Add("Player" + player.playerNumber, color);
             }
         }
+        Debug.Log("Retrieved player colors: " + playerColors.Count);
         return playerColors;
     }
 }

@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf2bfdc32613ea458812fb29a4a9df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brokenObject: {fileID: 5943358017122598706, guid: a9b72c15761e2144ca554da10eb9e610, type: 3}
+  brokenObject: {fileID: 4219153220850565143, guid: a9b72c15761e2144ca554da10eb9e610, type: 3}
   ScoreTextPopUp: {fileID: 4345266729488934642, guid: 271ea2c88d13cf645a7a6789318be597, type: 3}
   spawnTextPoint: {fileID: 3162245822737046020}
   scoreManager: {fileID: 0}

@@ -37,8 +37,7 @@ public class BreakableRounds : MonoBehaviour
         if(currentRound != null && IsRoundEmpty(currentRound))
         {
             selectRandomRound();
-        }
-           
+        }    
     }
 
     private void selectRandomRound()

@@ -6,11 +6,17 @@ using UnityEngine;
 public class BreakableObject : MonoBehaviour
 {
     public GameObject brokenObject;
+    [Space(1)]
+    [Header("Score Text")]
     public GameObject ScoreTextPopUp;
+    public GameObject spawnTextPoint;
+    [Space(1)]
+
     private MoveSlideChild moveScript;
     public ScoreManager scoreManager;
     private PlayerManager playerManager;
-
+    [Space(1)]
+    [Header("Outliner")]
     public Material outline;
     public Material baseMat;
     public Material[] materials;
@@ -66,7 +72,7 @@ public class BreakableObject : MonoBehaviour
 
     void ShowScoreText()
     {
-       GameObject scorePopUP = Instantiate(ScoreTextPopUp, transform.position, Quaternion.identity);
+       GameObject scorePopUP = Instantiate(ScoreTextPopUp, spawnTextPoint.transform.position, Quaternion.identity);
        TMP_Text scoreText = scorePopUP.GetComponentInChildren<TMP_Text>();
        scoreText.text = scoreValue.ToString();
     }

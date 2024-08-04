@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4925804197609458868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 368773395027883906}
+  m_Layer: 0
+  m_Name: SpawnText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &368773395027883906
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4925804197609458868}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.767, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6161421424732628652}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5911956758570860871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66,7 +97,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 86204a6a26990794296b8b9183a244d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 368773395027883906}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 86204a6a26990794296b8b9183a244d7, type: 3}
       insertIndex: -1
@@ -78,6 +112,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1067583776401097511}
   m_SourcePrefab: {fileID: 100100000, guid: 86204a6a26990794296b8b9183a244d7, type: 3}
+--- !u!4 &6161421424732628652 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 86204a6a26990794296b8b9183a244d7, type: 3}
+  m_PrefabInstance: {fileID: 5911956758570860871}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6830294362398342166 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 86204a6a26990794296b8b9183a244d7, type: 3}
@@ -145,8 +184,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenObject: {fileID: 5536335545283520439, guid: debdb3aae2e0b7447a7b4389619c3566, type: 3}
   ScoreTextPopUp: {fileID: 4345266729488934642, guid: 271ea2c88d13cf645a7a6789318be597, type: 3}
+  spawnTextPoint: {fileID: 4925804197609458868}
   scoreManager: {fileID: 0}
   outline: {fileID: 0}
+  baseMat: {fileID: 0}
   materials: []
   isBreakable: 0
   scoreValue: 100

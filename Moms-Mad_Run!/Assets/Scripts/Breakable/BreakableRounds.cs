@@ -36,9 +36,9 @@ public class BreakableRounds : MonoBehaviour
     {
         if(currentRound != null && IsRoundEmpty(currentRound))
         {
+            Debug.Log("Setecting a new round");
             selectRandomRound();
-        }
-           
+        }    
     }
 
     private void selectRandomRound()
@@ -64,6 +64,7 @@ public class BreakableRounds : MonoBehaviour
                 return false;
             }
         }
+        Debug.Log("Round is empty");
         return true;
     }
 
@@ -71,9 +72,14 @@ public class BreakableRounds : MonoBehaviour
     {
         foreach (GameObject obj in round)
         {
-            BreakableObject breakable = obj.GetComponent<BreakableObject>();
-            breakable.isBreakable = true;
-            
+            if (obj != null)
+            {
+                BreakableObject breakable = obj.GetComponent<BreakableObject>();
+                if (breakable != null)
+                {
+                    breakable.isBreakable = true;
+                }
+            } 
         }   
     }
 }

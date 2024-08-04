@@ -125,11 +125,6 @@ public class LeaderBoardManager : MonoBehaviour
             if (playerColors != null && playerColors.TryGetValue(playerDataList[i].Name, out Color playerColor))
             {
                 tempScoreText.color = playerColor;
-                Debug.Log($"Set color for {playerDataList[i].Name}: {playerColor}");
-            }
-            else
-            {
-                Debug.LogWarning($"No color found for {playerDataList[i].Name}");
             }
         }
 
@@ -142,6 +137,7 @@ public class LeaderBoardManager : MonoBehaviour
 
         tempScoreText.text = "Leaderboard for Round: " + round_num;
 
+        // Wait for 5 seconds and then return to the game
         Debug.Log("Starting coroutine to wait for 5 seconds");
         StartCoroutine(ReturnToGameAfterDelay(3));
     }
@@ -150,13 +146,13 @@ public class LeaderBoardManager : MonoBehaviour
     {
         Debug.Log("Waiting for " + delay + " seconds before returning to game.");
         float previousTimeScale = Time.timeScale;
-        Time.timeScale = 1f;
+        Time.timeScale = 1f; // Ensure time scale is 1 during wait
 
         Debug.Log("Current time scale set to: " + Time.timeScale);
         yield return new WaitForSeconds(delay);
 
         Debug.Log("Finished waiting. Returning to game.");
-        Time.timeScale = previousTimeScale;
+        Time.timeScale = previousTimeScale; // Restore previous time scale
         Debug.Log("Time scale restored to: " + Time.timeScale);
         RoundManager.ReturnToGame();
     }

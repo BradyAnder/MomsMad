@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6198459845382984358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5572703955048630249}
+  m_Layer: 0
+  m_Name: EffectSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5572703955048630249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6198459845382984358}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: 0.0144}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5160794722063514893}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4617432107431697126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -106,7 +137,10 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 84306162f017a04418d230e767383025, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6caeecbfaeda9c644bf8631bf5abb01a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5572703955048630249}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6caeecbfaeda9c644bf8631bf5abb01a, type: 3}
       insertIndex: -1
@@ -114,6 +148,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6caeecbfaeda9c644bf8631bf5abb01a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1979311664381754556}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6caeecbfaeda9c644bf8631bf5abb01a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1922520028539186225}
     - targetCorrespondingSourceObject: {fileID: -5979823452357121775, guid: 6caeecbfaeda9c644bf8631bf5abb01a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6006699367606377121}
@@ -619,6 +656,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!4 &5160794722063514893 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6caeecbfaeda9c644bf8631bf5abb01a, type: 3}
+  m_PrefabInstance: {fileID: 4617432107431697126}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5536335545283520439 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6caeecbfaeda9c644bf8631bf5abb01a, type: 3}
@@ -673,6 +715,20 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &1922520028539186225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5536335545283520439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e6b3d768e17724bbc4dd529c21b38c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectSpawn: {fileID: 6198459845382984358}
+  particleFX: {fileID: 5736762897485464901, guid: cfe7f5a60b26501428977c8e2ddd57e7, type: 3}
 --- !u!1 &7599676337883052770 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6241123403508031484, guid: 6caeecbfaeda9c644bf8631bf5abb01a, type: 3}

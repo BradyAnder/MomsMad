@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour
     private InGameScoreboard inGameScoreboard;
     public Material[] childColourMats;
     public GameObject playerNumberIndicator;
+    public Color[] playerColors = { new Color(1, 0, 0), new Color(1, 1, 0), new Color(0.5f, 0, 0.5f), new Color(1, 0.5f, 0) };
 
     // The mom spawnPoint
     public GameObject MomSpawnPoint;
@@ -60,12 +61,13 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    void AddPlayerNumberIndicator(GameObject playerObj, int playerNumber)
+    void AddPlayerNumberIndicator(GameObject playerObj, int playerNumber, Color color)
     {
         GameObject numIndicator = Instantiate(playerNumberIndicator, playerObj.transform);
         numIndicator.transform.localPosition = Vector3.up * 2;
         TextMeshPro temp = numIndicator.GetComponent<TextMeshPro>();
         temp.text = "Player " + playerNumber.ToString();
+        temp.color = color;
     }
 
     public void AddScore(GameObject playerObj, int amount) {
@@ -133,7 +135,7 @@ public class PlayerManager : MonoBehaviour
         momObj.GetComponent<MeshRenderer>().material = childColourMats[colourIndex];
         momObj.layer = layer;
         player.currentObj = momObj;
-        AddPlayerNumberIndicator(momObj, player.playerNumber);
+        AddPlayerNumberIndicator(momObj, player.playerNumber, playerColors[colourIndex]);
     }
 
     void SpawnChild(LobbyManager.Player player, List<GameObject> spawnPoints, int colourIndex, int layer)
@@ -159,7 +161,7 @@ public class PlayerManager : MonoBehaviour
         currentPlayer.SwitchCurrentControlScheme("controller", player.device);
         player.currentObj = childObj;
         childObj.layer = layer;
-        AddPlayerNumberIndicator(childObj, player.playerNumber);
+        AddPlayerNumberIndicator(childObj, player.playerNumber, playerColors[colourIndex]);
     }
 
     void Update()

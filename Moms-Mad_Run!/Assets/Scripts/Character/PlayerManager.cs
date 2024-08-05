@@ -79,7 +79,7 @@ public class PlayerManager : MonoBehaviour
     void StartRound()
     {
         // Check for end of game
-        if (RoundManager.round - 1 >= playerInfo.Count)
+        if (scoreRecorder.currRound - 1 >= playerInfo.Count)
         {
             // End of game
             Debug.Log("All rounds completed!");
@@ -98,7 +98,8 @@ public class PlayerManager : MonoBehaviour
             if (i == scoreRecorder.currRound - 1)
             {
                 Debug.Log("Spawned Mom");
-                SpawnMom(playerInfo[i]);
+                SpawnMom(playerInfo[i], colourIndex);
+                colourIndex++;
             }
             else
             {
@@ -111,7 +112,7 @@ public class PlayerManager : MonoBehaviour
         currentRound++;
     }
 
-    void SpawnMom(LobbyManager.Player player)
+    void SpawnMom(LobbyManager.Player player, int colourIndex)
     {
         // Instantiate a new player and recognize it's Mom and Child objects
         GameObject newObj = Instantiate(playerPrefab, MomSpawnPoint.transform.position, Quaternion.identity);
@@ -124,6 +125,7 @@ public class PlayerManager : MonoBehaviour
         // Set the correct device to this player
         PlayerInput currentPlayer = momObj.GetComponent<PlayerInput>();
         currentPlayer.SwitchCurrentControlScheme("controller", player.device);
+        momObj.GetComponent<MeshRenderer>().material = childColourMats[colourIndex];
         player.currentObj = momObj;
         AddPlayerNumberIndicator(momObj, player.playerNumber);
     }
@@ -159,7 +161,7 @@ public class PlayerManager : MonoBehaviour
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             // We spawn a new child 
-            StartRound();
+            // StartRound();
         }
 
         // Ensure all player number indicators face the camera

@@ -13,7 +13,7 @@ public class CountDownTimer : MonoBehaviour
     [SerializeField] TextMeshProUGUI countDownText;
     [SerializeField] TextMeshProUGUI timesUpText;
     [SerializeField] TextMeshProUGUI urgentText;
-        
+
     [SerializeField] AudioSource audioSource;
 
     // Start is called before the first frame update

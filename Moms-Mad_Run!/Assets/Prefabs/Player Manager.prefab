@@ -90,9 +90,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 7983105575721990469, guid: bf80e31e9dfe06b4397acd8f9c4fc5b0, type: 3}
-  childSpawnPoints: []
+  childSpawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   childColourMats:
-  - {fileID: 2100000, guid: 237831ebdda23bd4a840a98e295503c1, type: 2}
-  - {fileID: 2100000, guid: 9618a05127b18634cacbf17c85bc3613, type: 2}
-  - {fileID: 2100000, guid: 8122d1ad1f4c72d419435d7a409e0c1f, type: 2}
+  - {fileID: 2100000, guid: ec6ecbc8bba201d48bc806aa3bd8b786, type: 2}
+  - {fileID: 2100000, guid: 683f57d30d1c72745adf6c06481a461e, type: 2}
+  - {fileID: 2100000, guid: f45a3aee51035ec43be829cea3a5b842, type: 2}
+  - {fileID: 2100000, guid: b7530e35cf587634882e9a2f3195116d, type: 2}
+  playerNumberIndicator: {fileID: 2759897339505856393, guid: 0616669d5da8c884f9381e4c2910b5e7, type: 3}
   MomSpawnPoint: {fileID: 0}

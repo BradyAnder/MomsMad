@@ -43,6 +43,7 @@ public class LeaderBoardManager : MonoBehaviour
 
         string[] playerObjects = scoreRecorder.PlayerObjectsToArray();
         int[] playerScores = scoreRecorder.PlayerScoresToArray();
+        Color[] playerColors = scoreRecorder.PlayerColorsToArray();
 
         if (playerObjects == null || playerScores == null)
         {
@@ -62,7 +63,7 @@ public class LeaderBoardManager : MonoBehaviour
             playerDataList = new List<PlayerData>();
             for (int i = 0; i < defaultChars.Length; i++)
             {
-                playerDataList.Add(new PlayerData { Name = defaultChars[i], Score = defaultScores[i] });
+                playerDataList.Add(new PlayerData { Name = defaultChars[i], Score = defaultScores[i], PlayerColor = new Color(0.5f, 0.5f, 0.5f) });
             }
         }
         else
@@ -70,7 +71,7 @@ public class LeaderBoardManager : MonoBehaviour
             playerDataList = new List<PlayerData>();
             for (int i = 0; i < playerObjects.Length; i++)
             {
-                playerDataList.Add(new PlayerData { Name = playerObjects[i], Score = playerScores[i] });
+                playerDataList.Add(new PlayerData { Name = playerObjects[i], Score = playerScores[i], PlayerColor = playerColors[i] });
             }
 
             playerDataList.Sort((x, y) => y.Score.CompareTo(x.Score));
@@ -106,6 +107,7 @@ public class LeaderBoardManager : MonoBehaviour
             }
 
             int tempScore = playerDataList[i].Score;
+            Color color = playerDataList[i].PlayerColor;
             if (i > 0) { totalChildScore += tempScore; }
 
             string displayText = playerDataList[i].Name + ": " + tempScore;
@@ -115,6 +117,7 @@ public class LeaderBoardManager : MonoBehaviour
             }
 
             tempScoreText.text = displayText;
+            tempScoreText.color = color;
         }
 
         tempScoreText = title.GetComponent<TextMeshProUGUI>();
@@ -152,5 +155,7 @@ public class LeaderBoardManager : MonoBehaviour
     {
         public string Name { get; set; }
         public int Score { get; set; }
+
+        public Color PlayerColor { get; set; }
     }
 }

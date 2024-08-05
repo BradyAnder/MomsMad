@@ -93,6 +93,14 @@ public class ScoreRecorder : MonoBehaviour
         return arr;
     }
 
+    public Color[] PlayerColorsToArray() {
+        Color[] arr = new Color[playerNumber];
+        for (int i = 0; i < playerNumber; i++) {
+            arr[i] = ((LobbyManager.Player)playerObjects[i]).colour;
+        }
+        return arr;
+    }
+
     public void ResetAll() {
         playerObjects.Clear();
         playerScores.Clear();
@@ -100,5 +108,6 @@ public class ScoreRecorder : MonoBehaviour
         maxRound = 0;
         currRound = 0;
         levelSelected = "";
+        inGameScoreboard.resetScore();
     }
 }

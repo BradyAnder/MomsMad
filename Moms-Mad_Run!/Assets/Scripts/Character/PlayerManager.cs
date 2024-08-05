@@ -92,27 +92,32 @@ public class PlayerManager : MonoBehaviour
 
         // Crude index to track number of child players spawned for changing colours
         int colourIndex = 0;
-
+        int layer = 8;
         for (int i = 0; i < playerInfo.Count; i++)
         {
+            if (i == 0) { layer = 8; }
+            if (i == 1) { layer = 9; }
+            if (i == 2) { layer = 11; }
+            if (i == 3) { layer = 10; }
             if (i == scoreRecorder.currRound - 1)
             {
                 Debug.Log("Spawned Mom");
-                SpawnMom(playerInfo[i], colourIndex);
+                SpawnMom(playerInfo[i], colourIndex, layer);
                 colourIndex++;
             }
             else
             {
                 Debug.Log("Spawned Child");
-                SpawnChild(playerInfo[i], availableSpawnPoints, colourIndex);
+                SpawnChild(playerInfo[i], availableSpawnPoints, colourIndex, layer);
                 colourIndex++;
             }
+            layer++;
         }
 
         currentRound++;
     }
 
-    void SpawnMom(LobbyManager.Player player, int colourIndex)
+    void SpawnMom(LobbyManager.Player player, int colourIndex, int layer)
     {
         // Instantiate a new player and recognize it's Mom and Child objects
         GameObject newObj = Instantiate(playerPrefab, MomSpawnPoint.transform.position, Quaternion.identity);
@@ -126,11 +131,12 @@ public class PlayerManager : MonoBehaviour
         PlayerInput currentPlayer = momObj.GetComponent<PlayerInput>();
         currentPlayer.SwitchCurrentControlScheme("controller", player.device);
         momObj.GetComponent<MeshRenderer>().material = childColourMats[colourIndex];
+        momObj.layer = layer;
         player.currentObj = momObj;
         AddPlayerNumberIndicator(momObj, player.playerNumber);
     }
 
-    void SpawnChild(LobbyManager.Player player, List<GameObject> spawnPoints, int colourIndex)
+    void SpawnChild(LobbyManager.Player player, List<GameObject> spawnPoints, int colourIndex, int layer)
     {
         // Choose a random spawn point for the child
         int randomIndex = Random.Range(0, spawnPoints.Count);
@@ -152,6 +158,7 @@ public class PlayerManager : MonoBehaviour
         PlayerInput currentPlayer = childObj.GetComponent<PlayerInput>();
         currentPlayer.SwitchCurrentControlScheme("controller", player.device);
         player.currentObj = childObj;
+        childObj.layer = layer;
         AddPlayerNumberIndicator(childObj, player.playerNumber);
     }
 

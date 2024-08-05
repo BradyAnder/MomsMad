@@ -657,6 +657,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 0}
+  playerColors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 1, g: 1, b: 0, a: 1}
 --- !u!1001 &36762698
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14314,21 +14319,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2759897339505856393, guid: 0616669d5da8c884f9381e4c2910b5e7, type: 3}
     - target: {fileID: 5741638909702683215, guid: d3083e365e7bb64459ea7ef94d7036a9, type: 3}
+      propertyPath: childColourMats.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5741638909702683215, guid: d3083e365e7bb64459ea7ef94d7036a9, type: 3}
       propertyPath: childSpawnPoints.Array.size
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5741638909702683215, guid: d3083e365e7bb64459ea7ef94d7036a9, type: 3}
       propertyPath: childColourMats.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3f0cefcf962ab0e45bda32af14f51b21, type: 2}
+      objectReference: {fileID: 2100000, guid: ec6ecbc8bba201d48bc806aa3bd8b786, type: 2}
     - target: {fileID: 5741638909702683215, guid: d3083e365e7bb64459ea7ef94d7036a9, type: 3}
       propertyPath: childColourMats.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: ffd5283deb989fd4ea5ee78dc1ec9a47, type: 2}
+      objectReference: {fileID: 2100000, guid: 683f57d30d1c72745adf6c06481a461e, type: 2}
     - target: {fileID: 5741638909702683215, guid: d3083e365e7bb64459ea7ef94d7036a9, type: 3}
       propertyPath: childColourMats.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: 570baf6843dd4f349836eefe50db4460, type: 2}
+      objectReference: {fileID: 2100000, guid: f45a3aee51035ec43be829cea3a5b842, type: 2}
+    - target: {fileID: 5741638909702683215, guid: d3083e365e7bb64459ea7ef94d7036a9, type: 3}
+      propertyPath: childColourMats.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: b7530e35cf587634882e9a2f3195116d, type: 2}
     - target: {fileID: 5741638909702683215, guid: d3083e365e7bb64459ea7ef94d7036a9, type: 3}
       propertyPath: childSpawnPoints.Array.data[0]
       value: 

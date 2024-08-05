@@ -9,6 +9,7 @@ public class InGameScoreboard : MonoBehaviour
     public string[] playerNames;
     public TextMeshProUGUI[] scoreboardRows;
     private InGameScoreboard instance;
+    private int currRoundNumber;
 
     private static string currentLevelName = "Null"; // Hold the current level scene
 
@@ -27,29 +28,18 @@ public class InGameScoreboard : MonoBehaviour
 
     void Update()
     {
-        SceneNameUpdate();
-        if (currentLevelName == "MainMenu") //Destroys self if on main menu
-        {
-            Destroy(gameObject);
-        }
+
     }
 
     private void OnEnable()
     {
-        Debug.Log("InGameScoreboard Debug");
-        foreach (string i in playerNames) {
-            Debug.Log(i);
-        }
         if (playerNames == null) { Debug.Log("InGameScoreboard: player names not defined."); return; }
         if (scoreboardRows == null) { Debug.Log("InGameScoreboard: text component not specified."); return; }
-        for (int i = playerNames.Length - 1; i < scoreboardRows.Length; i++) {
-            scoreboardRows[i].text = "";
-        }
     }
 
     public void updateScore(int playerNumber, int score)
     {
-        scoreboardRows[playerNumber + 1].text = "Player " + playerNumber + ": " + score.ToString();
+        scoreboardRows[playerNumber - 1].text = "Player " + playerNumber + ": " + score.ToString();
     }
 
     public void resetScore()
@@ -59,11 +49,4 @@ public class InGameScoreboard : MonoBehaviour
         }
     }
 
-    void SceneNameUpdate() //Update the scene name
-    {
-        // Get the current scene name
-        Scene currentLevel = SceneManager.GetActiveScene();
-        currentLevelName = currentLevel.name;
-        //Debug.Log("Loaded Level: " + currentLevel.name);
-    }
 }

@@ -7462,6 +7462,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4392781089850652984, guid: bd48fc671091da445acaf1df3807c827, type: 3}
+      propertyPath: roundText
+      value: 
+      objectReference: {fileID: 159673598}
+    - target: {fileID: 4392781089850652984, guid: bd48fc671091da445acaf1df3807c827, type: 3}
       propertyPath: urgentText
       value: 
       objectReference: {fileID: 653015925}
@@ -24993,26 +24997,6 @@ PrefabInstance:
       propertyPath: MomSpawnPoint
       value: 
       objectReference: {fileID: 178949989}
-    - target: {fileID: 5741638909702683215, guid: d3083e365e7bb64459ea7ef94d7036a9, type: 3}
-      propertyPath: playerNumberIndicator
-      value: 
-      objectReference: {fileID: 2759897339505856393, guid: 0616669d5da8c884f9381e4c2910b5e7, type: 3}
-    - target: {fileID: 5741638909702683215, guid: d3083e365e7bb64459ea7ef94d7036a9, type: 3}
-      propertyPath: childSpawnPoints.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5741638909702683215, guid: d3083e365e7bb64459ea7ef94d7036a9, type: 3}
-      propertyPath: childColourMats.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3f0cefcf962ab0e45bda32af14f51b21, type: 2}
-    - target: {fileID: 5741638909702683215, guid: d3083e365e7bb64459ea7ef94d7036a9, type: 3}
-      propertyPath: childColourMats.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: ffd5283deb989fd4ea5ee78dc1ec9a47, type: 2}
-    - target: {fileID: 5741638909702683215, guid: d3083e365e7bb64459ea7ef94d7036a9, type: 3}
-      propertyPath: childColourMats.Array.data[2]
-      value: 
-      objectReference: {fileID: 2100000, guid: 570baf6843dd4f349836eefe50db4460, type: 2}
     - target: {fileID: 5741638909702683215, guid: d3083e365e7bb64459ea7ef94d7036a9, type: 3}
       propertyPath: childSpawnPoints.Array.data[0]
       value: 

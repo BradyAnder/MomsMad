@@ -37,6 +37,7 @@ public class ScoreboardManager : MonoBehaviour
         }
         string[] playerObjects = scoreRecorder.PlayerObjectsToArray();
         int[] playerScores = scoreRecorder.PlayerScoresToArray();
+        Color[] playerColors = scoreRecorder.PlayerColorsToArray();
         playerNumber = playerScores.Length;
 
         if (playerObjects == null || playerScores == null)
@@ -51,7 +52,7 @@ public class ScoreboardManager : MonoBehaviour
             playerDataList = new List<PlayerData>();
             for (int i = 0; i < defaultChars.Length; i++)
             {
-                playerDataList.Add(new PlayerData { Name = defaultChars[i], Score = defaultScores[i] });
+                playerDataList.Add(new PlayerData { Name = defaultChars[i], Score = defaultScores[i], PlayerColor = new Color(0.8f, 0.8f, 0.8f)});
             }
         }
         else
@@ -59,7 +60,7 @@ public class ScoreboardManager : MonoBehaviour
             playerDataList = new List<PlayerData>();
             for (int i = 0; i < playerObjects.Length; i++)
             {
-                playerDataList.Add(new PlayerData { Name = playerObjects[i], Score = playerScores[i] });
+                playerDataList.Add(new PlayerData { Name = playerObjects[i], Score = playerScores[i], PlayerColor = playerColors[i]});
             }
 
             playerDataList.Sort((x, y) => y.Score.CompareTo(x.Score));
@@ -97,6 +98,7 @@ public class ScoreboardManager : MonoBehaviour
 
             string displayText = playerDataList[i].Name + ": " + tempScore;
             tempScoreText.text = displayText;
+            tempScoreText.color = playerDataList[i].PlayerColor;
         }
 
         tempScoreText = title.GetComponent<TextMeshProUGUI>();
@@ -118,5 +120,6 @@ public class ScoreboardManager : MonoBehaviour
     {
         public string Name { get; set; }
         public int Score { get; set; }
+        public Color PlayerColor { get; set; }
     }
 }

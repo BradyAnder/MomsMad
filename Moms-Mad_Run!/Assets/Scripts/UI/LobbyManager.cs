@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -14,6 +15,8 @@ public class LobbyManager : MonoBehaviour
     private bool allReady = false;
     private bool loadScene = false;
     private ScoreRecorder scoreRecorder;
+    public Color[] playerColors = { new Color(1, 0, 0), new Color(1, 1, 0), new Color(0.5f, 0, 0.5f), new Color(1, 0.5f, 0) };
+    private List<int> usedColorIndices = new List<int>();
 
     // Hold the current level scene
     private static string currentLevelName = "Null";
@@ -70,7 +73,15 @@ public class LobbyManager : MonoBehaviour
     {
         if (!players.Exists(p => p.device == gamepad))
         {
-            Player newPlayer = new Player { device = gamepad, isReady = false};
+            Color playerColor = new Color(0, 1, 1);
+            for (int c = 0; c < playerColors.Length; c++) {
+                if (!usedColorIndices.Contains(c)) {
+                    playerColor = playerColors[c];
+                    usedColorIndices.Add(c);
+                    break;
+                }
+            }
+            Player newPlayer = new Player { device = gamepad, isReady = false, colour = playerColor};
             players.Add(newPlayer);
             Debug.Log("Gamepad " + (players.Count) + " connected.");
         }
@@ -81,6 +92,9 @@ public class LobbyManager : MonoBehaviour
         Player player = players.Find(p => p.device == gamepad);
         if (player != null)
         {
+            Color playerColor = player.colour;
+            int index = Array.IndexOf(playerColors, playerColor);
+            usedColorIndices.Remove(index);
             players.Remove(player);
             Debug.Log("Gamepad " + (players.Count + 1) + " disconnected.");
         }
@@ -145,7 +159,7 @@ public class LobbyManager : MonoBehaviour
     {
         public Gamepad device;
         public bool isReady;
-        public string colour;
+        public Color colour;
         public GameObject currentObj;
         public int playerNumber;
     }

@@ -19,7 +19,9 @@ public class MoveSlideChild : MonoBehaviour
     private Quaternion originalRotation;
     private CapsuleCollider childCollider;
     private Vector2 moveInput;
-    
+    private float slideAngle;
+    private Vector3 newSlideDirection;
+
     void Start()
     {
         if (Child_Object != null)
@@ -53,6 +55,7 @@ public class MoveSlideChild : MonoBehaviour
                 slideCooldownTimer -= Time.deltaTime;
             }
         }
+
     }
 
     void MoveChildObject()
@@ -129,15 +132,32 @@ void Slide()
         }
         else
         {
-            // Handle horizontal rotation input while sliding
-            float rotateHorizontal = Input.GetAxis("Horizontal");
+                
+
+            //Checking slide direciton after rotation
+            newSlideDirection = -1 *Child_Object.transform.up;
+            
+                //change moveinput to work in 3d
+                Vector3 moveInput3 = new Vector3(moveInput.x, 0f, moveInput.y);
+
+                // Check how large the angle between stick direction and player facing direciton
+                slideAngle = Vector3.Angle(newSlideDirection, moveInput3);
+
+            // Check direction pressed and invert angle if required
+            Vector3 cross = Vector3.Cross(newSlideDirection, moveInput3);
+                if( cross.y < 0)
+                {
+                    slideAngle = -slideAngle;
+                }
+
 
             // Rotate the child object based on the horizontal input to face the direction of the user input
-            Vector3 rotation = new Vector3(0.0f, rotateHorizontal, 0.0f);
+            Vector3 rotation = new Vector3(0.0f, 0.0f, slideAngle);
             Child_Object.transform.Rotate(rotation * rotationSpeed * Time.deltaTime);
 
-            // Maintain sliding direction but allow slight steering left and right
-            Vector3 movement = slideDirection + Child_Object.transform.right * rotateHorizontal * slideSpeed;
+
+                // Maintain sliding direction but allow slight steering left and right
+                Vector3 movement = newSlideDirection * slideSpeed;
             child_body.velocity = movement.normalized * slideSpeed;
         }
     }

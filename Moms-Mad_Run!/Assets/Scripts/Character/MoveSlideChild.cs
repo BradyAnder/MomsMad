@@ -102,8 +102,16 @@ void Slide()
         // Rotate the character to look at the ceiling
         Child_Object.transform.Rotate(-90f, 0f, 0f);
 
-        // Apply the sliding velocity in the original forward direction
-        child_body.velocity = slideDirection * slideSpeed;
+        // Ensure the player moves in the direction they are facing even if standing still
+        if (child_body.velocity.magnitude == 0)
+        {
+            child_body.velocity = slideDirection * slideSpeed;
+        }
+        else
+        {
+            // Apply the sliding velocity in the original forward direction
+            child_body.velocity = slideDirection * slideSpeed;
+        }
     }
 
     if (isSliding)
@@ -121,21 +129,19 @@ void Slide()
         }
         else
         {
-            // Handle rotation input while sliding
+            // Handle horizontal rotation input while sliding
             float rotateHorizontal = Input.GetAxis("Horizontal");
-            float rotateVertical = Input.GetAxis("Vertical");
 
-            // Rotate the child object based on the input to face the direction of the user input
-            Vector3 rotation = new Vector3(rotateVertical, rotateHorizontal, 0.0f);
+            // Rotate the child object based on the horizontal input to face the direction of the user input
+            Vector3 rotation = new Vector3(0.0f, rotateHorizontal, 0.0f);
             Child_Object.transform.Rotate(rotation * rotationSpeed * Time.deltaTime);
 
-            // Move the child in the direction that the user is inputing while sliding to allow for some control
-            Vector3 movement = new Vector3(moveInput.x, 0.0f, moveInput.y);
-            child_body.velocity = movement * slideSpeed;
-        }           
+            // Maintain sliding direction but allow slight steering left and right
+            Vector3 movement = slideDirection + Child_Object.transform.right * rotateHorizontal * slideSpeed;
+            child_body.velocity = movement.normalized * slideSpeed;
+        }
     }
 }
-
     void EndSlide()
     {
         isSliding = false;

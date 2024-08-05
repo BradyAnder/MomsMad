@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -7,12 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class RoundManager : MonoBehaviour
 {
-    public static int round = 1;
     public TextMeshProUGUI roundText;
     public static RoundManager Instance;
 
     // Hold the current level scene
     private static string currentLevelName = "Null";
+
+    private ScoreRecorder scoreRecorder;
 
     private void Awake()
     {
@@ -43,6 +43,9 @@ public class RoundManager : MonoBehaviour
         }
         Debug.Log("Loaded Level: " + currentLevel.name);
 
+        // Find ScoreRecorder instance
+        scoreRecorder = FindObjectOfType<ScoreRecorder>();
+
         // Update the round text
         UpdateRoundText();
     }
@@ -56,13 +59,15 @@ public class RoundManager : MonoBehaviour
             currentLevelName = currentLevel.name;
         }
 
-        //Reset Rounds on Main
+        // Reset Rounds on Main
         if (currentLevel.name == "MainMenu")
         {
-            ResetRound();
+            scoreRecorder?.ResetAll();
             Destroy(gameObject);
             Debug.Log("Destroyed RoundManager");
         }
+
+        UpdateRoundText();
     }
 
     private void InitializeRoundText()
@@ -72,69 +77,89 @@ public class RoundManager : MonoBehaviour
 
     private void UpdateRoundText()
     {
-        if (roundText != null)
+        if (roundText != null && scoreRecorder != null)
         {
-            roundText.text = "Round " + round;
+            roundText.text = "Round " + scoreRecorder.currRound;
             Debug.Log("Round text updated: " + roundText.text);
         }
         else
         {
-            Debug.LogError("RoundInfo TextMeshProUGUI not found.");
+            Debug.LogError("RoundInfo TextMeshProUGUI or ScoreRecorder not found.");
         }
     }
 
     public static void HandleRound()
     {
-        int numPlayer = PlayerInputManager.instance.playerCount;
-        Debug.Log("Handling Round. Current Round: " + round + ", NumPlayer: " + numPlayer);
+        RoundManager instance = FindObjectOfType<RoundManager>();
+        ScoreRecorder scoreRecorder = FindObjectOfType<ScoreRecorder>();
 
-        if (round < numPlayer)
+        if (instance != null && scoreRecorder != null)
         {
-            round++;
-            Debug.Log("Loading leaderboard. Round: " + round);
-            SceneManager.LoadScene("Leaderboard");
+            int numPlayer = PlayerInputManager.instance.playerCount;
+            int round = scoreRecorder.currRound;
+            Debug.Log("Handling Round. Current Round: " + round + ", NumPlayer: " + numPlayer);
+
+            if (round < numPlayer)
+            {
+                // scoreRecorder.currRound++; // This will increment the round
+                Debug.Log("Loading leaderboard. Round: " + scoreRecorder.currRound);
+                SceneManager.LoadScene("Leaderboard");
+            }
+            else
+            {
+                Debug.Log("All rounds completed. Loading Scoreboard.");
+                SceneManager.LoadScene("Scoreboard");
+                Time.timeScale = 1;
+                LobbyManager.Instance.ResetLobby();
+                scoreRecorder.ResetAll();
+            }
         }
         else
         {
-            Debug.Log("All rounds completed. Loading Scoreboard.");
-            SceneManager.LoadScene("Scoreboard");
-            Time.timeScale = 1;
-            LobbyManager.Instance.ResetLobby();
-            ResetRound();
+            Debug.LogError("RoundManager or ScoreRecorder not found.");
         }
-    }
-
-    public static void ResetRound()
-    {
-        round = 1;
     }
 
     public int getRound()
     {
-        return round;
+        return scoreRecorder != null ? scoreRecorder.currRound : 0;
     }
 
     public static void ReturnToGame()
     {
-        Debug.Log("Returning to game. Current Round: " + round);
-        Debug.Log("Current level name: " + currentLevelName);
-        if (!string.IsNullOrEmpty(currentLevelName))
+        RoundManager instance = FindObjectOfType<RoundManager>();
+        ScoreRecorder scoreRecorder = FindObjectOfType<ScoreRecorder>();
+
+        if (instance != null && scoreRecorder != null)
         {
-            Time.timeScale = 1;
-            SceneManager.LoadScene(currentLevelName);
-            SceneManager.sceneLoaded += OnSceneLoaded;
-            Debug.Log("Scene loaded: " + currentLevelName);
+            Debug.Log("Returning to game. Current Round: " + scoreRecorder.currRound);
+            Debug.Log("Current level name: " + currentLevelName);
+            if (!string.IsNullOrEmpty(currentLevelName))
+            {
+                Time.timeScale = 1;
+                SceneManager.LoadScene(currentLevelName);
+                SceneManager.sceneLoaded += OnSceneLoaded;
+                Debug.Log("Scene loaded: " + currentLevelName);
+            }
+            else
+            {
+                Debug.LogError("Current level name is not set.");
+            }
         }
         else
         {
-            Debug.LogError("Current level name is not set.");
+            Debug.LogError("RoundManager or ScoreRecorder not found.");
         }
     }
 
     private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-        Instance.InitializeRoundText();
-        Instance.UpdateRoundText();
+        RoundManager instance = FindObjectOfType<RoundManager>();
+        if (instance != null)
+        {
+            instance.InitializeRoundText();
+            instance.UpdateRoundText();
+        }
     }
 }

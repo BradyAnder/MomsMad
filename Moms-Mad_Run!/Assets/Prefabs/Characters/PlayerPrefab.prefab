@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5640264368498358201}
   - component: {fileID: 3514677869372507479}
   - component: {fileID: 8119392415315463985}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5030373874506409510}
   - component: {fileID: 2902411725725952068}
   - component: {fileID: 139771841823238833}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Head (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 6371469199408133009}
   - component: {fileID: 4349718707159721277}
   - component: {fileID: 8466725734084813815}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 2225677117562990919}
   - component: {fileID: 6223855624023260925}
   - component: {fileID: 8381522679835473212}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 701861801461421981}
   - component: {fileID: 4753818210071675908}
   - component: {fileID: 5755463855524831099}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Eye (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 832308164135786692}
   - component: {fileID: 3133220668267737418}
   - component: {fileID: 863746013881705327}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +510,7 @@ GameObject:
   - component: {fileID: 8471875417298415393}
   - component: {fileID: 5031725031524454855}
   - component: {fileID: 2534436639231087953}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -593,7 +593,7 @@ GameObject:
   - component: {fileID: 6866031478492571241}
   - component: {fileID: 2274002719426202837}
   - component: {fileID: 4805286012165732473}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -676,7 +676,7 @@ GameObject:
   - component: {fileID: 8572734405857119616}
   - component: {fileID: 7775255826316693228}
   - component: {fileID: 2949278956184237829}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cylinder (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -759,7 +759,7 @@ GameObject:
   - component: {fileID: 6355930924607923200}
   - component: {fileID: 7931082521780838018}
   - component: {fileID: 1560715724747521279}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -842,7 +842,7 @@ GameObject:
   - component: {fileID: 3999300518264260464}
   - component: {fileID: 1119616239475860373}
   - component: {fileID: 2015243959208400765}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -925,7 +925,7 @@ GameObject:
   - component: {fileID: 8813264862909934277}
   - component: {fileID: 9211993754341112243}
   - component: {fileID: 3089099375867155359}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Hair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1008,7 +1008,7 @@ GameObject:
   - component: {fileID: 2850043894657015551}
   - component: {fileID: 6658208261559605311}
   - component: {fileID: 5948054186971413964}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1091,7 +1091,7 @@ GameObject:
   - component: {fileID: 5957059480699597317}
   - component: {fileID: 4523872521152137860}
   - component: {fileID: 7428721060534267982}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1175,7 +1175,7 @@ GameObject:
   - component: {fileID: 3878398342204384465}
   - component: {fileID: 7093163152641170770}
   - component: {fileID: 8959162864440056991}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1259,7 +1259,7 @@ GameObject:
   - component: {fileID: 5417273007581660557}
   - component: {fileID: 3860699303659276946}
   - component: {fileID: 7532370573534142545}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1342,7 +1342,7 @@ GameObject:
   - component: {fileID: 2633681936682434063}
   - component: {fileID: 8722549287703017053}
   - component: {fileID: 3759465161195207913}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Hair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1425,7 +1425,7 @@ GameObject:
   - component: {fileID: 3758192279047951595}
   - component: {fileID: 7244496752024416731}
   - component: {fileID: 3634547077116848230}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Head (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1508,7 +1508,7 @@ GameObject:
   - component: {fileID: 1205409603964803587}
   - component: {fileID: 477712625833190415}
   - component: {fileID: 7256853759700955676}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1625,7 +1625,7 @@ GameObject:
   - component: {fileID: 6441582574772804507}
   - component: {fileID: 1573493378615765933}
   - component: {fileID: 5876936241053203190}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Head (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1708,7 +1708,7 @@ GameObject:
   - component: {fileID: 7759303292644227312}
   - component: {fileID: 1620749251199373872}
   - component: {fileID: 4945043861669246765}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Head (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1791,7 +1791,7 @@ GameObject:
   - component: {fileID: 1443157419065569532}
   - component: {fileID: 2743164192951481031}
   - component: {fileID: 2043424766454327320}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1874,7 +1874,7 @@ GameObject:
   - component: {fileID: 2162614690916075288}
   - component: {fileID: 4550483058351077731}
   - component: {fileID: 7944971112122998582}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1960,7 +1960,7 @@ GameObject:
   - component: {fileID: 2432675760022617715}
   - component: {fileID: 2940731273948568059}
   - component: {fileID: 7362326694881422799}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Arm (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2129,7 +2129,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1902707910312309628, guid: bfc192ba4a92e234896feca8436c4024, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3146777245486721296, guid: bfc192ba4a92e234896feca8436c4024, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2137,7 +2137,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 3f0cefcf962ab0e45bda32af14f51b21, type: 2}
     - target: {fileID: 4058367854325530070, guid: bfc192ba4a92e234896feca8436c4024, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4058367854325530070, guid: bfc192ba4a92e234896feca8436c4024, type: 3}
       propertyPath: m_IsActive
@@ -2161,7 +2161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5726284132715252479, guid: bfc192ba4a92e234896feca8436c4024, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7536090777396435327, guid: bfc192ba4a92e234896feca8436c4024, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2354,7 +2354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 515316262451598555, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 515316262451598555, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: m_TagString
@@ -2362,7 +2362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 549779940088592381, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2091366320315142839, guid: d102af909ca3fc947ab26095aaeab9fa, type: 3}
       propertyPath: m_Volume

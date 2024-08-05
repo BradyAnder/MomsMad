@@ -1381,6 +1381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenObject: {fileID: 1676173099700753346, guid: a26a78e511dde9340a49d7432d422c4c, type: 3}
   ScoreTextPopUp: {fileID: 4345266729488934642, guid: 271ea2c88d13cf645a7a6789318be597, type: 3}
+  spawnTextPoint: {fileID: 0}
   scoreManager: {fileID: 0}
   outline: {fileID: 0}
   baseMat: {fileID: 0}
@@ -13704,9 +13705,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.8862745, g: 0.861392, b: 0.46666667, a: 0.78431374}
-    m_PressedColor: {r: 0.5686275, g: 0.5686275, b: 0.5686275, a: 1}
-    m_SelectedColor: {r: 0.8862746, g: 0.86274517, b: 0.4666667, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.6, b: 0.6, a: 0.78431374}
+    m_PressedColor: {r: 1, g: 0.2784314, b: 0.2784314, a: 1}
+    m_SelectedColor: {r: 0.6666667, g: 0.22745098, b: 0.22745098, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -24980,6 +24981,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenObject: {fileID: 1676173099700753346, guid: a26a78e511dde9340a49d7432d422c4c, type: 3}
   ScoreTextPopUp: {fileID: 4345266729488934642, guid: 271ea2c88d13cf645a7a6789318be597, type: 3}
+  spawnTextPoint: {fileID: 0}
   scoreManager: {fileID: 0}
   outline: {fileID: 0}
   baseMat: {fileID: 0}
@@ -34266,9 +34268,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.4668209, g: 0.8811542, b: 0.8867924, a: 0.78431374}
-    m_PressedColor: {r: 0.5686275, g: 0.5686275, b: 0.5686275, a: 1}
-    m_SelectedColor: {r: 0.4666667, g: 0.882353, b: 0.8862746, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.6, b: 0.6, a: 0.78431374}
+    m_PressedColor: {r: 1, g: 0.2784314, b: 0.2784314, a: 1}
+    m_SelectedColor: {r: 0.6666667, g: 0.22745098, b: 0.22745098, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -58430,9 +58432,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.98490566, g: 0.5036026, b: 0.5036026, a: 0.78431374}
-    m_PressedColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
-    m_SelectedColor: {r: 0.9803922, g: 0.49803925, b: 0.49803925, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.6, b: 0.6, a: 0.78431374}
+    m_PressedColor: {r: 1, g: 0.2784314, b: 0.2784314, a: 1}
+    m_SelectedColor: {r: 0.6666667, g: 0.22745098, b: 0.22745098, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -73021,6 +73023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenObject: {fileID: 1676173099700753346, guid: a26a78e511dde9340a49d7432d422c4c, type: 3}
   ScoreTextPopUp: {fileID: 4345266729488934642, guid: 271ea2c88d13cf645a7a6789318be597, type: 3}
+  spawnTextPoint: {fileID: 0}
   scoreManager: {fileID: 0}
   outline: {fileID: 0}
   baseMat: {fileID: 0}
@@ -73190,6 +73193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenObject: {fileID: 1676173099700753346, guid: a26a78e511dde9340a49d7432d422c4c, type: 3}
   ScoreTextPopUp: {fileID: 4345266729488934642, guid: 271ea2c88d13cf645a7a6789318be597, type: 3}
+  spawnTextPoint: {fileID: 0}
   scoreManager: {fileID: 0}
   outline: {fileID: 0}
   baseMat: {fileID: 0}
@@ -79994,6 +79998,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenObject: {fileID: 1676173099700753346, guid: a26a78e511dde9340a49d7432d422c4c, type: 3}
   ScoreTextPopUp: {fileID: 4345266729488934642, guid: 271ea2c88d13cf645a7a6789318be597, type: 3}
+  spawnTextPoint: {fileID: 0}
   scoreManager: {fileID: 0}
   outline: {fileID: 0}
   baseMat: {fileID: 0}
@@ -99919,6 +99924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenObject: {fileID: 1676173099700753346, guid: a26a78e511dde9340a49d7432d422c4c, type: 3}
   ScoreTextPopUp: {fileID: 4345266729488934642, guid: 271ea2c88d13cf645a7a6789318be597, type: 3}
+  spawnTextPoint: {fileID: 0}
   scoreManager: {fileID: 0}
   outline: {fileID: 0}
   baseMat: {fileID: 0}

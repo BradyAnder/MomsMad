@@ -9,8 +9,6 @@ public class BreakableRounds : MonoBehaviour
     public GameObject[] roundOne;
     public GameObject[] roundTwo;
     public GameObject[] roundThree;
-    public GameObject[] roundFour;
-    public GameObject[] roundFive;
 
     private List<GameObject[]> rounds;
     private GameObject[] currentRound;
@@ -24,9 +22,7 @@ public class BreakableRounds : MonoBehaviour
         {
             roundOne,
             roundTwo,
-            roundThree,
-            roundFour,
-            roundFive
+            roundThree
         };
 
         selectRandomRound();

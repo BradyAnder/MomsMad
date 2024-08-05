@@ -23,6 +23,7 @@ public class LevelSelectManager : MonoBehaviour
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
+        scoreRecorder = FindObjectOfType<ScoreRecorder>();
 
         randomLevel = Random.Range(1, 4); //Random Level Generator
         Debug.Log(randomLevel);

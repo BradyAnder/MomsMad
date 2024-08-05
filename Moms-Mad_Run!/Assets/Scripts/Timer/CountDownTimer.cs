@@ -66,7 +66,16 @@ public class CountDownTimer : MonoBehaviour
             timesUpText.gameObject.SetActive(true);
             countDownText.gameObject.SetActive(false);
             Time.timeScale = 0;
-            StartCoroutine(ChangeScene());
+            ScoreRecorder scoreRecorder = FindObjectOfType<ScoreRecorder>();
+            if (scoreRecorder.currRound == scoreRecorder.maxRound)
+            {
+                SceneManager.LoadScene("Scoreboard");
+            }
+            else
+            {
+                SceneManager.LoadScene("Leaderboard");
+            }
+            // StartCoroutine(ChangeScene());
         }
     }
 

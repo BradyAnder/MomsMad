@@ -95,7 +95,7 @@ public class PlayerManager : MonoBehaviour
 
         for (int i = 0; i < playerInfo.Count; i++)
         {
-            if (i == RoundManager.round - 1)
+            if (i == scoreRecorder.currRound - 1)
             {
                 Debug.Log("Spawned Mom");
                 SpawnMom(playerInfo[i]);

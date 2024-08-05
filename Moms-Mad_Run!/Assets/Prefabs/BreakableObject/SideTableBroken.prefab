@@ -13,6 +13,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 97171902d837b6e43921537a97305cc8, type: 2}
     - target: {fileID: -8679921383154817045, guid: a61da2ac2f1520442afd4f08cafcd809, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 46.967
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a61da2ac2f1520442afd4f08cafcd809, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 46.967
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a61da2ac2f1520442afd4f08cafcd809, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 46.967
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a61da2ac2f1520442afd4f08cafcd809, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.76413
       objectReference: {fileID: 0}
@@ -51,6 +63,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a61da2ac2f1520442afd4f08cafcd809, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a61da2ac2f1520442afd4f08cafcd809, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7600554273289072190, guid: a61da2ac2f1520442afd4f08cafcd809, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1046,7 +1062,7 @@ AudioSource:
   m_GameObject: {fileID: 6056812137821419181}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -8373124558125406885, guid: f2f3ae3ae3312684ea8049b6d78b6e3d, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.9

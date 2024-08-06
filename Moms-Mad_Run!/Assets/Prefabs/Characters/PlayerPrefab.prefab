@@ -2144,6 +2144,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4379907518947497937, guid: bfc192ba4a92e234896feca8436c4024, type: 3}
+      propertyPath: rotationSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379907518947497937, guid: bfc192ba4a92e234896feca8436c4024, type: 3}
       propertyPath: slideCooldown
       value: 1.5
       objectReference: {fileID: 0}

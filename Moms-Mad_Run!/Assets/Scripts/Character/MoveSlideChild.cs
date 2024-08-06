@@ -9,6 +9,7 @@ public class MoveSlideChild : MonoBehaviour
     public float slideSpeed = 20f;
     public float slideDuration = 0.5f;
     public float slideCooldown = 1f;
+    public float rotationSpeed = 100f;
 
     private Rigidbody child_body;
     public bool isSliding = false;
@@ -18,7 +19,9 @@ public class MoveSlideChild : MonoBehaviour
     private Quaternion originalRotation;
     private CapsuleCollider childCollider;
     private Vector2 moveInput;
-    
+    private float slideAngle;
+    private Vector3 newSlideDirection;
+
     void Start()
     {
         if (Child_Object != null)
@@ -52,6 +55,7 @@ public class MoveSlideChild : MonoBehaviour
                 slideCooldownTimer -= Time.deltaTime;
             }
         }
+
     }
 
     void MoveChildObject()
@@ -86,15 +90,78 @@ public class MoveSlideChild : MonoBehaviour
         }
     }
 
-    void Slide()
+void Slide()
+{
+    if (!isSliding && slideCooldownTimer <= 0)
     {
-        slideTimer -= Time.deltaTime;
-        if (slideTimer <= 0)
+        // Start the slide
+        isSliding = true;
+        slideTimer = slideDuration;
+        slideCooldownTimer = slideCooldown;
+
+        // Store the original direction before rotating the character
+        slideDirection = Child_Object.transform.forward;
+
+        // Rotate the character to look at the ceiling
+        Child_Object.transform.Rotate(-90f, 0f, 0f);
+
+        // Ensure the player moves in the direction they are facing even if standing still
+        if (child_body.velocity.magnitude == 0)
         {
-            EndSlide();
+            child_body.velocity = slideDirection * slideSpeed;
+        }
+        else
+        {
+            // Apply the sliding velocity in the original forward direction
+            child_body.velocity = slideDirection * slideSpeed;
         }
     }
 
+    if (isSliding)
+    {
+        slideTimer -= Time.deltaTime;
+
+        if (slideTimer <= 0)
+        {
+            // End the slide
+            isSliding = false;
+            child_body.velocity = Vector3.zero;
+
+            // Reset the rotation of the character to its original state
+            Child_Object.transform.Rotate(90f, 0f, 0f);
+        }
+        else
+        {
+                
+
+            //Checking slide direciton after rotation
+            newSlideDirection = -1 *Child_Object.transform.up;
+            
+                //change moveinput to work in 3d
+                Vector3 moveInput3 = new Vector3(moveInput.x, 0f, moveInput.y);
+
+                // Check how large the angle between stick direction and player facing direciton
+                slideAngle = Vector3.Angle(newSlideDirection, moveInput3);
+
+            // Check direction pressed and invert angle if required
+            Vector3 cross = Vector3.Cross(newSlideDirection, moveInput3);
+                if( cross.y < 0)
+                {
+                    slideAngle = -slideAngle;
+                }
+
+
+            // Rotate the child object based on the horizontal input to face the direction of the user input
+            Vector3 rotation = new Vector3(0.0f, 0.0f, slideAngle);
+            Child_Object.transform.Rotate(rotation * rotationSpeed * Time.deltaTime);
+
+
+                // Maintain sliding direction but allow slight steering left and right
+                Vector3 movement = newSlideDirection * slideSpeed;
+            child_body.velocity = movement.normalized * slideSpeed;
+        }
+    }
+}
     void EndSlide()
     {
         isSliding = false;

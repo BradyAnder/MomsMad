@@ -7,6 +7,7 @@ public class LevelSelectManager : MonoBehaviour
 {
     //Random Play Level
     public int randomLevel;
+    ScoreRecorder scoreRecorder;
 
     public void Lobby()
     {
@@ -22,19 +23,23 @@ public class LevelSelectManager : MonoBehaviour
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
+        scoreRecorder = FindObjectOfType<ScoreRecorder>();
 
         randomLevel = Random.Range(1, 4); //Random Level Generator
         Debug.Log(randomLevel);
         if (randomLevel == 1)
         {
+            scoreRecorder.levelSelected = "Prototype 1";
             SceneManager.LoadScene("Prototype 1");
         }
         else if (randomLevel == 2)
         {
+            scoreRecorder.levelSelected = "Prototype 2";
             SceneManager.LoadScene("Prototype 2");
         }
         else if (randomLevel == 3)
         {
+            scoreRecorder.levelSelected = "Prototype 3";
             SceneManager.LoadScene("Prototype 3");
         }
         else
@@ -45,6 +50,8 @@ public class LevelSelectManager : MonoBehaviour
 
     public void Level1()
     {
+        scoreRecorder = FindObjectOfType<ScoreRecorder>();
+        scoreRecorder.levelSelected = "Prototype 1";
         Time.timeScale = 1f;
         SceneManager.LoadScene("Prototype 1");
         Cursor.lockState = CursorLockMode.Confined;
@@ -53,6 +60,8 @@ public class LevelSelectManager : MonoBehaviour
 
     public void Level2()
     {
+        scoreRecorder = FindObjectOfType<ScoreRecorder>();
+        scoreRecorder.levelSelected = "Prototype 2";
         Time.timeScale = 1f;
         SceneManager.LoadScene("Prototype 2");
         Cursor.lockState = CursorLockMode.Confined;
@@ -61,6 +70,8 @@ public class LevelSelectManager : MonoBehaviour
 
     public void Level3()
     {
+        scoreRecorder = FindObjectOfType<ScoreRecorder>();
+        scoreRecorder.levelSelected = "Prototype 3";
         Time.timeScale = 1f;
         SceneManager.LoadScene("Prototype 3");
         Cursor.lockState = CursorLockMode.Confined;

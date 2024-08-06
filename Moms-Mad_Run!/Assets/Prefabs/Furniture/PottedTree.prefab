@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7085441252030321518
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2382457744832146725}
+  m_Layer: 0
+  m_Name: SpawnText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2382457744832146725
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7085441252030321518}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8957497425186124685}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8918768895163929702
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86,7 +117,10 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 82762ab3990b6524e87fd3aaa976b7ad, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: f042f08521bc5dc41980b58034edcb7c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2382457744832146725}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f042f08521bc5dc41980b58034edcb7c, type: 3}
       insertIndex: -1
@@ -165,8 +199,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brokenObject: {fileID: 3791838954140970718, guid: 91dff34cdf3e55143accbc2f622f7917, type: 3}
   ScoreTextPopUp: {fileID: 4345266729488934642, guid: 271ea2c88d13cf645a7a6789318be597, type: 3}
+  spawnTextPoint: {fileID: 7085441252030321518}
   scoreManager: {fileID: 0}
   outline: {fileID: 0}
+  baseMat: {fileID: 0}
   materials: []
   isBreakable: 0
   scoreValue: 100
+--- !u!4 &8957497425186124685 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f042f08521bc5dc41980b58034edcb7c, type: 3}
+  m_PrefabInstance: {fileID: 8918768895163929702}
+  m_PrefabAsset: {fileID: 0}

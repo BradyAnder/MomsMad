@@ -12,6 +12,10 @@ public class ScoreRecorder : MonoBehaviour
     public bool isDebugMode = false;
     public InGameScoreboard inGameScoreboard;
 
+    public int maxRound;
+    public int currRound;
+    public string levelSelected;
+
     private void Awake()
     {
         if (instance == null)
@@ -26,6 +30,9 @@ public class ScoreRecorder : MonoBehaviour
 
         playerObjects = new ArrayList();
         playerScores = new ArrayList();
+        maxRound = 0;
+        currRound = 0;
+        levelSelected = "";
 
         if (isDebugMode)
         {
@@ -66,13 +73,13 @@ public class ScoreRecorder : MonoBehaviour
             playerScores[index] = (int)playerScores[index] + amount;
         }
         if (inGameScoreboard == null) { return; }
-        inGameScoreboard.updateScore(playerObj.name, (int)playerScores[index]);
+        inGameScoreboard.updateScore(playerObj.playerNumber, (int)playerScores[index]);
     }
 
     public string[] PlayerObjectsToArray() {
         string[] arr = new string[playerNumber];
         for (int i = 0; i < playerNumber; i++) {
-            arr[i] = ((LobbyManager.Player)playerObjects[i]).name;
+            arr[i] = "Player " + ((LobbyManager.Player)playerObjects[i]).playerNumber.ToString();
         }
         return arr;
     }
@@ -86,9 +93,21 @@ public class ScoreRecorder : MonoBehaviour
         return arr;
     }
 
+    public Color[] PlayerColorsToArray() {
+        Color[] arr = new Color[playerNumber];
+        for (int i = 0; i < playerNumber; i++) {
+            arr[i] = ((LobbyManager.Player)playerObjects[i]).colour;
+        }
+        return arr;
+    }
+
     public void ResetAll() {
         playerObjects.Clear();
         playerScores.Clear();
         playerNumber = 0;
+        maxRound = 0;
+        currRound = 0;
+        levelSelected = "";
+        inGameScoreboard.resetScore();
     }
 }

@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour
     private InGameScoreboard inGameScoreboard;
     public Material[] childColourMats;
     public GameObject playerNumberIndicator;
+    public Color[] playerColors = { new Color(1, 0, 0), new Color(1, 1, 0), new Color(0.5f, 0, 0.5f), new Color(1, 0.5f, 0) };
 
     // The mom spawnPoint
     public GameObject MomSpawnPoint;
@@ -32,7 +33,7 @@ public class PlayerManager : MonoBehaviour
         string[] playerNames = new string[len];
         for (int i= 0; i < len; i++)
         {
-            playerNames[i] = playerInfo[i].name;
+            playerNames[i] = "Player" +  playerInfo[i].playerNumber.ToString();
         }
         inGameScoreboard.playerNames = playerNames;
         // Initialize the scores for each player
@@ -60,12 +61,13 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    void AddPlayerNumberIndicator(GameObject playerObj, int playerNumber)
+    void AddPlayerNumberIndicator(GameObject playerObj, int playerNumber, Color color)
     {
         GameObject numIndicator = Instantiate(playerNumberIndicator, playerObj.transform);
         numIndicator.transform.localPosition = Vector3.up * 2;
         TextMeshPro temp = numIndicator.GetComponent<TextMeshPro>();
         temp.text = "Player " + playerNumber.ToString();
+        temp.color = color;
     }
 
     public void AddScore(GameObject playerObj, int amount) {
@@ -79,7 +81,7 @@ public class PlayerManager : MonoBehaviour
     void StartRound()
     {
         // Check for end of game
-        if (RoundManager.round - 1 >= playerInfo.Count)
+        if (scoreRecorder.currRound - 1 >= playerInfo.Count)
         {
             // End of game
             Debug.Log("All rounds completed!");
@@ -92,26 +94,32 @@ public class PlayerManager : MonoBehaviour
 
         // Crude index to track number of child players spawned for changing colours
         int colourIndex = 0;
-
+        int layer = 8;
         for (int i = 0; i < playerInfo.Count; i++)
         {
-            if (i == RoundManager.round - 1)
+            if (i == 0) { layer = 8; }
+            if (i == 1) { layer = 9; }
+            if (i == 2) { layer = 11; }
+            if (i == 3) { layer = 10; }
+            if (i == scoreRecorder.currRound - 1)
             {
                 Debug.Log("Spawned Mom");
-                SpawnMom(playerInfo[i]);
+                SpawnMom(playerInfo[i], colourIndex, layer);
+                colourIndex++;
             }
             else
             {
                 Debug.Log("Spawned Child");
-                SpawnChild(playerInfo[i], availableSpawnPoints, colourIndex);
+                SpawnChild(playerInfo[i], availableSpawnPoints, colourIndex, layer);
                 colourIndex++;
             }
+            layer++;
         }
 
         currentRound++;
     }
 
-    void SpawnMom(LobbyManager.Player player)
+    void SpawnMom(LobbyManager.Player player, int colourIndex, int layer)
     {
         // Instantiate a new player and recognize it's Mom and Child objects
         GameObject newObj = Instantiate(playerPrefab, MomSpawnPoint.transform.position, Quaternion.identity);
@@ -124,11 +132,13 @@ public class PlayerManager : MonoBehaviour
         // Set the correct device to this player
         PlayerInput currentPlayer = momObj.GetComponent<PlayerInput>();
         currentPlayer.SwitchCurrentControlScheme("controller", player.device);
+        momObj.GetComponent<MeshRenderer>().material = childColourMats[colourIndex];
+        momObj.layer = layer;
         player.currentObj = momObj;
-        AddPlayerNumberIndicator(momObj, player.playerNumber);
+        AddPlayerNumberIndicator(momObj, player.playerNumber, playerColors[colourIndex]);
     }
 
-    void SpawnChild(LobbyManager.Player player, List<GameObject> spawnPoints, int colourIndex)
+    void SpawnChild(LobbyManager.Player player, List<GameObject> spawnPoints, int colourIndex, int layer)
     {
         // Choose a random spawn point for the child
         int randomIndex = Random.Range(0, spawnPoints.Count);
@@ -150,7 +160,8 @@ public class PlayerManager : MonoBehaviour
         PlayerInput currentPlayer = childObj.GetComponent<PlayerInput>();
         currentPlayer.SwitchCurrentControlScheme("controller", player.device);
         player.currentObj = childObj;
-        AddPlayerNumberIndicator(childObj, player.playerNumber);
+        childObj.layer = layer;
+        AddPlayerNumberIndicator(childObj, player.playerNumber, playerColors[colourIndex]);
     }
 
     void Update()
@@ -159,7 +170,7 @@ public class PlayerManager : MonoBehaviour
         if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             // We spawn a new child 
-            StartRound();
+            // StartRound();
         }
 
         // Ensure all player number indicators face the camera

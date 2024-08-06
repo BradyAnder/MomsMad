@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class LeaderBoardManager : MonoBehaviour
 {
     public GameObject title;
@@ -30,10 +30,11 @@ public class LeaderBoardManager : MonoBehaviour
             return;
         }
 
-        round_num = RoundManager.Instance.getRound() - 1;
-        Debug.Log("Round number: " + round_num);
+        // round_num = RoundManager.Instance.getRound() - 1;
 
         scoreRecorder = FindObjectOfType<ScoreRecorder>();
+        round_num = scoreRecorder.currRound;
+        Debug.Log("Round number: " + round_num);
         if (scoreRecorder == null)
         {
             Debug.LogError("Score Recorder not found.");
@@ -42,6 +43,7 @@ public class LeaderBoardManager : MonoBehaviour
 
         string[] playerObjects = scoreRecorder.PlayerObjectsToArray();
         int[] playerScores = scoreRecorder.PlayerScoresToArray();
+        Color[] playerColors = scoreRecorder.PlayerColorsToArray();
 
         if (playerObjects == null || playerScores == null)
         {
@@ -61,7 +63,7 @@ public class LeaderBoardManager : MonoBehaviour
             playerDataList = new List<PlayerData>();
             for (int i = 0; i < defaultChars.Length; i++)
             {
-                playerDataList.Add(new PlayerData { Name = defaultChars[i], Score = defaultScores[i] });
+                playerDataList.Add(new PlayerData { Name = defaultChars[i], Score = defaultScores[i], PlayerColor = new Color(0.5f, 0.5f, 0.5f) });
             }
         }
         else
@@ -69,7 +71,7 @@ public class LeaderBoardManager : MonoBehaviour
             playerDataList = new List<PlayerData>();
             for (int i = 0; i < playerObjects.Length; i++)
             {
-                playerDataList.Add(new PlayerData { Name = playerObjects[i], Score = playerScores[i] });
+                playerDataList.Add(new PlayerData { Name = playerObjects[i], Score = playerScores[i], PlayerColor = playerColors[i] });
             }
 
             playerDataList.Sort((x, y) => y.Score.CompareTo(x.Score));
@@ -105,6 +107,7 @@ public class LeaderBoardManager : MonoBehaviour
             }
 
             int tempScore = playerDataList[i].Score;
+            Color color = playerDataList[i].PlayerColor;
             if (i > 0) { totalChildScore += tempScore; }
 
             string displayText = playerDataList[i].Name + ": " + tempScore;
@@ -114,6 +117,7 @@ public class LeaderBoardManager : MonoBehaviour
             }
 
             tempScoreText.text = displayText;
+            tempScoreText.color = color;
         }
 
         tempScoreText = title.GetComponent<TextMeshProUGUI>();
@@ -126,7 +130,7 @@ public class LeaderBoardManager : MonoBehaviour
         tempScoreText.text = "Leaderboard for Round: " + round_num;
 
         // Wait for 5 seconds and then return to the game
-        Debug.Log("Starting coroutine to wait for 5 seconds");
+        // Debug.Log("Starting coroutine to wait for 5 seconds");
         StartCoroutine(ReturnToGameAfterDelay(3));
     }
 
@@ -142,12 +146,16 @@ public class LeaderBoardManager : MonoBehaviour
         Debug.Log("Finished waiting. Returning to game.");
         Time.timeScale = previousTimeScale; // Restore previous time scale
         Debug.Log("Time scale restored to: " + Time.timeScale);
-        RoundManager.ReturnToGame();
+        scoreRecorder.currRound++;
+        SceneManager.LoadScene(scoreRecorder.levelSelected);
+        // RoundManager.ReturnToGame();
     }
 
     private class PlayerData
     {
         public string Name { get; set; }
         public int Score { get; set; }
+
+        public Color PlayerColor { get; set; }
     }
 }

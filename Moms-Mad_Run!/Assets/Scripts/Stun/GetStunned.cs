@@ -11,7 +11,7 @@ public class GetStunned : MonoBehaviour
     public GameObject stunEffect;
     public float stunResistance;
     public GameObject shield;
-
+    public AudioClip ShoeHit;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +26,7 @@ public class GetStunned : MonoBehaviour
 
     }
 
+   
     public void StunTest()
     {
         StartCoroutine(Stun());
@@ -73,6 +74,7 @@ public class GetStunned : MonoBehaviour
     public IEnumerator Stun()
     { 
             StunPlayer();
+        AudioSource.PlayClipAtPoint(ShoeHit, transform.position);
             Debug.Log("Wating");
             yield return new WaitForSecondsRealtime(6);
             Debug.Log("more waiting");
